@@ -1,54 +1,49 @@
-# Editorial and technical notes { }
+# အယ်ဒီတာ့အာဘော်နှင့် နည်းပညာမှတ်စုများ
 
-In this page we describe the philosophical approach, style, and specific editorial decisions made during the creation of this handbook.  
+ယခုစာမျက်နှာတွင် ဤလက်စွဲစာအုပ်ကို ဖန်တီးခဲ့စဉ်အတွင်း ပြုလုပ်ခဲ့သော ကျွန်ုပ်တို့ရဲ့ အတွေးအခေါ်ပိုင်းဆိုင်ရာ ချဉ်းကပ်မှု၊ အရေးအသားစတိုင်နှင့် အသေးစိတ် တည်းဖြတ်မှုဆိုင်ရာဆုံးဖြတ်ချက်များကို ဖော်ပြထားပါသည်။
 
+## ချဉ်းကပ်မှုနှင့် အရေးအသား စတိုင်
 
-## Approach and style
+ယခုစာအုပ်ကို အသုံးပြုလာနိုင်တဲ့ ပရိသတ်ဟာ များပြားလှပါတယ်။ R အကြောင်းကို ယခုမှ စတင်လေ့လာနေသူများရော၊ လက်တွေ့အသုံးချနည်းလမ်းကောင်းများနှင့် အကြံပြုချက်များကို ရှာဖွေနေသည့် အတွေ့အကြုံရှိပြီးသား R အသုံးချနေသူများလည်း ဒီစာအုပ်ကို အသုံးပြုနေနိုင်ပါတယ်။ ထိုအတွက်ကြောင့် ယခုလက်စွဲစာအုပ်ဟာ လူတိုင်းလက်လှမ်းမှီနိုင်ဖို့လိုသလို လိုရင်းတိုရှင်းလည်း ဖြစ်ရပါမယ်။ ဒါကြောင့်R အကြောင်းကို ယခုမှစတင် လေ့လာနေသူတစ်ယောက်အနေနဲ့ ကုဒ်တစ်ခုကို အသုံးပြုပြီး အဲဒီကုဒ် ဘာလုပ်ဆောင်နေလဲဆိုတာကို *နားလည်နိုင်ရုံ လုံလောက်တဲ့* စာသားရှင်းလင်းချက်တွေနဲ့ ကျွန်ုပ်တို့က ဤစာအုပ်ကို ချဉ်းကပ်ရေးသားထားပါတယ်။
 
-The potential audience for this book is large. It will surely be used by people very new to R, and also by experienced R users looking for best practices and tips. So it must be both accessible and succinct. Therefore, our approach was to provide *just enough* text explanation that someone very new to R can apply the code and follow what the code is doing.  
+အချို့သော အခြားအချက်အလက်များ -
 
-A few other points:  
+-   ဤစာအုပ်မှာ အတိုချုံး ဥပမာများဖြင့်ပါသော code (ကုဒ်) ကိုးကား စာအုပ်ဖြစ်ပါသည်။ Data Science / R အကြောင်း စေ့စပ်စွာလေ့လာနိုင်ရန် သင်ရိုးစာအုပ် *မဟုတ်ပါ*။\
+-   ဤစာအုပ်မှာ အသုံးချ ကူးစက်ရောဂါဗေဒအတွင်း အသုံးပြုရန်အတွက် *R လက်စွဲစာအုပ်* ဖြစ်သည်။ အသုံးချကူးစက်ရောဂါဗေဒဆိုင်ရာ နည်းစနစ်၊ သဘောတရားများကို ရှင်းပြသော အညွှန်းစာအုပ်မဟုတ်ပါ။\
+-   ဤစာအုပ်မှာ အချိန်နှင့် တစ်ပြေးညီ အပြောင်းအလဲများ ရှိနေနိုင်ရန် ရည်ရွယ်ပါသည်။ ပေးထားသော လုပ်ငန်းတာဝန်များအတွက် အသင့်လျော်ဆုံး R ပက်ကေ့ဂျ်များမှာ မကြာခဏ ပြောင်းလဲတတ်တဲ့အတွက် ယခုလက်စွဲစာအုပ်တွင် မည်သည့်အပိုင်းကို အလေးပေး ရေးသားရန် လိုအပ်ချက်များ ဝင်ရောက်ဆွေးနွေးဖို့ကို ကျွန်ုပ်တို့ကြိုဆိုပါသည်။
 
-* This is a code reference book accompanied by relatively brief examples - *not* a thorough textbook on R or data science  
-* This is a *R handbook* for use within applied epidemiology - not a manual on the methods or science of applied epidemiology  
-* This is intended to be a living document - optimal R packages for a given task change often and we welcome discussion about which to emphasize in this handbook  
+### **R ပက်ကေ့ဂျ်များ** {.unnumbered}
 
+**ရွေးချယ်စရာတွေ အများကြီးရှိပါတယ်**
 
+Rအကြောင်း လေ့လာရာတွင် အခက်ခဲဆုံး ကဏ္ဍတစ်ခုမှာ ပေးထားသော အလုပ် task တစ်ခုအတွက် မည်သည့် R ပက်ကေ့ချ် အသုံးပြုရမည်ကို သိရှိထားရန် လိုအပ်ခြင်း ဖြစ်ပါတယ်။ ကွန်မန်းလိုင်းတစ်ကြောင်းထဲနဲ့ task တစ်ခုလုံးကို လုပ်ဆောင်နိုင်တဲ့ R ပက်ကေ့ချ် ရှိပြီးသားဆိုတာကို အဲ့ task တစ်ခုလုံးပြီးမှ ရှာတွေ့တတ်တာမျိုးတွေလည်း မကြာခဏ ဖြစ်တတ်လေ့ရှိပါတယ်။
 
+ဒီလက်စွဲစာအုပ်မှာ taskတစ်ခုချင်းစီကို ပြီးမြောက်ဖို့ အနည်းဆုံးနည်းလမ်းနှစ်မျိုးကို ကြိုးစားဖော်ပြပေးထားပါတယ် - လက်တွေ့သုံးကြည့်ထားပြီး မှန်ကန်သောနည်းလမ်းတစ်ခု (**base** R ဗားရှင်း သို့မဟုတ် **tidyverse** တွင်) နဲ့ ယခု task အတွက် သီးသန့်တည်ဆောက်ထားတဲ့ အထူး R ပက်ကေ့ခ်ျတစ်ခုကို ပေးထားပါတယ်။ အကယ်၍ ပေးထားတဲ့ ပက်ကေ့ခ်ျကို ဒေါင်းလုဒ်လုပ်၍ မရခဲ့လျှင် သို့မဟုတ် သင့်အတွက် အလုပ်မလုပ်ပါက ရွေးချယ်စရာနည်းလမ်း ရှိနေစေဖို့ပါ။
 
-### R packages {.unnumbered}
+အသုံးပြုရမယ့်ပက်ကေ့ဂျ်များကို ရွေးတဲ့အခါ ကျွန်ုပ်တို့ဟာ communityမှ စမ်းသပ်စစ်ဆေးပြီးတဲ့ R ပက်ကေ့ဂျ်များနဲ့ချဉ်းကပ်မှု approaches များကို ရွေးထားပါတယ်။ stable (မကြာခဏ ပြောင်းလဲခြင်းမရှိ) ဖြစ်ပြီး taskတစ်ခုကို ရိုးရိုးရှင်းရှင်းနဲ့ ပြီးမြောက်စေနိုင်တဲ့ ပုံမှန်အလုပ်sessionမှာ အသုံးပြုတဲ့ ပက်ကေ့ဂျ်အရေအတွက်ကို လျှော့နိုင်ဖို့ ဦးစားပေးပါတယ်။
 
-**So many choices**  
+ဒီလက်စွဲစာအုပ်မှာ ယေဘုယျအားဖြင့် **tidyverse** မှ R ပက်ကေ့ဂျ်များနဲ့ functionsများကို ဦးစားပေး ဖော်ပြထားပါတယ်။ Tidyverseဆိုတာ grammar နဲ့ ဒေတာဖွဲ့စည်းပုံများကို မျှဝေပေးသော data science ကို ရည်ရွယ်ထုတ်ထားတဲ့ R ပက်ကေ့ဂျ် များကို စုစည်းထားခြင်းဖြစ်ပါတယ်။ tidyverse ပက်ကေ့ဂျ်များအားလုံးကို **tidyverse** နာမည်နှင့် ပက်ကေ့ဂျ်မှတစ်ဆင့် install/load ပြုလုပ်၍ ရပါသည်။ အသေးစိတ်ကို [tidyverse ဝက်ဘ်ဆိုက်](https://www.tidyverse.org/)တွင် လေ့လာလို့ရပါတယ်။
 
-One of the most challenging aspects of learning R is knowing which R package to use for a given task. It is a common occurrence to struggle through a task only later to realize - hey, there's an R package that does all that in one command line!  
+ဖြစ်နိုင်ရင် အချို့‌နေရာ‌တွေမှာ ကျွန်ုပ်တို့အနေနဲ့ **base** R ကိုသုံးတဲ့ ကုဒ်များကိုလည်း ချပေးထားပါတယ် (R စပြီး install လုပ်တဲ့ထဲမှာ နဂိုပါပြီးသား ပက်ကေ့ခ်ျနှင့် functions များ)။ ဒါဟာ ဒီစာအုပ်ဖတ်သူအချို့ဟာ အပိုပက်ကေ့ဂျ်များကိုဒေါင်းလုဒ်လုပ်ရန် အင်တာနက်ကောင်းကောင်း မရတဲ့နေရာမှာ ရှိနေနိုင်တာကို ကျွန်ုပ်တို့ အသိအမှတ်ပြုတဲ့အတွက် ဖြစ်ပါတယ်။
 
-In this handbook, we try to offer you at least two ways to complete each task: one tried-and-true method (probably in **base** R or **tidyverse**) and one special R package that is custom-built for that purpose. We want you to have a couple options in case you can't download a given package or it otherwise does not work for you.  
+**လုပ်ဆောင်ချက်များကို ပက်ကေ့ဂျ်များနှင့် တိကျစွာ ချိတ်ဆက်ခြင်း**
 
-In choosing which packages to use, we prioritized R packages and approaches that have been tested and vetted by the community, minimize the number of packages used in a typical work session, that are stable (not changing very often), and that accomplish the task simply and cleanly  
+R သင်ခန်းစာတွေမှာ function တစ်ခုကို ကုဒ်နဲ့ ပြပေမယ့် ဘယ်ပက်ကေ့ချ်ကလဲဆိုတာ မသိခဲ့ရင် စိတ်ရှုပ်ဖို့ကောင်းတတ်ပါတယ်။ ဒီလိုအခြေအနေမျိုးမဖြစ်အောင် ကျွန်ုပ်တို့ရှောင်ဖို့ ကြိုးစားပါတယ်။
 
-This handbook generally prioritizes R packages and functions from the **tidyverse**. Tidyverse is a collection of R packages designed for data science that share underlying grammar and data structures. All tidyverse packages can be installed or loaded via the **tidyverse** package. Read more at the [tidyverse website](https://www.tidyverse.org/).  
+Narrative စာသားတွေမှာ ပက်ကေ့ဂျ်နာမည်များကို bold လုပ် ရေးထားပြီး (e.g. **dplyr**) functionsများကို ဒီလို ရေးထားပါတယ် - `mutate()`။ functionတစ်ခုဟာ ဘယ်ပက်ကေ့ဂျ်ကလဲဆိုတာကို နဲ့ပတ်သက်ပြီး ရှင်းရှင်းလင်းလင်းဖြစ်အောင် အနီးအနားက စာသားတွင် ပက်ကေ့ဂျ်ကို ကိုးကားတာမျိုး သို့မဟုတ် အနောက်က ကုဒ်မှာလို ဘယ်ပက်ကေ့ဂျ်ကလဲဆိုတာ ပြတ်သားစွာ သတ်မှတ်ထားတာမျိုးနဲ့ ကြိုးစား ဖော်ပြပေးထားပါတယ် `dplyr::mutate()`။ ဒါဟာ မလိုအပ်ဘူးလို့ ထင်ရပေမယ့် ရေးသင့်လို့ ရေးထားရတာပါ။
 
-When applicable, we also offer code options using **base** R - the packages and functions that come with R at installation. This is because we recognize that some of this book's audience may not have reliable internet to download extra packages.  
+ပက်ကေ့ဂျ်များနှင့် functionsများအကြောင်း ပိုမိုလေ့လာရန် \[R အခြေခံများ\] စာမျက်နှာကို ကြည့်ပါ။
 
-**Linking functions to packages explicitly**
+### **ကုဒ်စတိုင်(လ်)** {.unnumbered}
 
-It is often frustrating in R tutorials when a function is shown in code, but you don't know which package it is from! We try to avoid this situation.  
+ဒီလက်စွဲစာအုပ်မှာဆိုရင် ကျွန်ုပ်တို့ဟာ "စာကြောင်းအသစ်များ" ကို မကြာခဏသုံးပြီး ကျွန်ုပ်တို့၏ကုဒ်ကို "ရှည်" သယောင် ရှိအောင် ရေးထားပါတယ်။ ကျွန်ုပ်တို့ ဒါကို အချို့အကြောင်းပြချက်တွေကြောင့် လုပ်ထားရတာပါ -
 
-In the narrative text, package names are written in bold (e.g. **dplyr**) and functions are written like this: `mutate()`. We strive to be explicit about which package a function comes from, either by referencing the package in nearby text or by specifying the package explicitly in the code like this: `dplyr::mutate()`. It may look redundant, but we are doing it on purpose.  
+-   ရှင်းလင်းချက် မှတ်ချက်များကို ကုဒ်၏ အပိုင်းငယ်တစ်ခုစီနှင့် ကပ်လျက် `#` ဖြင့် ရေးနိုင်သည်။\
+-   ယေဘုယျအားဖြင့် ရှည်လျားသော (ဒေါင်လိုက်) ကုဒ်သည် ဖတ်ရန်ပိုမိုလွယ်ကူသည်။\
+-   ကျဉ်းမြောင်းသော screenပေါ်တွင် ဖတ်ရန်ပိုမိုလွယ်ကူသည် (ဘေးတိုက် scrollရန် မလိုအပ်ပါ)။\
+-   indentations များမှ၊ မည်သည့် argument များသည် မည်သည့် function နှင့် သက်ဆိုင်သည်ကို ပိုမိုလွယ်ကူစွာ သိနိုင်သည်။
 
-See the page on [R basics] to learn more about packages and functions.  
-
-
-### Code style {.unnumbered}
-
-In the handbook, we frequently utilize "new lines", making our code appear "long". We do this for a few reasons:  
-
-* We can write explanatory comments with `#` that are adjacent to each little part of the code  
-* Generally, longer (vertical) code is easier to read  
-* It is easier to read on a narrow screen (no sideways scrolling needed)  
-* From the indentations, it can be easier to know which arguments belong to which function  
-
-As a result, code that *could* be written like this:  
+ထို့အတွက် ယခုလို*ရေးနိုင်*တဲ့ ကုဒ်ကို -
 
 ```{r, eval=F}
 linelist %>% 
@@ -56,7 +51,7 @@ linelist %>%
   slice_max(date, n = 1, with_ties = F) # if there's a tie (of date), take the first row
 ```
 
-...is written like this:  
+...ဒီလိုရေးသားပါတယ် -
 
 ```{r, eval=F}
 linelist %>% 
@@ -67,75 +62,69 @@ linelist %>%
     with_ties = F)       # if there's a tie (of date), take the first row
 ```
 
-R code is generally not affected by new lines or indentations. When writing code, if you initiate a new line after a comma it will apply automatic indentation patterns. 
+R ကုဒ်ဟာ ယေဘုယျအားဖြင့် လိုင်းအသစ်များ သို့မဟုတ် ကုဒ်များကို သက်ရောက်မှုမရှိပါ။ ကုဒ်ရေးသည့်အခါ၊ ကော်မာ (comma) တစ်ခုပြီးနောက် စာကြောင်းအသစ်တစ်ခုကို စတင်ပါက ၎င်းဟာ အလိုအလျောက် အင်တင်း (indentation) ပုံစံများကို သုံးသွားပါလိမ့်မယ်။
 
-We also use lots of spaces (e.g. `n = 1` instead of `n=1`) because it is easier to read. Be kind to the people reading your code!  
+ကျွန်ုပ်တို့ဟာ ကုဒ် ရေးရာမှာ space တွေကို ဖတ်ရလွယ်ကူအောင် သုံးပါတယ်။ (ဥပမာ။ `n=1` အစား `n = 1`) သင့်ကုဒ်ကိုဖတ်နေသူများကို လွယ်လွယ်ဖတ်လို့ရအောင် ငဲ့ညှာပေးသင့်ပါတယ်။
 
+### **အမည်ပေးပုံစနစ်** {.unnumbered}
 
+ဒီလက်စွဲစာအုပ်တွင်၊ ကျွန်ုပ်တို့ အကြမ်းဖျဥ်းအားဖြင့် "ကိန်းရှင်များ (variables)" နှင့် "လေ့လာချက်များ (observations)" အစား "ကော်လံများ (columns)" နှင့် "တန်းများ (rows)" ကို ရည်ညွှန်းထားပါတယ်။[["tidy data"]{.ul}](https://tidyr.tidyverse.org/articles/tidy-data.html), အကြောင်း သင်ရိုးညွှန်းတွင် ရှင်းပြထားသည့်အတိုင်း၊ ကူးစက်ရောဂါဆိုင်ရာ စာရင်းအင်းဒေတာအတွဲအများစုသည် အတန်းများ၊ ကော်လံများနှင့် ကိန်းတန်ဖိုးများဖြင့် ဖွဲ့စည်းထားပါတယ်။
 
-### Nomenclature {.unnumbered}  
+*Variables ကိန်းရှင်များ* တွင် တူညီသော အခြေခံရည်ညွှန်းချက် (အသက်အုပ်စု၊ ရလဒ် သို့မဟုတ် စတင်သည့်နေ့စွဲ) စသည်တို့ကို တိုင်းတာတဲ့တန်ဖိုးများ ပါပါတယ်။ *Observations လေ့လာတွေ့ရှိချက်များ* မှာ တူညီသောယူနစ်ပေါ်တွင် တိုင်းတာထားသော တန်ဖိုးများအားလုံး (ဥပမာ လူတစ်ဦး၊ ဆိုက်၊ သို့မဟုတ် ဓာတ်ခွဲခန်းနမူနာ) ပါပါတယ်။ ဒါကြောင့် ဒီအချက်တွေကို သိသိသာသာထင်ထင်ရှားရှား သတ်မှတ်ဖို့ ပိုခက်ခဲနိုင်ပါတယ်။
 
-In this handbook, we generally reference "columns" and "rows" instead of "variables" and "observations". As explained in this primer on ["tidy data"](https://tidyr.tidyverse.org/articles/tidy-data.html), most epidemiological statistical datasets consist structurally of rows, columns, and values.  
+"tidy" ဒေတာအတွဲတွေမှာ ကော်လံတစ်ခုစီဟာ ကိန်းရှင်တစ်ခု၊ အတန်းတစ်ခုစီဟာ လေ့လာတွေ့ရှိချက်တစ်ခု၊ ဆဲလ်တစ်ခုစီဟာ ကိန်းတန်ဖိုးတစ်ခုဖြစ်ပါတယ်။ ဒါပေမယ့် သင်ကြုံတွေ့ရတဲ့ ဒေတာအတွဲအချို့တွင် ဒီပုံစံအတိုင်း ကိုက်ညီနေမှာမဟုတ်ပါ - "wide" ပုံစံ ဒေတာအတွဲတစ်ခုမှာ ကိန်းရှင်တွေဟာ ကော်လံတွေထဲ ခွဲပြထားတာမျိုး ရှိနိုင်ပါတယ်။ (နမူနာကို \[ဒေတာများကို Pivot ထောက်ခြင်း\] စာမျက်နှာတွင် ကြည့်ပါ။) ထိုနည်းတူစွာ လေ့လာတွေ့ရှိချက်များကို အတန်းများစွာတွင် ခွဲခြမ်းပြလို့ ရနိုင်သည်။
 
-*Variables* contain the values that measure the same underlying attribute (like age group, outcome, or date of onset). *Observations* contain all values measured on the same unit (e.g. a person, site, or lab sample). So these aspects can be more difficult to tangibly define.  
+ဒီလက်စွဲစာအုပ်ထဲက အများစုဟာ ဒေတာစီမံခန့်ခွဲခြင်းနဲ့အသွင်ပြောင်းခြင်းအကြောင်းဖြစ်ပါတယ်။ ဒါကြောင့် ကိန်းရှင် variablesတွေနဲ့ လေ့လာတွေ့ရှိချက် observations များရည်ညွှန်းတာထက် အတန်းများနဲ့ ကော်လံများရဲ့ ခိုင်မာသောဒေတာဖွဲ့စည်းပုံတွေကို ရည်ညွှန်းထားတာဟာ ပိုသက်ဆိုင်ပါလိမ့်မယ်။ ခြွင်းချက်အနေနဲ့ ဒေတာခွဲခြမ်းစိတ်ဖြာမှုdata analysis ဆိုင်ရာ စာမျက်နှာအများစုမှာတော့ variablesတွေနဲ့ observations တွေကို ပိုမိုကိုးကားထားတာကို သင်တွေ့နိုင်မှာဖြစ်ပါတယ်။
 
-In "tidy" datasets, each column is a variable, each row is an observation, and each cell is a single value. However some datasets you encounter will not fit this mold - a "wide" format dataset may have a variable split across several columns (see an example in the [Pivoting data] page). Likewise, observations could be split across several rows.  
+### မှတ်စုများ {.unnumbered}
 
-Most of this handbook is about managing and transforming data, so referring to the concrete data structures of rows and columns is more relevant than the more abstract observations and variables. Exceptions occur primarily in pages on data analysis, where you will see more references to variables and observations.  
+လက်စွဲစာအုပ်ထဲမှာ သင်တွေ့နိုင်တဲ့ မှတ်စုအမျိုးအစားများမှာ အောက်ပါအတိုင်း ဖြစ်ပါတယ် -
 
+[\*\*\_မှတ်ချက်\*\* - မှတ်စုတစ်ခု ဖြစ်သည်။]{style="color: black;"} [\*\*\_အကြံပြုချက် -\*\* အကြံပြုချက် တစ်ခုဖြစ်သည်။]{style="color: darkgreen;"} [\*\*\_သတိပြုရန် -\*\* သတိပြုရန် မှတ်ချက်ဖြစ်သည်။]{style="color: orange;"}\
+[\*\*\_အန္တရာယ် -\*\* သတိပေးချက် ဖြစ်သည်။]{style="color: red;"}
 
+## တည်းဖြတ်မှုဆိုင်ရာ ဆုံးဖြတ်ချက်များ
 
-### Notes {.unnumbered} 
+ယခုအောက်တွင် ကျွန်တော်တို့ ပက်ကေ့ဂျ်နဲ့ function ရွေးချယ်ရာမှာ သိသာတဲ့ တည်းဖြတ်မှုဆိုင်ရာ ဆုံးဖြတ်ချက်တွေကို track လုပ်ထားပါတယ်။ အကယ်၍ သင်သဘောမတူလျှင် သို့မဟုတ် ထည့်သွင်းသုံးဖို့ tool အသစ်တစ်ခုကို ကမ်းလှမ်းလိုပါက ကျွန်ုပ်တို့ရဲ့ [Github စာမျက်နှာ](https://github.com/appliedepi/epirhandbook_eng)တွင် စကားဝိုင်း စတင်/ပါဝင် လို့ရပါတယ်။
 
-Here are the types of notes you may encounter in the handbook:  
+**ပက်ကေ့ချ်၊ လုပ်ဆောင်ချက်နှင့် အခြားတည်းဖြတ်မှုဆိုင်ရာ ဆုံးဖြတ်ချက်များ ဇယား**
 
-<span style="color: black;">**_NOTE:_** This is a note</span>  
-<span style="color: darkgreen;">**_TIP:_** This is a tip.</span>  
-<span style="color: orange;">**_CAUTION:_** This is a cautionary note.</span>  
-<span style="color: red;">**_DANGER:_** This is a warning.</span>  
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| အကြောင်းအရာ                                                      | စဉ်းစားထားခြင်း                                                                          | ရလဒ်                                                                                                                                                  | ဆီလျော်မှု အကျဉ်းချုံး                                                                                             |
++==================================================================+==========================================================================================+=======================================================================================================================================================+====================================================================================================================+
+| အထွေထွေကုဒ် ရေးသားရန် ချဥ်းကပ်ပုံ                                | **tidyverse**, **data.table**, **base**                                                  | **tidyverse**၊ အပြင် **data.table** အကြောင်း စာမျက်နှာတစ်ခုနှင့် အင်တာနက်မရှိသော စာဖတ်သူများအတွက် **base** အစား အခြားရွေးချယ်စရာများကို ဖော်ပြထားသည်။ | **tidyverse** ဖတ်လွယ်နိုင်မှု၊ ကမ္ဘာလုံးဆိုင်ရာ အခြေခံနှင့် သင်ကြားမှုပုံစံ အများဆုံး                              |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| ပက်ကေ့ချ် ထည့်သွင်းခြင်း                                         | `library()`,`install.packages()`, `require()`, **pacman**                                | **pacman**                                                                                                                                            | multi-package install/load သုံးခြင်း အများစုအတွက် ကုဒ်ကို အတိုချုံ့ပြီး ရိုးရှင်းစေသည်။                            |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| တင်သွင်းခြင်းနှင့် တင်ပို့ခြင်း                                  | **rio**၊ နှင့် အခြားသော ပက်ကေ့ချ် များစွာ                                                | **rio**                                                                                                                                               | ဖိုင် types များစွာအတွက် လွယ်ကူစေရန်                                                                               |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| အခြေခံ စာရင်းအင်း (Summary statistics) များအတွက် အုပ်စုဖွဲ့ခြင်း | **dplyr** `group_by()`, **stats** `aggregate()`                                          | **dplyr** `group_by()`                                                                                                                                | **tidyverse** အထူးပြုချက်နှင့် တသမတ်တည်းဖြစ်သည်။                                                                   |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Pivot ထောက်ခြင်း                                                 | **tidyr** (pivot လုပ်ဆောင်ချက်များ), **reshape2** (melt/cast), **tidyr** (spread/gather) | **tidyr** (pivot လုပ်ဆောင်ချက်များ)                                                                                                                   | **reshape2** အသုံးမပြုတော့ပါ။ ဗားရှင်း v1.0.0 မှစပြီး **tidyr** သည် pivot functions များကို အသုံးပြုသည်။           |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| ကော်လံ (column) နာမည်များ ရှင်းလင်းခြင်း                         | **linelist**, **janitor**                                                                | **janitor**                                                                                                                                           | အထူးပြုဖော်ပြထားသော ပက်ကေ့ချ်များကို စုစည်းခြင်း                                                                   |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Epiweeks                                                         | **lubridate**, **aweek**, **tsibble**, **zoo**                                           | ယေဘုယျအားဖြင့် **lubridate**၊ သီးခြား cases များအတွက် အခြား                                                                                           | **lubridate's** လွယ်ကူစွာ ပြောင်းလဲနိုင်မှု၊ flexibility, တသမတ်တည်းဖြစ်မှု, ပက်ကေ့ချ် ပြုပြင်ထိန်းသိမ်းရန် အလားအလာ |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| ggplot လေဘယ်လ်များ                                               | `labs()`, `ggtitle()`/`ylab()`/`xlab()`                                                  | `labs()`                                                                                                                                              | လေဘယ်လ် အားလုံး တစ်နေရာထဲတွင် တစ်စုတစ်စည်း၊ ရိုးရှင်းခြင်း                                                         |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| factor သို့ ပြောင်းလဲခြင်း                                       | `factor()`, **forcats**                                                                  | **forcats**                                                                                                                                           | ၎င်း၏ အမျိုးမျိုးသော function များသည် တူညီသော command တွင် factor အဖြစ်သို့ ပြောင်းလဲသည်။                          |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| Epidemic curves                                                  | **incidence**, **ggplot2**, **EpiCurve**                                                 | **incidence2** ကဲ့သို့မြန်ဆန်၊ **ggplot2** ကဲ့သို့ အသေးစိတ်ကျ                                                                                         | မှီခိုမှု                                                                                                          |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| ချိတ်ဆက်မှု                                                      | `paste()`, `paste0()`, `str_glue()`, `glue()`                                            | `str_glue()`                                                                                                                                          | **stringr** အတွင်း paste functions များထက် ပိုမိုရိုးရှင်းသော အထားအသို                                             |
++------------------------------------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
+## အဓိကပြင်ဆင်မှုများ
 
+| ရက်စွဲ      | အဓိကအပြောင်းအလဲများ            |
+|-------------|--------------------------------|
+| မေ ၁၀၊ ၂၀၂၁ | ဗားရှင်း 1.0.0 ကိုဖြန့်ချိသည်။ |
 
-## Editorial decisions  
+## Session အချက်အလက် (R, RStudio, **ပက်ကေ့ဂျ်များ**)
 
-Below, we track significant editorial decisions around package and function choice. If you disagree or want to offer a new tool for consideration, please join/start a conversation on our [Github page](https://github.com/appliedepi/epirhandbook_eng).    
-
-
-**Table of package, function, and other editorial decisions**  
-
-
-Subject           |     Considered      |   Outcome              |    Brief rationale   
------------------ | --------------------|------------------------|-----------------------------------------------
-General coding approach|**tidyverse**, **data.table**, **base**|**tidyverse**, with a page on **data.table**, and mentions of **base** alternatives for readers with no internet|**tidyverse** readability, universality, most-taught  
-Package loading|`library()`,`install.packages()`, `require()`, **pacman**|**pacman**|Shortens and simplifies code for most multi-package install/load use-cases
-Import and export|**rio**, many other packages|**rio**|Ease for many file types
-Grouping for summary statistics|**dplyr** `group_by()`, **stats** `aggregate()`|**dplyr** `group_by()`|Consistent with **tidyverse** emphasis
-Pivoting|**tidyr** (pivot functions), **reshape2** (melt/cast), **tidyr** (spread/gather)|**tidyr** (pivot functions)|**reshape2** is retired, **tidyr** uses pivot functions as of v1.0.0
-Clean column names|**linelist**, **janitor**|**janitor**|Consolidation of packages emphasized
-Epiweeks |**lubridate**, **aweek**, **tsibble**, **zoo**|**lubridate** generally, the others for specific cases| **lubridate's** flexibility, consistency, package maintenance prospects  
-ggplot labels |`labs()`, `ggtitle()`/`ylab()`/`xlab()` |`labs()` |all labels in one place, simplicity  
-Convert to factor |`factor()`, **forcats**|**forcats**|its various functions also convert to factor in same command
-Epidemic curves|**incidence**, **ggplot2**, **EpiCurve**|**incidence2** as quick, **ggplot2** as detailed|dependability
-Concatenation|`paste()`, `paste0()`, `str_glue()`, `glue()`|`str_glue()`|More simple syntax than paste functions; within **stringr**
-
-
-## Major revisions  
-
-
-Date           |Major changes        
----------------| ------------------------------------------    
-10 May 2021    |Release of version 1.0.0    
-
-
-## Session info (R, RStudio, packages)  
-
-Below is the information on the versions of R, RStudio, and R packages used during this rendering of the Handbook.  
-
+ဤလက်စွဲစာအုပ်ကို ပြင်ဆင်စဉ်အတွင်း အသုံးပြုခဲ့သော R၊ RStudio နှင့် R ပက်ကေ့ဂျ်များ၏ ဗားရှင်း အချက်အလက်များကို အောက်တွင်ဖော်ပြထားသည်။
 
 ```{r}
 sessioninfo::session_info()
 ```
-
-
-
-

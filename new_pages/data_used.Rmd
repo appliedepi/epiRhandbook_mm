@@ -137,7 +137,7 @@ likert_data <- import("https://raw.githubusercontent.com/appliedepi/epirhandbook
 -   ရောဂါဖြစ်ပွားမှု ဒက်ရှ်ဘုတ်အတွက် R Markdown ကို ဒေါင်းလုဒ်လုပ်ရန်၊ ဤ [လင့်ခ်](https://github.com/appliedepi/epirhandbook_eng/raw/master/data/flexdashboard/outbreak_dashboard.Rmd) ကို right-clickနှပ်ပြီး (Macတွင် Cmd+click) "Save link as" ကို ရွေးပါ။
 -   HTML ဒက်ရှ်ဘုတ်ကို ဒေါင်းလုဒ်လုပ်ရန်၊ ဤ [လင့်ခ်](https://github.com/appliedepi/epirhandbook_eng/raw/master/data/flexdashboard/outbreak_dashboard_test.html) ကို right-clickနှပ်ပြီး (Macတွင် Cmd+click) "Save link as" ကို ရွေးပါ။
 
-#### ရောဂါပိုးရှိသူနှင့် ထိတွေ့သူများကို လိုက်လံရှာဖွေခြင်း {#ရဂပရသနင-ထတသမက-လကလရဖခင .unnumbered}
+#### ရောဂါပိုးရှိသူနှင့် ထိတွေ့သူများကို လိုက်လံရှာဖွေခြင်း {.unnumbered} 
 
 [ရောဂါပိုးရှိသူနှင့် ထိတွေ့သူများကို လိုက်လံရှာဖွေခြင်း](#ရဂပရသနင-ထတသမက-လကလရဖခင) သင်ခန်းစာသည် [Go.Data](https://github.com/WorldHealthOrganization/godata/tree/master/analytics/r-reporting) မှ နမူနာဒေတာကို အသုံးပြု၍ ရောဂါပိုးရှိသူနှင့် ထိတွေ့သူများကို လိုက်လံရှာဖွေခြင်းဒေတာကို သရုပ်ပြထားသည်။ ဤသင်ခန်းစာရှိ ဒေတာကို အောက်ပါလင့်ခ်များကိုနှိပ်ခြင်းဖြင့် .rds ဖိုင်များအဖြစ် ဒေါင်းလုဒ်လုပ်နိုင်ပါသည်။
 

@@ -1,4 +1,4 @@
-# Cleaning data and core functions {}
+# ဒေတာရှင်းလင်းခြင်းနှင့် အဓိကfunctionများ {}
 
 
 ```{r, out.height = "10%", fig.align = "center", echo=F}
@@ -6,41 +6,41 @@ knitr::include_graphics(here::here("images", "cleaning.png"))
 ```
 
 
-This page demonstrates common steps used in the process of "cleaning" a dataset, and also explains the use of many essential R data management functions.  
+ဤသင်ခန်းစာသည် ဒေတာအတွဲတစ်ခုကို “ရှင်းလင်း”ရာတွင် အသုံးပြုလေ့ရှိသော အဆင့်များကို သရုပ်ပြထားပြီး မရှိမဖြစ်လိုအပ်သော R ဒေတာစီမံခန့်ခွဲမှုfunctionများစွာ၏ အသုံးပြုပုံကိုလည်း ရှင်းပြထားပါသည်။ 
 
-To demonstrate data cleaning, this page begins by importing a raw case linelist dataset, and proceeds step-by-step through the cleaning process. In the R code, this manifests as a "pipe" chain, which references the "pipe" operator ` %>%` that passes a dataset from one operation to the next.  
-
-
-### Core functions {.unnumbered}  
-
-This handbook emphasizes use of the functions from the [**tidyverse**](https://www.tidyverse.org/) family of R packages. The essential R functions demonstrated in this page are listed below.  
-
-Many of these functions belong to the [**dplyr**](https://dplyr.tidyverse.org/) R package, which provides "verb" functions to solve data manipulation challenges (the name is a reference to a "data frame-[plier](https://www.thefreedictionary.com/plier#:~:text=also%20ply%C2%B7er%20(pl%C4%AB%E2%80%B2,holding%2C%20bending%2C%20or%20cutting.)"). **dplyr** is part of the **tidyverse** family of R packages (which also includes **ggplot2**, **tidyr**, **stringr**, **tibble**, **purrr**, **magrittr**, and **forcats** among others).  
+ဒေတာရှင်းလင်းခြင်းကို သရုပ်ပြရန်၊ ဤသင်ခန်းစာသည် raw case linelist datasetကို importလုပ်ခြင်းဖြင့် စတင်ပြီး ဒေတာရှင်းရေးလုပ်ငန်းစဉ်ကို အဆင့်ဆင့်လုပ်ဆောင်ပါမည်။ R codeတွင်၊ ၎င်းသည် လုပ်ဆောင်ချက်တစ်ခုမှ နောက်တစ်ခုသို့ dataset တစ်ခုကို လွှဲပြောင်းပေးနိုင်သည့် "pipe" အော်ပရေတာ `%>%` ကို ရည်ညွှန်းသော "pipe" ကွင်းဆက်တစ်ခုအဖြစ် ရှိပါသည်။
 
 
-Function       | Utility                               | Package
+### အဓိကလုပ်ဆောင်ချက်များ {.unnumbered}  
+
+ဤလက်စွဲစာအုပ်တွင် R package အစုတစ်ခုဖြစ်သည့် [**tidyverse**](https://www.tidyverse.org/) မှ functionများကို အလေးပေးဖော်ပြထားပါသည်။ ဤသင်ခန်းစာတွင်လုပ်ဆောင်ရမည့် မရှိမဖြစ်လိုအပ်သော R functionများကို အောက်တွင်ဖော်ပြထားပါသည်။
+
+ဤfunctionအများစုသည် data manipulation challengeများ (ဒေတာခြယ်လှယ်နိုင်စွမ်းများ) ကိုဖြေရှင်းရန် “verb” functionများကို ပံ့ပိုးပေးသည့် [**dplyr**](https://dplyr.tidyverse.org/) R packageတွင် ပါဝင်ပါသည်။ (ဤအမည်သည် “dataframe-[plier](https://www.thefreedictionary.com/plier#:~:text=also%20ply%C2%B7er%20(pl%C4%AB%E2%80%B2၊ ကိုင်ဆောင်ထားသည်%2C%20 %2C%20or%20cutting.)” ကိုရည်ညွှန်းထားပါသည်။). **dplyr** သည် **tidyverse** R packageများ၏ တစ်စိတ်တစ်ပိုင်းဖြစ်သည် (**ggplot2**၊ **tidyr**၊ **stringr** ၊ **tibble**၊ **purrr**၊ **magrittr** နှင့် **forcats** တို့လည်း ပါဝင်သည်။)။ 
+
+
+Function       | အသုံးဝင်ပုံ                               | Package
 ---------------|---------------------------------------|------------------------------
-` %>% `|"pipe" (pass) data from one function to the next|**magrittr** 
-`mutate()`|create, transform, and re-define columns|**dplyr**  
-`select()`|keep, remove, select, or re-name columns|**dplyr**
-`rename()`|rename columns|**dplyr** 
-`clean_names()`|standardize the syntax of column names|**janitor**
-`as.character()`, `as.numeric()`, `as.Date()`, etc.|convert the class of a column|**base** R
-`across()`|transform multiple columns at one time|**dplyr** 
-**tidyselect** functions|use logic to select columns|**tidyselect**   
-`filter()`|keep certain rows|**dplyr** 
-`distinct()`|de-duplicate rows|**dplyr** 
-`rowwise()`|operations by/within each row|**dplyr**  
-`add_row()`|add rows manually|**tibble** 
-`arrange()`|sort rows|**dplyr**
-`recode()`|re-code values in a column|**dplyr** 
-`case_when()`|re-code values in a column using more complex logical criteria|**dplyr** 
-`replace_na()`, `na_if()`, `coalesce()`|special functions for re-coding|**tidyr**  
-`age_categories()` and `cut()`|create categorical groups from a numeric column|**epikit** and **base** R
-`clean_variable_spelling()`|re-code/clean values using a data dictionary|**linelist**
-`which()`|apply logical criteria; return indices|**base** R
+` %>% `|လုပ်ဆောင်ချက်တစ်ခုမှ နောက်တစ်ခုသို့ ဒေတာကို ”pipe"လုပ်ခြင်း (ဆက်ပေးခြင်း/ကမ်းလှမ်းခြင်း)|**magrittr** 
+`mutate()`|columnများကို ဖန်တီး(create)၊ ပြောင်းလဲ (transform)ပြီး ပြန်သတ်မှတ်(redefine)လုပ်ခြင်း|**dplyr**  
+`select()`|columnများကို ထားထားခြင်း၊ ဖယ်ရှားခြင်း၊ ရွေးချယ်ခြင်း သို့မဟုတ် နာမည်ပြန်ပြောင်းခြင်း|**dplyr**
+`rename()`|columnများကို နာမည်ပြန်ပြောင်းခြင်း|**dplyr** 
+`clean_names()`|columnအမည်များ၏ syntax ကို စံသတ်မှတ်ခြင်း|**janitor**
+`as.character()`, `as.numeric()`, `as.Date()`, etc.|columnတစ်ခု၏ အမျိုးအစားကို ပြောင်းခြင်း|**base** R
+`across()`|columnများစွာကို တစ်ချိန်တည်းတွင် ပြောင်းလဲခြင်း|**dplyr** 
+**tidyselect** functions|columnများကို ရွေးချယ်ရန် logicကို အသုံးပြုခြင်း|**tidyselect**   
+`filter()`|အချို့rowများကို ထားထားခြင်း|**dplyr** 
+`distinct()`|တူနေသော/ထပ်နေသော rowများကို ဖျက်ခြင်း|**dplyr** 
+`rowwise()`|rowတစ်ခုစီအတွင်း/မှ လုပ်ဆောင်မှုများ|**dplyr**  
+`add_row()`|rowများကို ကိုယ်တိုင်ထည့်ခြင်း|**tibble** 
+`arrange()`|rowများကို အစဥ်လိုက်စီခြင်း|**dplyr**
+`recode()`|ကော်လံတစ်ခုတွင် တန်ဖိုးများကို ကုဒ်ပြန်လုပ်ခြင်း|**dplyr** 
+`case_when()`|ပိုမိုရှုပ်ထွေးသော ယုတ္တိစံနှုန်း(logical criteria)များကို အသုံးပြပြီး columnတစ်ခုတွင် တန်ဖိုးများကို ကုဒ်ပြန်လုပ်ခြင်း|**dplyr** 
+`replace_na()`, `na_if()`, `coalesce()`|ကုဒ်ပြန်လုပ်ခြင်းအတွက် အထူးfunctionsများ|**tidyr**  
+`age_categories()` နှင့် `cut()`|ကိန်းဂဏန်း(numeric) columnတစ်ခုမှ အမျိုးအစားအလိုက် အုပ်စုများ (categorical group)ကို ဖန်တီးခြင်း|**epikit** နှင့် **base** R
+`clean_variable_spelling()`|ဒေတာအဘိဓာန်ကို အသုံးပြုပြီး တန်ဖိုးများကို ကုဒ်ပြန်လုပ်ခြင်း/ရှင်းလင်းခြင်း|**linelist**
+`which()`|logical criteriaများကို အသုံးပြုခြင်း။; အညွှန်းကိန်းများသို့ ပြန်သွားခြင်း|**base** R
 
-If you want to see how these functions compare to Stata or SAS commands, see the page on [Transition to R].  
+ဤfunctionများကို Stata သို့မဟုတ် SAS commandများနှင့် နှိုင်းယှဉ်ကြည့်လိုပါက [R သို့ ပြောင်းလဲအသုံးပြုခြင်း] သင်ခန်းစာကို ကြည့်ပါ။
 
 You may encounter an alternative data management framework from the **data.table** R package with operators like `:=` and frequent use of brackets `[ ]`. This approach and syntax is briefly explained in the [Data Table] page.  
 

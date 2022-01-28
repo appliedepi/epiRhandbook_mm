@@ -1,1 +1,1 @@
-# (PART) Data Management {.unnumbered}
+# (PART) ဒေတာစီမံခန့်ခွဲမှု (Data Management) {.unnumbered}

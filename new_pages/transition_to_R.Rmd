@@ -32,30 +32,27 @@ Excel ကနေ Rကို တိုက်ရိုက်ပြောင်း�
 
 R ကိုသုံးတဲ့အချိန်မှာ အချိန်ကုန်သက်သာပြီး၊ ပိုမိုဆီလျော်ပြီး တိကျတဲ့ ခွဲခြမ်းစိတ်ဖြာတာ၊ ပုံတူပွားတာ၊ မျှဝေနိုင်တာနဲ့ ပိုမြန်တဲ့ အမှားပြင်ဆင်မှုလုပ်နိုင်တာမျိုး စတဲ့ ကြီးမားသောအကျိုးကျေးဇူးများကို ရနိုင်တာကို သင်တွေ့ပါလိမ့်မယ်။ ဘယ်ဆော့ဖ်ဝဲလ်အသစ်ကိုမဆိုစသုံးရင် အကျွမ်းတဝင်ဖြစ်ဖို့ သင်ကြည့်၊ အသုံးပြုကြည့်ဖို့ အချိန်အတိုင်းအတာတစ်ခုတော့ ပေးဖို့တော့ လိုအပ်ပါတယ်။ ရလဒ်အနေနဲ့ကတော့ ကြီးမားတဲ့အကျိုးကျေးဇူးတွေနဲ့ R ကိုသုံးပြီး လုပ်နိုင်တဲ့ အခွင့်အလမ်းများစွာရှိတယ်ဆိုတာ သင်တွေ့လာပါလိမ့်မယ်။
 =======
-It is true that someone with strong Excel skills can do very advanced activities in Excel alone - even using scripting tools like VBA. Excel is used across the world and is an essential tool for an epidemiologist. However, complementing it with R can dramatically improve and expand your work flows.
 
-### Benefits {.unnumbered}
-
-You will find that using R offers immense benefits in time saved, more consistent and accurate analysis, reproducibility, shareability, and faster error-correction. Like any new software there is a learning "curve" of time you must invest to become familiar. The dividends will be significant and immense scope of new possibilities will open to you with R.
 >>>>>>> f65a29a3546048acfe1a391d88c6103c2320b804
 
-Excel is a well-known software that can be easy for a beginner to use to produce simple analysis and visualizations with "point-and-click". In comparison, it can take a couple weeks to become comfortable with R functions and interface. However, R has evolved in recent years to become much more friendly to beginners.
+ရိုးရှင်းတဲ့ ခွဲခြမ်းစိတ်ဖြာမှုလုပ်တာနဲ့ "point-and-click" လုပ်ပြီး ပုံဖော်မြင်ယောင်နိုင်စွမ်းတွေ လုပ်ဖို့ဆိုရင် Excel ဟာ အခြေခံ စသုံးတဲ့သူတွေအတွက် လွယ်ကူတဲ့ ဆော့ဖ်ဝဲဆိုတာ လူသိများကြပါတယ်။ သူနဲ့ နှိုင်းယှဉ်ကြည့်ရင်တော့ R ရဲ့ interface တွေနဲ့ လုပ်ဆောင်ချက်တွေကို အကျွမ်းတဝင်ဖြစ်ဖို့ ရက်သတ္တပတ် အနည်းငယ်ကြာနိုင်ပါတယ်။ သို့ပေမယ့်လည်း R ဟာ မကြာသေးမီနှစ်အတွင်းမှာဘဲ အခြေခံ စသုံးတဲ့သူတွေအတွက် အရင်ကထက်စာရင် သုံးဖို့ ပိုလွယ်လာပါတယ်။
 
-Many Excel workflows rely on memory and on repetition - thus, there is much opportunity for error. Furthermore, generally the data cleaning, analysis methodology, and equations used are hidden from view. It can require substantial time for a new colleague to learn what an Excel workbook is doing and how to troubleshoot it. With R, all the steps are explicitly written in the script and can be easily viewed, edited, corrected, and applied to other datasets.
+Excel လုပ်ဆောင်ချက်အများစုဟာ မှတ်ဉာဏ်နှင့် ခဏခဏ အသုံးပြုတာပေါ် မူတည်ပါတယ် - ဒါကြောင့်မို့  အမှားလုပ်မိနိုင်တဲ့ အခွင့်အရေးလည်း များပါတယ်။ ထို့အပြင်၊ ယေဘူယျအနေနဲ့ ဒေတာရှင်းလင်းတာ၊ ခွဲခြမ်းစိတ်ဖြာမှုနည်းစနစ်၊ အသုံးပြုထားတဲ့ ညီမျှခြင်းတွေကို ကိုယ့်မြင်ကွင်းရှေ့ကနေ ဖျောက်ထားပါတယ်။ သင့်ရဲ့ Excel workbook တစ်ခုလုပ်ဆောင်နေပုံနှင့် ပြဿနာဖြေရှင်းဖို့တွေကို လေ့လာမယ်ဆိုရင် လုပ်ဖော်ကိုင်ဖက်အသစ်တစ်ယောက်အနေနဲ့ဆိုရင် အချိန်များစွာလိုနိုင်ပါတယ်။ R နဲ့ဆိုရင် သုံးထားတဲ့ အဆင့်တိုင်းကို စာသားနဲ့ scriptထဲမှာ အတိအလင်းရေးပြထားပြီး လွယ်လွယ်နဲ့ ကြည့်၊ တည်းဖြတ်၊ အမှားပြင်တာနဲ့ အခြားဒေတာတွဲများတွင် အသုံးချလို့ ရနိုင်ပါတယ်။
 
-**To begin your transition from Excel to R you must adjust your mindset in a few important ways:**
+**Excel မှ R သို့ ပြောင်းသုံးဖို့ စတင်ရန် အရေးကြီးတဲ့ နည်းလမ်း တချို့နဲ့ သင့်အတွေးအမြင်ကို ပြန်ချိန်ဖို့ လိုပါလိမ့်မယ် -**
 
-### Tidy data {.unnumbered}
+### သပ်ရပ်သောဒေတာ {.unnumbered}
 
-Use machine-readable "tidy" data instead of messy "human-readable" data. These are the three main requirements for "tidy" data, as explained in this tutorial on ["tidy" data in R](https://r4ds.had.co.nz/tidy-data.html):
+ရှုပ်ပွနေတဲ့ "လူဖတ်နိုင်သော" ဒေတာကို မသုံးဘဲ စက်ကဖတ်နိုင်တဲ့ "သပ်ရပ်သော" ဒေတာကို အသုံးပြုပါ။ 
+"သပ်ရပ်သော" ဒေတာအတွက် အဓိကလိုအပ်ချက် သုံးခုအကြောင်းကို ["tidy" data in R](https://r4ds.had.co.nz/tidy-data.html) မှာ ရှင်းပြထားပါတယ် -
 
--   Each variable must have its own column\
--   Each observation must have its own row\
--   Each value must have its own cell
+-   variable တစ်ခုစီတွင် ၎င်း၏ကိုယ်ပိုင် column ရှိရမည်\
+-   observation ရှုထောင့်တစ်ခုစီတွင် ၎င်း၏ကိုယ်ပိုင် row အတန်းရှိရမည်\
+-   value တန်ဖိုးတစ်ခုစီတွင် ၎င်း၏ကိုယ်ပိုင် cell ရှိရမည်
 
-To Excel users - think of the role that [Excel "tables"](https://exceljet.net/excel-tables) play in standardizing data and making the format more predictable.
+Excel သုံးသူတွေအနေနဲ့ ဒေတာစံနှုန်းသတ်မှတ်ခြင်းနှင့် ဖော်မတ်ကို ပိုမိုခန့်မှန်းနိုင်စေဖို့ [Excel "ဇယားများ"](https://exceljet.net/excel-tables)ရဲ့ ပါဝင်တဲ့ အခန်းကဏ္ဍကို စဉ်းစားပါ ။
 
-An example of "tidy" data would be the case linelist used throughout this handbook - each variable is contained within one column, each observation (one case) has it's own row, and every value is in just one cell. Below you can view the first 50 rows of the linelist:
+"သပ်ရပ်သော" ဒေတာအတွက် ဥပမာတစ်ခုဆိုရင် ဒီစာအုပ်တစ်အုပ်လုံးမှာ သုံးထားတဲ့ case linelist ဖြစ်ပါလိမ့်မယ် - ကိန်းရှင်တစ်ခုစီဟာ ကော်လံတစ်ခုစီတိုင်းမှာ ဝင်နေပါတယ်၊ observation တစ်ခုစီမှာ သူ့ row အတန်းနဲ့သူ ရှိပြီး value တန်ဖိုးတိုင်းသည် cell ကွက်တစ်ခုတည်းတွင်ရှိပါတယ်။ အောက်မှာ linelist ရဲ့ ပထမဆုံး အတန်းကို၅၀ကို ကြည့်နိုင်ပါတယ်-
 
 ```{r, echo=F}
 # import the linelist into R

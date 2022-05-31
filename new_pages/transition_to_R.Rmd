@@ -61,84 +61,84 @@ linelist <- rio::import(here::here("data", "case_linelists", "linelist_cleaned.r
 DT::datatable(head(linelist, 50), rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
 ```
 
-*The main reason one encounters non-tidy data is because many Excel spreadsheets are designed to prioritize easy reading by humans, not easy reading by machines/software.*
+*သပ်ရပ်မှုမရှိသောဒေတာကို တွေ့ရခြင်းရဲ့  အဓိကအကြောင်းရင်းမှာ Excel spreadsheet အများစုဟာ စက်/ ဆော့ဖ်ဝဲလ်နဲ့ ဖတ်ရလွယ်အောင်လုပ်ထားတာမဟုတ်ဘဲ လူတွေဖတ်ရလွယ်အောင် ဦးစားပေး ဖန်တီးထားတာကြောင့် ဖြစ်ပါတယ်။*
 
-To help you see the difference, below are some fictional examples of **non-tidy data** that prioritize *human*-readability over *machine*-readability:
+အဲ့လိုကွာခြားချက်ကို မြင်အောင်၊ အောက်မှာ *စက်*-ဖတ်လွယ်နိုင်ဖို့ထက် *လူ*-ဖတ်လွယ်နိုင်ဖို့ကို ဦးစားပေးတဲ့ စိတ်ကူးယဉ် နမူနာ **မသပ်ရပ်သောဒေတာ** တစ်ချို့ပြထားပါတယ် -
 
 ```{r, echo=F, out.width = "100%", out.height="75%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "Excel_nonTidy_1.png"))
 ```
 
-*Problems:* In the spreadsheet above, there are *merged cells* which are not easily digested by R. Which row should be considered the "header" is not clear. A color-based dictionary is to the right side and cell values are represented by colors - which is also not easily interpreted by R (nor by humans with color-blindness!). Furthermore, different pieces of information are combined into one cell (multiple partner organizations working in one area, or the status "TBC" in the same cell as "Partner D").
+*ပြဿနာများ-* အပေါ်ကစာမျက်နှာတွင်၊ R ဖြင့် အလွယ်တကူ မတွက်ချက်နိုင်တဲ့ *ပေါင်းထားသောဆဲလ်များ* ရှိပါတယ်။ ဘယ်အတန်းကို "ထိပ်စည်း" လို့ သတ်မှတ်ဖို့ကို သိပ်မရှင်းပါ။ စာသားအရောင် အခြေခံထားတဲ့ အဘိဓာန်က ညာဘက်ခြမ်းမှာရှိပြီး ဆဲလ်တန်ဖိုးတွေကို အရောင်တွေနဲ့ ပြထားပါတယ် - ဒါကို R ကနေပြီး လွယ်လွယ်နားလည်ဖို့ ခက်ပါတယ် (အရောင်-အမြင်အာရုံချို့တဲ့သူတွေအတွက်လည်း ထိုနည်း၄င်းပါ) ဒါ့အပြင်၊ မတူညီတဲ့ သတင်းအချက်အလက်အစိတ်အပိုင်းတွေကို ဆဲလ်တစ်ကွက်ထဲကို ပေါင်းထားပါတယ် (ပါတနာအဖွဲ့အစည်းအများအပြား ကဏ္ဍတစ်ခုထဲမှာ လုပ်ဆောင်နေတာ၊ သို့မဟုတ် "Partner D" နဲ့ ဆဲလ်တစ်ကွက်ထဲမှာ "TBC" ရှိနေတဲ့အခြေအနေ)။
 
 ```{r, echo=F, out.width = "100%", out.height="100%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "Excel_nonTidy_2.png"))
 ```
 
-*Problems:* In the spreadsheet above, there are numerous extra empty rows and columns within the dataset - this will cause cleaning headaches in R. Furthermore, the GPS coordinates are spread across two rows for a given treatment center. As a side note - the GPS coordinates are in two different formats!
+*ပြဿနာများ-* အပေါ်က spreadsheet တွင်၊ ဒေတာအတွဲထဲမှာ လွတ်နေတဲ့ အပိုအတန်းတွေနဲ့ ကော်လံများစွာ ရှိနေပါတယ် - ဒါဟာ R မှာ ရှင်းလင်းရေးလုပ်တဲ့အချိန် ခေါင်းစားစေမှာပါ။ ဒါ့အပြင် GPS တည်နေရာ အမှတ်အသားတွေဟာလည်း ပေးထားတဲ့ treatment center အတွက် အတန်းနှစ်တန်း မှာ ပြန့်နေပါတယ်။ ဘေးထွက်မှတ်စုအနေနဲ့ - GPS တည်နေရာ အမှတ်အသားများသည် မတူတဲ့ ဖော်မတ်နှစ်ခုနဲ့ ဖြစ်နေပါတယ်။
 
-"Tidy" datasets may not be as readable to a human eye, but they make data cleaning and analysis much easier! Tidy data can be stored in various formats, for example "long" or "wide""(see page on \[Pivoting data\]), but the principles above are still observed.
+"သပ်ရပ်သော" ဒေတာအတွဲတွေဟာ လူမျက်စိနဲ့လောက်တော့ ဖတ်လို့လွယ်နိုင်မှာ မဟုတ်ပေမယ့် ဒေတာရှင်းလင်းခြင်းနဲ့ ခွဲခြမ်းလေ့လာတာကိုတော့ ပိုလွယ်စေပါတယ်။ သပ်ရပ်သောဒေတာကို ပုံစံအမျိုးမျိုးနဲ့ သိမ်းဆည်းထားနိုင်တယ်၊ ဥပမာ "long" သို့မဟုတ် "wide""( \[ဒေတာများကို Pivot ထောက်ခြင်း\] ပေါ်ရှိ စာမျက်နှာကိုကြည့်ပါ)၊ သို့သော် အပေါ်မှာပြထားတဲ့ မူတွေကိုတော့ လိုက်နာဆဲဖြစ်တာ တွေ့ပါလိမ့်မယ်။
 
-### Functions {.unnumbered}
+### လုပ်ဆောင်ချက်များ {.unnumbered}
 
-The R word "function" might be new, but the concept exists in Excel too as *formulas*. Formulas in Excel also require precise syntax (e.g. placement of semicolons and parentheses). All you need to do is learn a few new functions and how they work together in R.
+"function" ဆိုတဲ့ R စကားလုံးဟာ သင့်အတွက် အသစ်ဖြစ်နေနိုင်ပေမယ့် Excel က *ဖော်မြူလာများ* လိုမျိုး သဘောတရားချင်း ဆင်ပါတယ်။ Excel ဖော်မြူလာတွေဟာ တိကျတဲ့ အရေးအသား အထားအသို syntax (ဥပမာ semicolon နှင့် ကွင်းစကွင်းပိတ်များ နေရာချထားခြင်း) လိုပါတယ်။ သင့်အနေနဲ့ functions အသစ်တချို့နဲ့ သူတို့တွေ R မှာ ဘယ်လိုတွဲပြီး အလုပ်လုပ်လဲဆိုတာဘဲ လေ့လာဖို့ လိုမှာပါ။
 
-### Scripts {.unnumbered}
+### Scripts များ {.unnumbered}
 
-Instead of clicking buttons and dragging cells you will be writing *every* step and procedure into a "script". Excel users may be familiar with "VBA macros" which also employ a scripting approach.
+ခလုတ်တွေနှိပ်ပြီး ဆဲလ်ကွက်တွေကို ဆွဲချမယ့်အစား ဒီမှာတော့ သင်ဟာ *အဆင့်တိုင်း*၊ လုပ်ထုံးလုပ်နည်းတိုင်းကို "script" တစ်ခုအသွင်နဲ့ ရေးချရမှာဖြစ်ပါတယ်။ Excel သုံးသူတွေအနေနဲ့ "VBA macros" လိုမျိုး script ရေးသားတဲ့နည်းနဲ့ ချဥ်းကပ်တာကို ရင်းနှီးပြီးသား ဖြစ်မှာပါ။
 
-*The R script consists of step-by-step instructions.* This allows any colleague to read the script and easily see the steps you took. This also helps de-bug errors or inaccurate calculations. See the \[R basics\] section on scripts for examples.
+R script တွင် အဆင့်ဆင့် ညွှန်ကြားချက်များ ပါ၀င်ပါသည်။* ၎င်းသည် လုပ်ဖော်ကိုင်ဖက်တိုင်းကို ဇာတ်ညွှန်းကို ဖတ်ရှုနိုင်ပြီး သင်လုပ်ဆောင်ခဲ့သော အဆင့်များကို အလွယ်တကူ မြင်နိုင်စေပါသည်။ ၎င်းသည် အမှားအယွင်းများကို ဖယ်ရှားရန် သို့မဟုတ် မတိကျသော တွက်ချက်မှုများကိုလည်း ကူညီပေးသည်။ ဥပမာများအတွက် scripts များရှိ \[ R အခြေခံများ\] ကဏ္ဍကို ကြည့်ပါ။
 
-Here is an example of an R script:
+အောက်မှာ R script ရဲ့  ဥပမာတစ်ခုပါ - 
 
 ```{r, echo=F, out.width = "75%", out.height="75%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "example_script.png"))
 ```
 
-### Excel-to-R resources {.unnumbered}
+### Excel မှ R ပြောင်းရန် အရင်းအမြစ်များ {.unnumbered}
 
-Here are some links to tutorials to help you transition to R from Excel:
+အောက်မှာ Excel မှ R သို့ပြောင်းရာမှာ အထောက်အကူဖြစ်စေဖို့ ကျူတိုရီရယ်လင့်ခ်တစ်ချို့ ပေးထားပါတယ် - 
 
 -   [R vs. Excel](https://www.northeastern.edu/graduate/blog/r-vs-excel/)\
 -   [RStudio course in R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/)
 
-### R-Excel interaction {.unnumbered}
+### R နှင့် Excel အပြန်အလှန်ဆက်သွယ်မှု {.unnumbered}
 
-R has robust ways to import Excel workbooks, work with the data, export/save Excel files, and work with the nuances of Excel sheets.
+R တွင် Excel workbooks များကို import ဖို့၊ ဒေတာတွေနဲ့ အလုပ်လုပ်ဖို့၊ Excel ဖိုင်များကို export တာ၊ save တာတွေနဲ့ Excel sheets တွေရဲ့ ကွဲပြားပုံ အမျိုးမျိုးနဲ့ လုပ်ဆောင်ရန် ခိုင်မာသောနည်းလမ်းတွေ ရှိပါတယ်။
 
-It is true that some of the more aesthetic Excel formatting can get lost in translation (e.g. italics, sideways text, etc.). If your work flow requires passing documents back-and-forth between R and Excel while retaining the original Excel formatting, try packages such as **openxlsx**.
+ဘာသာပြန်တဲ့အခါမှာ Excel ရဲ့ ကြည့်လို့အဆင်ပြေတဲ့ ဖော်မတ်အချို့ (ဥပမာ - စာလုံးစောင်း၊ ဘေးတိုက်စာသား စသဖြင့်) ပျောက်သွားနိုင်ပါတယ်။ သင့်ရဲ့ လုပ်ငန်းလည်ပတ်မှုဟာ R နဲ့ Excel ကြား စာရွက်စာတမ်းများ အပြန်အလှန် ခဏခဏရွှေ့နေပြီး မူရင်း Excel ဖော်မတ်ကို ထိန်းသိမ်းထားဖို့လိုရင်၊ ** openxlsx ** လို ပက်ကေ့ခ်ျများကို သုံးကြည့်ပါ။
 
-## From Stata
+## Stata မှ
 
 <!-- ======================================================= -->
 
-**Coming to R from Stata**
+**Stata မှ R သို့ ပြောင်းလာသုံးခြင်း**
 
-Many epidemiologists are first taught how to use Stata, and it can seem daunting to move into R. However, if you are a comfortable Stata user then the jump into R is certainly more manageable than you might think. While there are some key differences between Stata and R in how data can be created and modified, as well as how analysis functions are implemented -- after learning these key differences you will be able to translate your skills.
+ကူးစက်ရောဂါဗေဒပညာရှင်အများစုဟာ Stata သုံးနည်းနဲ့ စသင်လာကြတာဆိုတော့ R ကို ပြောင်းသုံးဖို့ဆိုရင် ကြောက်ဖို့လို့ မြင်နေမှာပါ။ ဒါပေမယ့် သင်ဟာ Stata ကို ချောချောမွေ့မွေ့ အသုံးပြုနေသူဆိုရင် R ကို ပြောင်းသုံးဖို့ သင်ထင်ထားသည်ထက် ပိုစီမံခန့်ခွဲလို့ လွယ်မှာပါ။ Stata နဲ့ R ကြား မှာ ဒေတာဖန်တီးပုံနှင့် ပြုပြင်ပုံ၊ ခွဲခြမ်းစိတ်ဖြာမှုလုပ်ဆောင်ချက်များကို အကောင်အထည်ဖော်ပုံတချို့ အဓိကကွာခြားချက်တွေရှိပေမယ့် - ဒီကွာခြားချက်တွေ လေ့လာပြီးရင် သင့်ရဲ့ကျွမ်းကျင်မှုများကို ဘာသာပြန်ဆိုနိုင်မည်ဖြစ်သည်။
 
-Below are some key translations between Stata and R, which may be handy as your review this guide.
+အောက်မှာ Stata နှနဲ့ R အကြား အဓိကပြောင်းလဲချက်အချို့ဖြစ်သည်၊ ဤလမ်းညွှန်ချက်ဟာ သင်ဒီစာအုပ်ဖတ်သွားတဲ့တစ်လျှောက် အဆင်ပြေနိုင်ပါလိမ့်မယ်။
 
-**General notes**
+**အထွေထွေမှတ်စုများ**
 
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **STATA**                                                                                                                                 | **R**                                                                                                                                                                                      |
 +===========================================================================================================================================+============================================================================================================================================================================================+
-| You can only view and manipulate one dataset at a time                                                                                    | You can view and manipulate multiple datasets at the same time, therefore you will frequently have to specify your dataset within the code                                                 |
+| တစ်ကြိမ်လျှင် ဒေတာအတွဲတစ်ခုကိုသာ ကြည့်ပြီး စီမံခန့်ခွဲနိုင်သည်                                                                                          | တစ်ချိန်တည်းတွင် ဒေတာအတွဲများစွာကို ကြည့်ရှုပြီး စီမံခန့်ခွဲနိုင်သည် - ထို့ကြောင့် ကုဒ်အတွင်း သင်၏ဒေတာအတွဲကို မကြာခဏ သတ်မှတ်ပေးရလိမ့်မည်                                                                               |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Online community available through <https://www.statalist.org/>                                                                           | Online community available through [RStudio](https://community.rstudio.com/), [StackOverFlow](https://stackoverflow.com/questions/tagged/r), and [R-bloggers](https://www.r-bloggers.com/) |
+| Online community <https://www.statalist.org/> တွင်ရှိ                                                                                        | Online community  [RStudio](https://community.rstudio.com/), [StackOverFlow](https://stackoverflow.com/questions/tagged/r), and [R-bloggers](https://www.r-bloggers.com/) တွင်ရှိ                          |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Point and click functionality as an option                                                                                                | Minimal point and click functionality                                                                                                                                                      |
+| Point and click သုံးဖို့ function ပါ                                                                                                           | Point and click သုံးလို့ အနည်းငယ်သာရ                                                                                                                                                       |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Help for commands available by `help [command]`                                                                                           | Help available by `[function]?` or search in the Help pane                                                                                                                                 |
+| ကွန်မန်း အကူအညီ `help [command]` ဖြင့် ရယူနိုင်                                                                                                 | ကွန်မန်း အကူအညီ `[function]?` သို့မဟုတ် Help pane မှာ ရှာနိုင်                                                                                                                                   |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Comment code using \* or /// or /\* TEXT \*/                                                                                              | Comment code using \#                                                                                                                                                                      |
+| ကုဒ် ကွန်မန့်ရန် \* သို့ /// သို့ /\* TEXT \*/ ရိုက်                                                                                                 | ကုဒ် ကွန်မန့်ရန် \# ရိုက်                                                                                                                                                                         |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Almost all commands are built-in to Stata. New/user-written functions can be installed as **ado** files using **ssc install** \[package\] | R installs with **base** functions, but typical use involves installing other packages from CRAN (see page on \[R basics\])                                                                |
+| ကွန်မန်း အကုန်နီးပါး Stata တွင် ထည့်သွင်းထားသည်။ အသစ်/user-ရေးထားတဲ့ functions တွေကို **ssc install** \[package\] သုံးပြီး **ado** ဖိုင်တွေအနေနဲ့ သွင်းလို့ရ | R က **base** functions အနေနဲ့ သွင်းပေမယ့် များသောအားဖြင့် CRAN ကနေ တခြား ပက်ကေ့ချ်တွေကို သွင်းလို့ရ (\[R basics\] စာမျက်နှာ ကြည့်ပါ)                                                                   |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Analysis is usually written in a **do** file                                                                                              | Analysis written in an R script in the RStudio source pane. R markdown scripts are an alternative.                                                                                         |
+| Analysis ကို အများအားဖြင့် **do** file ဖိုင်အနေနဲ့ ရေး                                                                                            | Analysis ကို RStudio source pane ထဲက R script မှာ ရေး။ အခြားနည်းလမ်းအနေနဲ့ R markdown scripts တွေရှိ။                                                                                       |
 +-------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Working directory**
+**လုပ်ငန်းလမ်းညွှန်**
 
 +---------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | **STATA**                                                                                   | **R**                                                                                                                                      |
@@ -150,7 +150,7 @@ Below are some key translations between Stata and R, which may be handy as your 
 | Set working directory with **cd** "folder location"                                         | Use `setwd(“folder location”)`, or `set_here("folder location)` (if using **here** package)                                                |
 +---------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Importing and viewing data**
+**ဒေတာတင်သွင်းခြင်းနဲ့ ကြည့်ခြင်း**
 
 +------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **STATA**                                                                                                              | **R**                                                                                                                                                                                                                   |
@@ -166,7 +166,7 @@ Below are some key translations between Stata and R, which may be handy as your 
 | Get a high-level overview of your dataset using **summarize**, which provides the variable names and basic information | Get a high-level overview of your dataset using `summary(dataset)`                                                                                                                                                      |
 +------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Basic data manipulation**
+**အခြေခံဒေတာ အပြောင်းအလဲလုပ်ခြင်း**
 
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **STATA**                                                                           | **R**                                                                                                                                                                          |
@@ -184,7 +184,7 @@ Below are some key translations between Stata and R, which may be handy as your 
 | Factor variables can be labeled using a series of commands such as **label define** | Labeling values can done by converting the column to Factor class and specifying levels. See page on \[Factors\]. Column names are not typically labeled as they are in Stata. |
 +-------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Descriptive analysis**
+**သရုပ်ပြ ခွဲခြမ်းစိတ်ဖြာဆန်းစစ်ခြင်း**
 
 +------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **STATA**                                                                                | **R**                                                                                                                                                                                |
@@ -200,15 +200,15 @@ While this list gives an overview of the basics in translating Stata commands in
 -   <https://clanfear.github.io/Stata_R_Equivalency/docs/r_stata_commands.html>\
 -   <http://r4stats.com/books/r4stata/>
 
-## From SAS
+## SAS မှ
 
 <!-- ======================================================= -->
 
-**Coming from SAS to R**
+**SAS မှ R သို့လာခြင်း**
 
 SAS is commonly used at public health agencies and academic research fields. Although transitioning to a new language is rarely a simple process, understanding key differences between SAS and R may help you start to navigate the new language using your native language. Below outlines the key translations in data management and descriptive analysis between SAS and R.
 
-**General notes**
+**အထွေထွေမှတ်စုများ**
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 | **SAS**                                                                                                                                                                            | **R**                                                                                                                       |
@@ -224,7 +224,7 @@ SAS is commonly used at public health agencies and academic research fields. Alt
 | Analysis is usually conducted by writing a SAS program in the Editor window.                                                                                                       | Analysis written in an R script in the RStudio source pane. R markdown scripts are an alternative.                          |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 
-**Working directory**
+**လုပ်ငန်းလမ်းညွှန်**
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 | **SAS**                                                                                                                                                                                  | **R**                                                                                                                                      |
@@ -236,7 +236,7 @@ SAS is commonly used at public health agencies and academic research fields. Alt
 | Set working directory with `libname “folder location”`                                                                                                                                   | Use `setwd(“folder location”)`, or `set_here("folder location)` if using **here** package                                                  |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Importing and viewing data**
+**ဒေတာတင်သွင်းခြင်းနဲ့ ကြည့်ခြင်း**
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **SAS**                                                                                                                                                                                                  | **R**                                                                                                                                                                                                               |
@@ -250,7 +250,7 @@ SAS is commonly used at public health agencies and academic research fields. Alt
 | Browse your data in a new window by opening the Explorer window and select desired library and the dataset                                                                                               | View a dataset in the RStudio source pane using View(dataset). You need to specify your dataset name to the function in R because multiple datasets can be held at the same time. Note capital "V" in this function |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Basic data manipulation**
+**အခြေခံဒေတာ အပြောင်းအလဲလုပ်ခြင်း**
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **SAS**                                                                                                                                                                                  | **R**                                                                                                                                                     |
@@ -272,7 +272,7 @@ SAS is commonly used at public health agencies and academic research fields. Alt
 | Datasets are combined using `Merge` statement in the Data Step. The datasets to be merged need to be sorted first using `Proc Sort` procedure.                                           | **dplyr** package offers a few functions for merging datasets. See page \[Joining Data\] for details.                                                     |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Descriptive analysis**
+**သရုပ်ပြ ခွဲခြမ်းစိတ်ဖြာဆန်းစစ်ခြင်း**
 
 +----------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **SAS**                                                                                                                                | **R**                                                                                                                                                                                                                            |
@@ -284,14 +284,14 @@ SAS is commonly used at public health agencies and academic research fields. Alt
 | Cross-tabulation of two variables in a 2x2 table is done with `proc freq data=Dataset; Tables rowvar*colvar; Run;`                     | Again, you can use `table()`, `tabyl()` or other options as described in the \[Descriptive tables\] page.                                                                                                                        |
 +----------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Some useful resources:**
+**အသုံးဝင်သော အရင်းအမြစ်များ - **
 
 [R for SAS and SPSS Users (2011)](https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846/ref=sr_1_1?dchild=1&gclid=EAIaIQobChMIoqLOvf6u7wIVAhLnCh1c9w_DEAMYASAAEgJLIfD_BwE&hvadid=241675955927&hvdev=c&hvlocphy=9032185&hvnetw=g&hvqmt=e&hvrand=16854847287059617468&hvtargid=kwd-44746119007&hydadcr=16374_10302157&keywords=r+for+sas+users&qid=1615698213&sr=8-1)
 
 [SAS and R, Second Edition (2014)](https://www.amazon.com/SAS-Management-Statistical-Analysis-Graphics-dp-1466584491/dp/1466584491/ref=dp_ob_title_bk)
 
-## Data interoperability
+## ဒေတာ အပြန်အလှန်လုပ်ဆောင်နိုင်မှု
 
 <!-- ======================================================= -->
 
-See the \[Import and export\] page for details on how the R package **rio** can import and export files such as STATA .dta files, SAS .xpt and.sas7bdat files, SPSS .por and.sav files, and many others.
+**rio** ဆိုတဲ့ R ပက်ကေ့ချ် နဲ့ STATA .dta၊ SAS .xpt နဲ့ .sas7bdat၊ SPSS .por နဲ့ .sav ဖိုင်လိုမျိုးတွေ၊ import/export လုပ်နိုင်တာကို \[Import and export\] စာမျက်နှာမှာ အသေးစိတ် ကြည့်နိုင်ပါတယ်။

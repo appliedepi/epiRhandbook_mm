@@ -59,12 +59,11 @@ R ပက်ကေ့ဂျ်များနှင့် သီးခြား f
 ဥပမာ-  [`?filter`](https://dplyr.tidyverse.org/reference/filter.html) သို့မဟုတ် `?diagrammeR`
 
 \
-
 **အပြန်အလှန်နှီးနှောလေ့လာနိုင်သော သင်ခန်းစာများ (Interactive tutorials)**
 
 RStudio တွင် R ကို နှီးနှောလေ့လာနိုင်စရာနည်းလမ်းများစွာရှိသည်။
 
-RStudio ကိုယ်တိုင်က [learnr](https://blog.rstudio.com/2020/02/25/rstudio-1-3-integrated-tutorials/) ခေါ် R ပက်ကေ့ချ်မှ ပံ့ပိုးထားသည့် Tutorial pane ကို ရှိသည်။ ဤပက်ကေ့ဂျ်ကို ရိုးရှင်းစွာထည့်သွင်း(install) ပြီး (Environment နှင့် History tabs များပါရှိသည့်) RStudio ညာဘက်အပေါ်ရှိ "ကျူတိုရီရယ်" တက်ဘ်အသစ်မှတစ်ဆင့် ကျူတိုရီရယ်တစ်ခုကိုဖွင့်ပါ။
+RStudio ကိုယ်တိုင်က [learnr](https://blog.rstudio.com/2020/02/25/rstudio-1-3-integrated-tutorials/) ခေါ် R ပက်ကေ့ချ်မှ ပံ့ပိုးထားသည့် Tutorial အကန့် ရှိသည်။ ဤပက်ကေ့ဂျ်ကို ရိုးရှင်းစွာထည့်သွင်း(install) ပြီး (Environment နှင့် History tabs များပါရှိသည့်) RStudio ညာဘက်အပေါ်ရှိ "ကျူတိုရီရယ်" တက်ဘ်အသစ်မှတစ်ဆင့် ကျူတိုရီရယ်တစ်ခုကိုဖွင့်ပါ။
 
 \
 R package [swirl](https://swirlstats.com/) သည် R Console တွင် အပြန်အလှန်နှီးနှောလေ့လာနိုင်သောသင်တန်းများကို ပေးထားသည်။ ဤပက်ကေ့ဂျ်ကို ထည့်သွင်း(Install)ပြီး တင်(load) ပါ၊ ထို့နောက် R ကွန်ဆိုးလ်တွင် `swirl()` (ကွင်းစပိတ်ချည်းသာ) ရိုက်ထည့်ပြဖွင့်ပါ။ Console တွင် prompts များကို သင်တွေ့ရပါမည်။ Console တွင် စာရိုက်ခြင်းဖြင့် တုံ့ပြန်ပါ။ ၎င်းသည် သင့်အား သင်ရွေးချယ်သည့် သင်တန်းကို လမ်းညွှန်ပေးလိမ့်မည်။
@@ -193,9 +192,7 @@ tinytex::install_tinytex()
 
 #### Pandoc {.unnumbered}
 
-Pandoc (စာရွက်စာတမ်းဖော်မတ်ကူးပြောင်း) သည် R မှ သီးခြားဆော့ဖ်ဝဲတစ်ခုဖြစ်သော်လည်း RStudio တွင်ပါဝင်ပြီးသားမို့ ဒေါင်းလုဒ်လုပ်ရန်မလိုပါ။ Rmarkdown စာရွက်စာတမ်းများကို .pdf ကဲ့သို့သော ဖော်မတ်များအဖြစ်သို့ ပြောင်းလဲခြင်းနှင့် ရှုပ်ထွေးသောလုပ်ဆောင်နိုင်စွမ်းများကို ပေါင်းထည့်ခြင်းလုပ်ငန်းစဉ်ကို ကူညီပေးသည်။
-
-\
+Pandoc (စာရွက်စာတမ်းဖော်မတ်ကူးပြောင်း) သည် R မှ သီးခြားဆော့ဖ်ဝဲတစ်ခုဖြစ်သော်လည်း RStudio တွင်ပါဝင်ပြီးသားမို့ ဒေါင်းလုဒ်လုပ်ရန်မလိုပါ။ Rmarkdown စာရွက်စာတမ်းများကို .pdf ကဲ့သို့သော ဖော်မတ်များအဖြစ်သို့ ပြောင်းလဲခြင်းနှင့် ရှုပ်ထွေးသောလုပ်ဆောင်နိုင်စွမ်းများကို ပေါင်းထည့်ခြင်းလုပ်ငန်းစဉ်ကို ကူညီပေးသည်။\
 
 #### RTools {.unnumbered}
 
@@ -211,48 +208,48 @@ RTTools သည် R အတွက် ပက်ကေ့ဂျ်များတ�
 
 ## RStudio {#rstudio}
 
-### RStudio orientation {.unnumbered}
+### RStudio မိတ်ဆက် {.unnumbered}
 
-**First, open RStudio.** As their icons can look very similar, be sure you are opening *RStudio* and not R.
+**ပထမဦးစွာ RStudio ကိုဖွင့်ပါ။** အိုင်ကွန်ဆင်တူ RStudio နဲ့  R မှာ RStudio ကိုဖွင့်နေပြီး R မဟုတ်ကြောင်း သေချာပါစေ။
 
-For RStudio to work you must also have R installed on the computer (see above for installation instructions).
+RStudio အလုပ်လုပ်ရန်အတွက် R ထည့်သွင်းထားရမည် (တပ်ဆင်မှုလမ်းညွှန်ချက်များအတွက် အထက်တွင်ကြည့်ပါ)။
 
-**RStudio** is an interface (GUI) for easier use of **R**. You can think of R as being the engine of a vehicle, doing the crucial work, and RStudio as the body of the vehicle (with seats, accessories, etc.) that helps you actually use the engine to move forward! You can see the complete RStudio user-interface cheatsheet (PDF) [here](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)
+**RStudio** သည် **R** ကိုပိုမိုလွယ်ကူစွာအသုံးပြုရန်အတွက်အင်တာဖေ့စ် (GUI) တစ်ခုဖြစ်သည်။ R ကို အရေးကြီးသောအလုပ်များကိုလုပ်နိုင်တဲ့ယာဉ်တစ်စီး၏အင်ဂျင်အဖြစ်နှင့် RStudio ကိုကျထိုင်ခုံအပိုပစ္စည်းတွေပါတဲ့၊ အင်ဂျင်ကိုရှေ့ဆက်မောင်းတဲ့ယာဉ်၏ကိုယ်ထည်အနေနဲ့ ယူဆနိုင်တယ်။ ပြီးပြည့်စုံသော RStudio အသုံးပြုသူ-မျက်နှာပြင် cheatsheet (PDF) ကို [ဤနေရာ](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)တွင် ကြည့်ရှုနိုင်ပါသည်။
 
-By default RStudio displays four rectangle panes.
+ပုံမှန်အားဖြင့် RStudio သည် စတုဂံပုံဘောင်လေးခုကိုပြလိမ့်မည်။
 
 ```{r out.width = "100%", fig.align = "center", echo=F}
 knitr::include_graphics(here::here("images", "RStudio_overview.png"))
 ```
 
-[***TIP:*** If your RStudio displays only one left pane it is because you have no scripts open yet.]{style="color: black;"}
+**`အကြံပြုချက်`**`- သင့် RStudio သည် ဘယ်ဘက်အကန့်တစ်ခုသာပြသပါက သင့်တွင် script များမဖွင့်ရသေးသောကြောင့်ဖြစ်သည်။`\
 
-**The Source Pane**\
-This pane, by default in the upper-left, is a space to edit, run, and save your [scripts](#scripts). Scripts contain the commands you want to run. This pane can also display datasets (data frames) for viewing.
+**"Source" အကန့်**\
+ပုံမှန်အားဖြင့် ဘယ်ဘက်အပေါ်ရှိ အကန့်သည် သင့် [scripts](https://epirhandbook.com/en/r-basics.html#scripts)/စခရစ်များ ကို တည်းဖြတ်ရန်၊ လုပ်ဆောင်ရန်၊ သိမ်းဆည်းရန် နေရာလွတ်တစ်ခုဖြစ်သည်။ စခရစ်များတွင် သင်လုပ်ဆောင်လိုသော command/ညွှန်ကြားချက်များ ပါဝင်သည်။ ဤအကန့်သည် ဒေတာအတွဲများ (ဒေတာဘောင်များ) ကိုလည်း ပြသနိုင်သည်။
 
-For Stata users, this pane is similar to your Do-file and Data Editor windows.
+Stata အသုံးပြုသူများအတွက်၊ ဤအကန့်သည် Do-file နှင့် Data Editor ဝင်းဒိုးတို့နှင့် ဆင်တူသည်။
 
-**The R Console Pane**
+**"R Console" အကန်**
 
-The R Console, by default the left or lower-left pane in R Studio, is the home of the R "engine". This is where the commands are actually run and non-graphic outputs and error/warning messages appear. You can directly enter and run commands in the R Console, but realize that these commands are not saved as they are when running commands from a script.
+ပုံမှန်အားဖြင့် R Console သည် R Studio ရှိ ဘယ်ဘက် သို့မဟုတ် အောက်ပိုင်းဘယ်ဘက်အကန့်မှာရှိပြီး R "အင်ဂျင်" ၏အိမ်ဖြစ်သည်။ ဤအကန့်မှာ အမိန့်များကို အမှန်တကယ် လုပ်ဆောင် run ပြီး ဂရပ်ဖစ်မဟုတ်သော outputs များနှင့် အမှား/သတိပေးစာများ ပေါ်လာမည့်နေရာဖြစ်သည်။ R Console တွင် command များကို တိုက်ရိုက်ရိုက်ထည့်နိုင်ပြီး run နိုင်သော်လည်း script တစ်ခုမှ commands များကို run သောအခါတွင် အဆိုပါ command/ညွှန်ကြားချက်များကို သိမ်းဆည်းမည်မဟုတ်ကြောင်း သိရှိနားလည်ပါ။
 
-If you are familiar with Stata, the R Console is like the Command Window and also the Results Window.
+အကယ်၍ Stata နှင့် ရင်းနှီးပါက R Console သည် Command ဝင်းဒိုး နှင့် Results ဝင်းဒိုးတို့နှင့် တူပါသည်။
 
-**The Environment Pane**\
-This pane, by default in the upper-right, is most often used to see brief summaries of [objects](#objects) in the R Environment in the current session. These objects could include imported, modified, or created datasets, parameters you have defined (e.g. a specific epi week for the analysis), or vectors or lists you have defined during analysis (e.g. names of regions). You can click on the arrow next to a data frame name to see its variables.
+**"Environment" အကန့်**\
+ပုံမှန်အားဖြင့် ညာဘက်အပေါ်ထောင့်ရှိ ဤအကန့်အား R Environment အတွင်းရှိ [objects](https://epirhandbook.com/en/r-basics.html#objects) ၏ အတိုအကျဉ်းချုပ်ကို လက်ရှိစက်ရှင်/session တွင် မြင်တွေ့ရန် အများဆုံးအသုံးပြုလေ့ရှိသည်။ ဤobjectsများတွင် တင်သွင်း၊ မွမ်းမံထားသော သို့မဟုတ် ဖန်တီးထားသော ဒေတာအတွဲများ၊ သင်သတ်မှတ်ထားသော ကန့်သတ်ချက်များ/ parameters (ဥပမာ- ခွဲခြမ်းစိတ်ဖြာမှုအတွက် သီးခြား epi အပတ်)၊ သို့မဟုတ် ခွဲခြမ်းစိတ်ဖြာမှုအတွင်း သင်သတ်မှတ်ထားသော vector များ သို့မဟုတ် စာရင်းများ (ဥပမာ ဒေသအမည်များ) ပါဝင်သည်။ ကိန်းရှင်များကိုကြည့်ရှုရန် ဒေတာဘောင်အမည်ဘေးရှိ မြှားပေါ်တွင် ကလစ်နှိပ်နိုင်ပါသည်။
 
-In Stata, this is most similar to the Variables Manager window.
+Stata မှ Variables Manager ဝင်းဒိုးနှင့် အဆင်တူဆုံးဖြစ်သည်။
 
-This pane also contains *History* where you can see commands that you can previously. It also has a "Tutorial" tab where you can complete interactive R tutorials if you have the **learnr** package installed. It also has a "Connections" pane for external connections, and can have a "Git" pane if you choose to interface with Github.
+ဤအကန့်တွင် ယခင်က သင်လုပ်ဆောင်နိုင်သည့် ညွှန်ကြားချက်များကို သင်မြင်နိုင်သည့် History လည်း ပါရှိသည်။ ၎င်းတွင် **learnr** ပက်ကေ့ခ်ျကို ထည့်သွင်းထားပါက သင်အပြန်အလှန်အကျိုးသက်ရောက်သော R ကျူတိုရီရယ်များကို သင်ယူပြီးမြှောက်နိုင်မဲ့ "ကျူတိုရီရယ်" တက်ဘ်တစ်ခုလည်း ပါရှိသည်။ ၎င်းရဲ့ မှာ "Connections" အကန့် ပါရှိပြီး Github နှင့် ချိတ်ဆက်ချင်ပါက "Git" pane လဲရှိသည်။
 
-**Plots, Viewer, Packages, and Help Pane**\
-The lower-right pane includes several important tabs. Typical plot graphics including maps will display in the Plot pane. Interactive or HTML outputs will display in the Viewer pane. The Help pane can display documentation and help files. The Files pane is a browser which can be used to open or delete files. The Packages pane allows you to see, install, update, delete, load/unload R packages, and see which version of the package you have. To learn more about packages see the [packages section](#packages) below.
+**Plots, Viewer, Packages, and Help အကန့်များ**\
+ညာဘက်အောက်ခြမ်းတွင် အရေးကြီးသော တက်ဘ်များစွာ ပါဝင်သည်။ မြေပုံများ အပါအဝင် ရိုးရိုးဂရပ်ဖစ်များကို Plot အကန့်၊ အပြန်အလှန်အကျိုးသက်ရောက်မှု သို့မဟုတ် HTML outputsများကို Viewer အကန့်တွင် ပြသပါမည်။ Help အကန့်သည် စာရွက်စာတမ်းများနှင့် အကူအညီဖိုင်များကို ပြသသည်။ Files အကန့်သည် ဖိုင်များကိုဖွင့်ရန် သို့မဟုတ် ဖျက်ရန် အသုံးပြုနိုင်သည့် ဘရောက်ဆာတစ်ခုဖြစ်သည်။ Packages အကန့်သည် R ပက်ကေ့ဂျ်များကို ကြည့်ရန်၊ ထည့်ရန်၊ အပ်ဒိတ်လုပ်ရန်၊ ဖျက်ပစ်ရန်၊ load/unload နိုင်မဲ့အပြင် ပက်ကေ့ဂျ်၏ဗားရှင်းကိုကြည့်နိုင်သည်။ ပက်ကေ့ဂျ်များအကြောင်း ပိုမိုလေ့လာရန် အောက်ဖော်ပြပါ [ပက်ကေ့ဂျ်များကဏ္ဍ](https://www.epirhandbook.com/en/r-basics.html#packages) ကို ကြည့်ပါ။
 
-This pane contains the Stata equivalents of the Plots Manager and Project Manager windows.
+Stata ရှိ Plots Manager၊ Project Managerဝင်းဒိုးတို့နှင့်တူညီသည်။
 
-### RStudio settings {.unnumbered}
+### RStudio ဆက်တင်များ {.unnumbered}
 
-Change RStudio settings and appearance in the *Tools* drop-down menu, by selecting *Global Options*. There you can change the default settings, including appearance/background color.
+Tools ဆွဲချရသော menu ရှိ *Global Options* ကိုရွေးချယ်ခြင်းဖြင့် RStudio ဆက်တင်များနှင့် အသွင်အပြင်ကို ပြောင်းလဲပါ။ အသွင်အပြင်/နောက်ခံကာလာအပါအဝင် မူလဆက်တင်များကို ပြောင်းလဲနိုင်သည်။
 
 ```{r out.width = c('50%'), fig.show='hold', echo=F}
 knitr::include_graphics(here::here("images", "RStudio_tools_options_1.png"))
@@ -260,55 +257,57 @@ knitr::include_graphics(here::here("images", "RStudio_tools_options_1.png"))
 knitr::include_graphics(here::here("images", "RStudio_tools_options.png"))
 ```
 
-**Restart**
+**ပြန်လည်စတင်ခြင်း**
 
-If your R freezes, you can re-start R by going to the Session menu and clicking "Restart R". This avoids the hassle of closing and opening RStudio. Everything in your R environment will be removed when you do this.
+R ရပ်သွားပါက Session menu သို့သွားကာ "Restart R" ကိုနှိပ်ခြင်းဖြင့် R ကို ပြန်လည်စတင်လိုက်ပါက RStudio ကိုပိတ်ရန်ဖွင့်ရန်မလိုတော့ပါ။ သင့် R environment ရှိ အရာအားလုံးကို ဖယ်ရှားပေးသွားပါမည်။ 
 
-### Keyboard shortcuts {.unnumbered}
+### **ကီးဘုတ်ဖြတ်လမ်းများ**  {.unnumbered}
 
-Some very useful keyboard shortcuts are below. See all the keyboard shortcuts for Windows, Max, and Linux in the second page of this RStudio [user interface cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf).
+အချို့သော အလွန်အသုံးဝင်သော ကီးဘုတ်ဖြတ်လမ်းများကို အောက်တွင်ဖော်ပြထားသည်။ Windows၊ Max နှင့် Linux အတွက် ကီးဘုတ်ဖြတ်လမ်းများအားလုံးကို ဤ RStudio [အသုံးပြုသူ-အင်တာဖေ့စ် cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf) ၏ ဒုတိယစာမျက်နှာတွင် ကြည့်ပါ။
 
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Windows/Linux                    | Mac                    | Action                                                                                                                         |
-+==================================+========================+================================================================================================================================+
-| Esc                              | Esc                    | Interrupt current command (useful if you accidentally ran an incomplete command and cannot escape seeing "+" in the R console) |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl+s                           | Cmd+s                  | Save (script)                                                                                                                  |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Tab                              | Tab                    | Auto-complete                                                                                                                  |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Enter                     | Cmd + Enter            | Run current line(s)/selection of code                                                                                          |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Shift + C                 | Cmd + Shift + c        | comment/uncomment the highlighted lines                                                                                        |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Alt + -                          | Option + -             | Insert `<-`                                                                                                                    |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Shift + m                 | Cmd + Shift + m        | Insert `%>%`                                                                                                                   |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + l                         | Cmd + l                | Clear the R console                                                                                                            |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Alt + b                   | Cmd + Option + b       | Run from start to current line                                                                                                 |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Alt + t                   | Cmd + Option + t       | Run the current code section (R Markdown)                                                                                      |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Alt + i                   | Cmd + Shift + r        | Insert code chunk (into R Markdown)                                                                                            |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Alt + c                   | Cmd + Option + c       | Run current code chunk (R Markdown)                                                                                            |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| up/down arrows in R console      | Same                   | Toggle through recently run commands                                                                                           |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Shift + up/down arrows in script | Same                   | Select multiple code lines                                                                                                     |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + f                         | Cmd + f                | Find and replace in current script                                                                                             |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Ctrl + Shift + f                 | Cmd + Shift + f        | Find in files (search/replace across many scripts)                                                                             |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Alt + l                          | Cmd + Option + l       | Fold selected code                                                                                                             |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Shift + Alt + l                  | Cmd + Shift + Option+l | Unfold selected code                                                                                                           |
-+----------------------------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Windows/Linux                    | Mac                    | လုပ်ဆောင်ချက်                                                                                                                                  |
++==================================+========================+================================================================================================================================================+
+| Esc                              | Esc                    | လက်ရှိအမိန့်ညွှန်ကြားချက်ကို နှောင့်ယှက်ပါ (မပြည့်စုံသောညွှန်ကြားချက်ကို မတော်တဆလုပ်ဆောင်ပြီး R ကွန်ဆိုးလ်တွင် "+" ကိုမြင်တွေ့ပါက အသုံးဝင်သည်) |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl+s                           | Cmd+s                  | သိမ်းဆည်းသည်(script)                                                                                                                           |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Tab                              | Tab                    | အော်တို ပြီးမြောက်သည်                                                                                                                          |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Enter                     | Cmd + Enter            | ယခုလိုင်း/ရွေးချယ်ထားသောကုဒ်ကို run                                                                                                            |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Shift + C                 | Cmd + Shift + c        | ဟိုင်းလိုက်တားထားသောစာကြောင်းများကို မှတ်ချက်ပေး/မပေး                                                                                          |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Alt + -                          | Option + -             | ထည့်`<-`                                                                                                                                       |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Shift + m                 | Cmd + Shift + m        | ထည့်`%>%`                                                                                                                                      |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + l                         | Cmd + l                | R ကွန်ဆိုးလ်ကို ရှင်းလင်း                                                                                                                      |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Alt + b                   | Cmd + Option + b       | အစမှ လက်ရှိလိုင်းသို့ run                                                                                                                      |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Alt + t                   | Cmd + Option + t       | လက်ရှိကုဒ်ကဏ္ဍ (R Markdown) ကို run                                                                                                            |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Alt + i                   | Cmd + Shift + r        | ကုဒ်အပိုင်းအထပ်လိုက်ကို ထည့် (R Markdownထဲသို့)                                                                                                |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Alt + c                   | Cmd + Option + c       | ကုဒ်အပိုင်းအထပ်လိုက်ကို run (R Markdown)                                                                                                       |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| up/down arrows in R console      | Same                   | မကြာသေးမီက ညွှန်ကြားချက်များအတွင်းကူးပြောင်းပါ။                                                                                                |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Shift + up/down arrows in script | Same                   | တစ်ခုထက်ပိုသောကုဒ်လိုင်းများစွာကို ရွေးပါ။                                                                                                     |
+|                                  |                        |                                                                                                                                                |
+|                                  |                        | \                                                                                                                                              |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + f                         | Cmd + f                | လက်ရှိ script တွင် ရှာပြီး အစားထိုးပါ။                                                                                                         |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Ctrl + Shift + f                 | Cmd + Shift + f        | ဖိုင်များတွင် ရှာပါ (စခရစ်များစွာတွင် ရှာဖွေ/အစားထိုးပါ)                                                                                       |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Alt + l                          | Cmd + Option + l       | ရွေးထားသောကုဒ်ကိုခေါက်သိမ်းပါ။                                                                                                                 |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+| Shift + Alt + l                  | Cmd + Shift + Option+l | ရွေးချယ်ထားသောကုဒ်ကို ဖြည်ပါ။                                                                                                                  |
++----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
-[***TIP:*** Use your Tab key when typing to engage RStudio's auto-complete functionality. This can prevent spelling errors. Press Tab while typing to produce a drop-down menu of likely functions and objects, based on what you have typed so far.]{style="color: darkgreen;"}
+[***TIP:*** Use your Tab key when typing to engage RStudio's auto-complete functionality. This can prevent spelling errors. Press Tab while typing to produce a drop-down menu of likely functions and objects, based on what you have typed so far. ]{style="color: darkgreen;"}အကြံပြုချက် - RStudio ၏ အလိုအလျောက် ဖြည့်စွက်လုပ်ဆောင်နိုင်စွမ်းကို သုံးရန် စာရိုက်သောအခါတွင် တက်ဘ်ကီးကို အသုံးပြုပါ။၎င်းသည် စာလုံးပေါင်းအမှားများကို တားဆီးနိုင်သည်။ စာရိုက်နေစဉ်တွင် တက်ဘ်ကို နှိပ်ပကယခုအချိန်အထိ ရိုက်ထည့်ထားသည့်အရာအပေါ် အခြေခံ၍ ဖြစ်နိုင်ခြေရှိသော functions နှင့် objectsများ၏ drop-down menu အရပေါ်လာလိမ့်မည်။
 
 <!-- ======================================================= -->
 

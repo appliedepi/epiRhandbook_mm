@@ -194,7 +194,7 @@ R တွင် Excel workbooks များကို import ဖို့၊ ဒ�
 | Cross-tabulaton of two variables in a 2x2 table is done with **tab** *varname1 varname2* | Use `table(dataset$varname1, dataset$varname2` or `count(varname1, varname2)`                                                                                                        |
 +------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-While this list gives an overview of the basics in translating Stata commands into R, it is not exhaustive. There are many other great resources for Stata users transitioning to R that could be of interest:
+ဤစာရင်းသည် Stata command များကို R သို့ ဘာသာပြန်ခြင်းတွင် အခြေခံများကို ခြုံငုံသုံးသပ်ချက်ပေးသော်လည်း ၎င်းသည် ပြီးပြည့်စုံခြင်းမဟုတ်ပါ။ R သို့ကူးပြောင်းနေသော Stata အသုံးပြုသူများအတွက် စိတ်ဝင်စားဖွယ်ကောင်းသော အခြားအရင်းအမြစ်များစွာရှိပါသည် - 
 
 -   <https://dss.princeton.edu/training/RStata.pdf>\
 -   <https://clanfear.github.io/Stata_R_Equivalency/docs/r_stata_commands.html>\
@@ -206,7 +206,7 @@ While this list gives an overview of the basics in translating Stata commands in
 
 **SAS မှ R သို့လာခြင်း**
 
-SAS is commonly used at public health agencies and academic research fields. Although transitioning to a new language is rarely a simple process, understanding key differences between SAS and R may help you start to navigate the new language using your native language. Below outlines the key translations in data management and descriptive analysis between SAS and R.
+SAS ကို ပြည်သူ့ကျန်းမာရေးအေဂျင်စီများနှင့် ပညာရေးဆိုင်ရာ သုတေသနနယ်ပယ်များတွင် အသုံးများသည်။ ဘာသာစကားအသစ်တစ်ခုသို့ ပြောင်းခြင်းသည် ရိုးရှင်းသောလုပ်ငန်းစဉ်ဖြစ်ခဲသော်လည်း SAS နှင့် R အကြား အဓိကကွာခြားချက်များကို နားလည်ခြင်းသည် သင့်မိခင်ဘာသာစကားကို အသုံးပြု၍ ဘာသာစကားအသစ်ကို စတင်ရန် ကူညီပေးနိုင်ပါသည်။ အောက်တွင် SAS နှင့် R အကြား ဒေတာစီမံခန့်ခွဲမှုနှင့် သရုပ်ဖော်မှုခွဲခြမ်းစိတ်ဖြာမှုတွင် အဓိကဘာသာပြန်ဆိုချက်များကို အကြမ်းဖျဉ်းဖော်ပြထားသည်။
 
 **အထွေထွေမှတ်စုများ**
 

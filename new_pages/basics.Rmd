@@ -556,7 +556,7 @@ This syntax is useful because it also loads the **pacman** package (assuming it 
 
 သင်မကြာခဏတွေ့မြင်ရမည့် အခြား **base** R functionများရှိသည်။ ပက်ကေ့ဂျ်တစ်ခုကို installရန်အတွက် **base** R functionသည်`install.packages()` ဖြစ်သည်။ Installရန် ပက်ကေ့ဂျ်အမည်ကို *ကွင်းစဥ်များအတွင်း ကိုးကားမှတ်ဖွင့်ပိတ်*ထဲထည့်သွင်းရပါမည် ။ command တစ်ခုတွင် ပက်ကေ့ဂျ်များစွာကို installလိုပါက၊ ၎င်းတို့ကို အက္ခရာ vector `c()` တစ်ခုအတွင်း စာရင်းသွင်းရပါမည် ။\
 
-Note: this command *installs* a package, but does *not* load it for use in the current session. မှတ်ချက်- ဤ command သည် ပက် ကေ့ဂျ်တစ်ခုကို installသော်လည်း လက်ရှိစက်ရှင်တွင် အသုံးပြုရန်အတွက် ၎င်းကို load မ လုပ်ပါ။
+မှတ်ချက်- ဤ command သည် ပက်ကေ့ဂျ်တစ်ခုကို installသော်လည်း လက်ရှိစက်ရှင်တွင် အသုံးပြုရန်အတွက် ၎င်းကို load *မ* လုပ်ပါ။
 
 ```{r, eval=F}
 # install a single package with base R
@@ -568,7 +568,7 @@ install.packages(c("tidyverse", "rio", "here"))
 
 RStudio "ပက်ကေ့ဂျ်များ" pane သို့သွားပြီး "Install" ကိုနှိပ်ပြီး လိုချင်သော ပက်ကေ့ဂျ် name ကိုရှာဖွေခြင်းဖြင့် installခြင်းကိုလည်း ပြီးမြောက်အောင်မြင်နိုင်ပါသည်။\
 
-The **base** R function to **load** a package for use (after it has been installed) is `library()`. It can load only one package at a time (another reason to use `p_load()`). You can provide the package name with or without quotes. အသုံးပြုရန်အတွက် ပက် ကေ့ဂျ်တစ်ခုကို load တင်ရန် base R function (၎င်းကို installပြီးနောက်) မှာ .library() ဖြစ်သည်။ ၎င်းသည် တစ်ကြိမ်လျှင် ပက်ကေ့ဂျ်တစ်ခုသာ တင်နိုင်သည် (p_load()အသုံးပြုရန် အခြားအကြောင်းရင်း)။ သင်သည် ပက်ကေ့ဂျ်အမည်ကို ကိုးကားမှတ်များမပါ, မပါဘဲ ရေးနိုင်ပါသည်။
+အသုံးပြုရန်အတွက် ပက်ကေ့ဂျ်တစ်ခုကို **load** တင်ရန် **base** R function (၎င်းကို installပြီးနောက်) မှာ `library()` ဖြစ်သည်။ ၎င်းသည် တစ်ကြိမ်လျှင် ပက်ကေ့ဂျ်တစ်ခုသာ တင်နိုင်သည် (`p_load()` အသုံးပြုရန် အခြားအကြောင်းရင်း)။ သင်သည် ပက်ကေ့ဂျ်အမည်ကို ကိုးကားမှတ်များမပါ, မပါဘဲ ရေးနိုင်ပါသည်။
 
 ```{r, eval=F}
 # load packages for use, with base R
@@ -577,135 +577,143 @@ library(rio)
 library(here)
 ```
 
-To check whether a package in installed and/or loaded, you can view the Packages pane in RStudio. If the package is installed, it is shown there with version number. If its box is checked, it is loaded for the current session. Installပြီး/သို့မဟုတ် load တင်ထားသည့် ပက်ကေ့ခ်ျတစ်ခု ရှိမရှိ စစ်ဆေးရန်၊ သင်သည် RStudio တွင် ပက်ကေ့ခ်ျအကန့်ကို ကြည့်ရှုနိုင်သည်။ ပက်ကေ့ဂျ်ကို installထားပါက ၎င်းကို ဗားရှင်းနံပါတ်ဖြင့် ပြသထားသည်။ ၎င်း၏အကွက်ကို အမှန်ခြစ်ထားပါက ၎င်းကို လက်ရှိစက်ရှင်အတွက် တင်ထားသည်။
+ပက်ကေ့ခ်ျတစ်ခု Installပြီး/သို့မဟုတ် load တင်ထားသည် ရှိမရှိ စစ်ဆေးရန်၊ သင်သည် RStudio တွင် Packagesအကန့်ကို ကြည့်ရှုနိုင်သည်။ ပက်ကေ့ဂျ်ကို installထားပါက ၎င်းကို ဗားရှင်းနံပါတ်ဖြင့် ပြသထားသည်။ ၎င်း၏အကွက်ကို အမှန်ခြစ်ထားပါက ၎င်းကို လက်ရှိစက်ရှင်အတွက် တင်ထားသည်။
 
 ### Github မှ install လုပ်ခြင်း
 
-Sometimes, you need to install a package that is not yet available from CRAN. Or perhaps the package is available on CRAN but you want the *development version* with new features not yet offered in the more stable published CRAN version. These are often hosted on the website [github.com](https://github.com/) in a free, public-facing code "repository". Read more about Github in the handbook page on \[Version control and collaboration with Git and Github\]. တစ်ခါတစ်ရံတွင် သင်သည် CRAN မှ မရရှိနိုင်သေးသော ပက်ကေ့ခ်ျတစ်ခုကို installရန် လိုအပ်သည်။ သို့မဟုတ်ပါက ပက်ကေ့ဂျ်ကို CRAN တွင် ရနိုင်သော်လည်း ပိုမိုတည်ငြိမ်သော ထုတ်ဝေထားသော CRAN ဗားရှင်းတွင် မပေးဆောင်ရသေးသည့် အင်္ဂါရပ်အသစ်များဖြင့် ဖွံ့ဖြိုးတိုးတက်မှုဗားရှင်း ကို သင်အလိုရှိသည်။ ၎င်းတို့ကို အခမဲ့၊ အများသူငှာ မျက်နှာစာကုဒ် "သိုလှောင်မှု" ဖြင့် [github.com](https://github.com/) ဝဘ်ဆိုက်ပေါ်တွင် မကြာခဏ ထားရှိလေ့ရှိသည် ။ [ဗားရှင်းထိန်းချုပ်မှုနှင့် Git နှင့် Github တို့နှင့်အတူ ပူးပေါင်းဆောင်ရွက်ခြင်း](https://www-epirhandbook-com.translate.goog/en/version-control-and-collaboration-with-git-and-github.html?_x_tr_sl=en&_x_tr_tl=my&_x_tr_hl=en&_x_tr_pto=wapp#version-control-and-collaboration-with-git-and-github) ရှိ လက်စွဲစာအုပ် စာမျက်နှာတွင် Github အကြောင်း ပိုမိုဖတ်ရှုပါ ။
+တစ်ခါတစ်ရံတွင် သင်သည် CRAN မှ မရရှိနိုင်သေးသော ပက်ကေ့ခ်ျတစ်ခုကို installရန် လိုအပ်သည်။ သို့မဟုတ်ပါက ပက်ကေ့ဂျ်ကို CRAN တွင် ရနိုင်သော်လည်း ပိုမိုတည်ငြိမ်သော ထုတ်ဝေထားသော CRAN ဗားရှင်းတွင် မပေးဆောင်ရသေးသည့် အင်္ဂါရပ်အသစ်များဖြင့် *development*ဗားရှင်း ကို သင်အလိုရှိသည်။ ၎င်းတို့ကို အခမဲ့၊ အများသူငှာ မျက်နှာစာကုဒ် "သိုလှောင်မှု" ဖြင့် [github.com](https://github.com/) ဝဘ်ဆိုက်ပေါ်တွင် မကြာခဏ ထားရှိလေ့ရှိသည် ။ [ဗားရှင်းထိန်းချုပ်မှုနှင့် Git နှင့် Github တို့နှင့်အတူ ပူးပေါင်းဆောင်ရွက်ခြင်း](https://www-epirhandbook-com.translate.goog/en/version-control-and-collaboration-with-git-and-github.html?_x_tr_sl=en&_x_tr_tl=my&_x_tr_hl=en&_x_tr_pto=wapp#version-control-and-collaboration-with-git-and-github) ရှိ လက်စွဲစာအုပ် စာမျက်နှာတွင် Github အကြောင်း ပိုမိုဖတ်ရှုပါ ။
 
-To download R packages from Github, you can use the function `p_load_gh()` from **pacman**, which will install the package if necessary, and load it for use in your current R session. Alternatives to install include using the **remotes** or **devtools** packages. Read more about all the **pacman** functions in the [package documentation](https://cran.r-project.org/web/packages/pacman/pacman.pdf).
+Github မှ R ပက်ကေ့ဂျ်များကို ဒေါင်းလုဒ်လုပ်ရန်၊ လိုအပ်ပါက ပက်ကေ့ဂျ်ကို installပြီး သင့်လက်ရှိ R စက်ရှင်တွင် အသုံးပြုရန်အတွက် တင်ပေးမည့် **pacman** မှ `p_load_gh()`  functionကို အသုံးပြုနိုင်သည်။ installရန် အခြားရွေးချယ်စရာများတွင် **remotes** သို့မဟုတ် **devtools** ပက်ကေ့ဂျ်များကို အသုံးပြုခြင်း ပါဝင်သည်။ [ပက်ကေ့ဂျ်documentation ](https://cran.r-project.org/web/packages/pacman/pacman.pdf)ရှိ **pacman** functionများ အကြောင်းအားလုံး ပိုမိုဖတ်ရှုပါ ။
 
-To install from Github, you have to provide more information. You must provide:
+Github မှ installရန်၊ သင်သည် အချက်အလက်များပိုမိုပေးဆောင်ရပါမည်။ ပေးဆောင်ရမည်များက-
 
-1)  The Github ID of the repository owner
-2)  The name of the repository that contains the package\
-3)  *(optional) The name of the "branch" (specific development version) you want to download*
+1.  Repository ပိုင်ရှင်၏ Github ID
 
-In the examples below, the first word in the quotation marks is the Github ID of the repository owner, after the slash is the name of the repository (the name of the package).
+2.  ပက်ကေ့ဂျ်ပါရှိသော repository ၏ အမည်
+
+3.  (ချန်လှပ်ထားနိုင်သည်) သင်ဒေါင်းလုဒ်လုပ်လိုသော "branch" (အတိတကျဖွံ့ဖြိုးဆဲဗားရှင်း) ၏အမည်
+
+အောက်ဖော်ပြပါ ဥပမာများတွင်၊ ကိုးကားအမှတ်အသားတွင်းရှိ ပထမဆုံးစကားလုံးမှာ repositoryပိုင်ရှင်၏ Github ID ဖြစ်ပြီး၊ မျဥ်းစောင်းနောက် repository၏အမည် (ပက်ကေ့ခ်ျအမည်) ဖြစ်သည်။
 
 ```{r, eval=F}
 # install/load the epicontacts package from its Github repository
 p_load_gh("reconhub/epicontacts")
 ```
 
-If you want to install from a "branch" (version) other than the main branch, add the branch name after an "\@", after the repository name.
+ပင်မbranchမှလွဲ၍ အခြား "branch" (ဗားရှင်း) မှ installလိုပါက၊ repositoryအမည်ပြီးနောက် "\@" ၏နောက်တွင် branchခွဲအမည်ကို ထည့်ပါ။
 
 ```{r, eval=F}
 # install the "timeline" branch of the epicontacts package from Github
 p_load_gh("reconhub/epicontacts@timeline")
 ```
 
-If there is no difference between the Github version and the version on your computer, no action will be taken. You can "force" a re-install by instead using `p_load_current_gh()` with the argument `update = TRUE`. Read more about **pacman** in this [online vignette](http://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html)
+Github ဗားရှင်းနှင့် သင့်ကွန်ပြူတာရှိ ဗားရှင်းကြားတွင် ကွာခြားမှုမရှိပါက မည်သည့်လုပ်ဆောင်မှုမျှ ပြုလုပ်မည်မဟုတ်ပါ။ `p_load_current_gh()` အစား argument `update = TRUE` ဖြင့် ပြန်လည်installနိုင်ပါသည်။ ဤ [အွန်လိုင်းvignette ](http://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html)တွင် **pacman** အကြောင်းပိုမိုဖတ်ပါ။
 
-**Install from ZIP or TAR**
+#### ZIP သို့မဟုတ် TAR မှ installခြင်း
 
-You could install the package from a URL:
+URL တစ်ခုမှ ပက်ကေ့ဂျ်ကို installနိုင်သည်-
 
 ```{r, eval=F}
 packageurl <- "https://cran.r-project.org/src/contrib/Archive/dsr/dsr_0.2.2.tar.gz"
 install.packages(packageurl, repos=NULL, type="source")
 ```
 
-Or, download it to your computer in a zipped file:
+သို့မဟုတ် ဇစ်ဖိုင်ဖြင့် သင့်ကွန်ပျူတာသို့ ဒေါင်းလုဒ်လုပ်ပါ-
 
-Option 1: using `install_local()` from the **remotes** package
+ရွေးချယ်မှု ၁ - **remotes** ပက်ကေ့ချ်မှ `install_local()` အသုံးပြုခြင်း။
 
 ```{r, eval=F}
 remotes::install_local("~/Downloads/dplyr-master.zip")
 ```
 
-Option 2: using `install.packages()` from **base** R, providing the file path to the ZIP file and setting `type = "source` and `repos = NULL`.
+ရွေးချယ်မှု 2- **base** R မှ `install.packages()` အသုံးပြု၍ ZIP ဖိုင်နှင့် ဆက်တင် `type = "source` နှင့် `repos = NULL` သို့ ဖိုင်လမ်းကြောင်းကို ပံ့ပိုးပေးခြင်း
 
 ```{r, eval=F}
 install.packages("~/Downloads/dplyr-master.zip", repos=NULL, type="source")
 ```
 
-### Code syntax {.unnumbered}
+### ကုဒ် syntax {.unnumbered}
 
-For clarity in this handbook, functions are sometimes preceded by the name of their package using the `::` symbol in the following way: `package_name::function_name()`
+ဤလက်စွဲစာအုပ်တွင် ရှင်းလင်းစေရန်အတွက်၊ တစ်ခါတစ်ရံ `::` အောက်ပါသင်္ကေတကို အသုံးပြု၍ ပက်ကေ့ဂျ်အမည်ဖြင့် functionများကို မကြာခဏ ဖော်ပြပေးသည်- `package_name::function_name()`
 
-Once a package is loaded for a session, this explicit style is not necessary. One can just use `function_name()`. However writing the package name is useful when a function name is common and may exist in multiple packages (e.g. `plot()`). Writing the package name will also load the package if it is not already loaded.
+စက်ရှင်တစ်ခုအတွက် ပက်ကေ့ဂျ်တစ်ခုကို load တင်လိုက်သည်နှင့်၊ ဤပုံစံ မလိုအပ်ပါ။ `function_name()` တစ်ခုပဲ သုံးလို့ရတယ်။ သို့သော်လည်း functionအမည်သည် အသုံးများပြီး ပက်ကေ့ဂျ်များစွာတွင် ရှိနေနိုင်သောအခါတွင် ပက်ကေ့ဂျ်အမည်ကို ရေးသားခြင်းသည် အသုံးဝင်ပါသည်။(ဥပမာ - [`plot()`](https://rdrr.io/r/graphics/plot.default.html) ) ပက်ကေ့ဂျ်အမည်ကိုရေးခြင်းသည် load မတင်ရသေးပါက ပက်ကေ့ဂျ်ကိုလည်း load တင်ပေးမည်။
 
 ```{r eval=FALSE}
 # This command uses the package "rio" and its function "import()" to import a dataset
 linelist <- rio::import("linelist.xlsx", which = "Sheet1")
 ```
 
-### Function help {.unnumbered}
+### Function အကူအညီ {.unnumbered}
 
-To read more about a function, you can search for it in the Help tab of the lower-right RStudio. You can also run a command like `?thefunctionname` (put the name of the function after a question mark) and the Help page will appear in the Help pane. Finally, try searching online for resources.
+Function တစ်ခုအကြောင်း ပိုမိုဖတ်ရှုရန်၊ ညာဘက်အောက် RStudio ၏ Help tab တွင် ၎င်းကို ရှာဖွေနိုင်သည်။ `?thefunctionname` (မေးခွန်းအမှတ်အသားပြီးနောက် Function အမည်ကို ထည့်ပါ) ကဲ့သို့သော ကွန်မန်းတစ်ခုကိုလည်း သင် လုပ်ဆောင်နိုင်ပြီး အကူအညီစာမျက်နှာသည် Help pane တွင် ပေါ်လာမည်ဖြစ်သည်။ နောက်ဆုံးအနေနဲ့၊ အရင်းအမြစ်တွေကို အွန်လိုင်းမှာ ရှာဖွေကြည့်ပါ။\
 
-### Update packages {.unnumbered}
+### Update packages ပက်ကေ့ဂျ်များကို အပ်ဒိတ်လုပ်ခြင်း {.unnumbered}
 
-You can update packages by re-installing them. You can also click the green "Update" button in your RStudio Packages pane to see which packages have new versions to install. Be aware that your old code may need to be updated if there is a major revision to how a function works!
+ပြန်လည်ထည့်သွင်း re-install လုပ်ခြင်းဖြင့် ပက်ကေ့ဂျ်များကို အပ်ဒိတ်လုပ်နိုင်ပါသည်။ ဗားရှင်းအသစ်ရှိပက်ကေ့ချ်များများရှိသည်ကို ကြည့်ရှုရန်/install ရန် သင့် RStudio Packages အကန့်ရှိ အစိမ်းရောင် "အပ်ဒိတ်" ခလုတ်ကို နှိပ်နိုင်သည်။ Function တစ်ခုအလုပ်လုပ်ပုံကို အကြီးစားပြန်လည်ပြင်ဆင်မှုရှိပါက သင်၏ကုဒ်ဟောင်းကို အပ်ဒိတ်လုပ်ရန် လိုအပ်နိုင်သည်ကို သတိပြုပါဍ
 
-### Delete packages {.unnumbered}
+### Delete packages ပက်ကေ့ဂျ်များကိုဖျက်ခြင်း {.unnumbered}
 
-Use `p_delete()` from **pacman**, or `remove.packages()` from **base** R. Alternatively, go find the folder which contains your library and manually delete the folder.
+**Pacman** မှ [`p_delete()`](https://rdrr.io/pkg/pacman/man/p_delete.html) သို့မဟုတ် **base** R မှ [`remove.packages()`](https://rdrr.io/r/utils/remove.packages.html)သုံး ပါ။ တနည်းအားဖြင့် သင့်ဒစ်ဂျစ်တိုက် library ရှိ ဖိုဒါကိုသွား၍ ဖိုင်တွဲကို ကိုယ်တိုင်ဖျက်ပါ။
 
-### Dependencies {.unnumbered}
+### အမှီအခို(Dependencies) {.unnumbered}
 
-Packages often depend on other packages to work. These are called dependencies. If a dependency fails to install, then the package depending on it may also fail to install.
+ပက်ကေ့ခ်ျများသည် အလုပ်လုပ်ရန် အခြားသော ပက်ကေ့ခ်ျများပေါ်တွင် မူတည်သည်။ ဒါတွေကို အမှီအခိုများလို့ ခေါ်ပါတယ်။ အမှီအခိုတစ်ခုအား ထည့်သွင်းရန် ပျက်ကွက်ပါက၊ ၎င်းအပေါ် မူတည်၍ ပက်ကေ့ခ်ျကိုလည်း ထည့်သွင်းရန် ပျက်ကွက်နိုင်သည်။
 
 See the dependencies of a package with `p_depends()`, and see which packages depend on it with `p_depends_reverse()`
 
+ပက်ကေ့ဂျ်တစ်ခု၏ အမှီအခိုကိုကြည့်ရန် [`p_depends()`](https://rdrr.io/pkg/pacman/man/p_depends.html)၊ မည်သည့်ပက်ကေ့ဂျ်များပေါ်တွင်မူတည်သည်ကိုကြည့်ရန် [`p_depends_reverse`()](https://rdrr.io/pkg/pacman/man/p_depends.html) ။
+
 ### Masked functions {.unnumbered}
 
-It is not uncommon that two or more packages contain the same function name. For example, the package **dplyr** has a `filter()` function, but so does the package **stats**. The default `filter()` function depends on the order these packages are first loaded in the R session - the later one will be the default for the command `filter()`.
+ပက်ကေ့ဂျ် နှစ်ခု သို့မဟုတ် ထို့ထက်ပိုသော ပက်ကေ့ဂျ်များတွင် တူညီသောFunction အမည်ပါရှိသည်မှာ မဆန်းပါ။ ဥပမာအားဖြင့်၊ package **dplyr** နှင့် **stats** နှစ်ခုလုံးတွင် [`filter()`](https://dplyr.tidyverse.org/reference/filter.html) function ပါရှိနေသည်။ မူရင်း [`filter()`](https://dplyr.tidyverse.org/reference/filter.html) function သည် R စက်ရှင်တွင် ပထမဆုံးတင်သည့်ပက်ကေ့ဂျ်များအစဥ်ပေါ်မူတည်သည် - နောက်ပိုင်းတစ်ခုသည် command [`filter()`](https://dplyr.tidyverse.org/reference/filter.html) အတွက် ပုံသေဖြစ်လိမ့်မည်။
 
-You can check the order in your Environment pane of R Studio - click the drop-down for "Global Environment" and see the order of the packages. Functions from packages *lower* on that drop-down list will mask functions of the same name in packages that appear higher in the drop-down list. When first loading a package, R will warn you in the console if masking is occurring, but this can be easy to miss.
+R Studio ၏ Environmentအကန့်တွင် အစဥ်ကို သင်စစ်ဆေးနိုင်သည် - "Global Environment" အတွက် drop-down ကိုနှိပ်ပြီး ပက်ကေ့ဂျ်များ၏ အစီအစဥ်ကို ကြည့်ရှုပါ။ ထို drop-down list အောက်ပိုင်း ရှိ packages များမှ Function များသည် drop-down list တွင် ပိုမြင့်ပိုင်း packages များတွင် နာမည်တူFunction များကို ဖုံးကွယ်ထားမည်ဖြစ်ပါသည်။ ပက်ကေ့ဂျ်တစ်ခုကို ပထမဆုံးစတင်သောအခါတွင် မျက်နှာဖုံးစွပ်မှုဖြစ်ပွားပါက R သည် သင့်အား ကွန်ဆိုးလ်တွင်သတိပေးလိမ့်မည်၊ သို့သော် အလွယ်တကူလက်လွတ်သွားနိုင်သည်။
 
 ```{r out.width = "50%", fig.align = "center", echo=F}
 knitr::include_graphics(here::here("images", "masking_functions.png"))
 ```
 
-Here are ways you can fix masking:
+ဤသည်မှာ ဖုံးစွပ်ခြင်း masking ကို သင်ဖြေရှင်းနိုင်သော နည်းလမ်းများဖြစ်သည်။
 
-1)  Specify the package name in the command. For example, use `dplyr::filter()`\
-2)  Re-arrange the order in which the packages are loaded (e.g. within `p_load()`), and **start a new R session**
+1.  command တွင် package name ကိုသတ်မှတ်ပါ။ ဥပမာအားဖြင့်၊`dplyr::filter()`
+
+2.  ပက်ကေ့ဂျ်များ တင်ဆောင်သည့် အစဥ်အား ပြန်လည်စီစဉ်ပါ (ဥပမာ- အတွင်း [`p_load()`](https://rdrr.io/pkg/pacman/man/p_load.html)) နှင့် **R စက်ရှင်အသစ်ကို စတင််ပါ။**
 
 ### Detach / unload {.unnumbered}
 
-To detach (unload) a package, use this command, with the correct package name and only one colon. Note that this may not resolve masking.
+ပက်ကေ့ဂျ်တစ်ခုကို ဖယ်ထုတ်ရန် (Unload) ပြုလုပ်ရန်၊ မှန်ကန်သော ပက်ကေ့ဂျ်အမည်နှင့် ကော်လံတစ်ခုသာ ပါရှိသည့် ဤကွန်မန်းကို အသုံးပြုပါ။ ၎င်းသည် ဖုံးစွပ်ခြင်း maskingကို ဖြေရှင်းမည်မဟုတ်ကြောင်း သတိပြုပါ။
 
 ```{r, eval=F}
 detach(package:PACKAGE_NAME_HERE, unload=TRUE)
 ```
 
-### Install older version {.unnumbered}
+### ဗားရှင်းအဟောင်းကို ထည့်သွင်းခြင်း {.unnumbered}
 
-See this [guide](https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages) to install an older version of a particular package.
+ပက်ကေ့ခ်ျတစ်ခု၏ ဗားရှင်းအဟောင်းကို ထည့်သွင်းရန် ဤ [လမ်းညွှန်ချက်ကို ကြည့်ပါ။](https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages)
 
-### Suggested packages {.unnumbered}
+### အကြံပြုထားသော ပက်ကေ့ခ်ျများ {.unnumbered}
 
-See the page on [Suggested packages] for a listing of packages we recommend for everyday epidemiology.
+နေ့စဉ်ကူးစက်ရောဂါဗေဒ everyday epidemiology အတွက် အကြံပြုထားသော ပက်ကေ့ဂျ်များစာရင်းအတွက် [အကြံပြုထားသော ပက်ကေ့ဂျ် ](https://epirhandbook.com/en/suggested-packages-1.html#suggested-packages-1)ရှိ စာမျက်နှာကို ကြည့်ပါ ။
 
 <!-- ======================================================= -->
 
 ## Scripts {#scripts}
 
-Scripts are a fundamental part of programming. They are documents that hold your commands (e.g. functions to create and modify datasets, print visualizations, etc). You can save a script and run it again later. There are many advantages to storing and running your commands from a script (vs. typing commands one-by-one into the R console "command line"):
+Script များသည် ပရိုဂရမ်ရေးဆွဲခြင်း၏ အခြေခံအစိတ်အပိုင်းတစ်ခုဖြစ်သည်။ ၎င်းတို့သည် သင်၏ကွန်မန်းစာများကို ကိုင်ဆောင်ထားသည့် စာရွက်စာတမ်းများဖြစ်သည် (ဥပမာ- ဒေတာအတွဲများကို ဖန်တီးရန်နှင့် ပြင်ဆင်ရန် Function များ၊ ဒေတာပုံဖော်မှုများကိုprintထုတ်ခြင်း စသည်)။ သင်သည် scriptတစ်ခုကို သိမ်းဆည်းပြီးနောက်မှ ပြန်ဖွင့်နိုင်သည်။ script တစ်ခုမှ သင့် command များကို သိမ်းဆည်းခြင်းနှင့် လုပ်ဆောင်ခြင်းအတွက် အားသာချက်များစွာရှိသည် (command များကို R console "command line" သို့ တစ်ပုံချင်းရိုက်ထည့်ခြင်းနှင့်ယှဥ◌်လျှင်)
 
--   Portability - you can share your work with others by sending them your scripts\
--   Reproducibility - so that you and others know exactly what you did\
--   Version control - so you can track changes made by yourself or colleagues\
--   Commenting/annotation - to explain to your colleagues what you have done
+-   သယ်ဆောင်ရလွယ်ကူခြင်း - script များပေးပို့ခြင်းဖြင့် သင့်အလုပ်အား အခြားသူများနှင့် မျှဝေနိုင်ပါသည်။
 
-### Commenting {.unnumbered}
+-   မျိုးပွားနိုင်မှု - သင်နှင့်အခြားသူများ သင်ဘာလုပ်ခဲ့သည်ကို အတိအကျသိစေရန်
 
-In a script you can also annotate ("comment") around your R code. Commenting is helpful to explain to yourself and other readers what you are doing. You can add a comment by typing the hash symbol (#) and writing your comment after it. The commented text will appear in a different color than the R code.
+-   ဗားရှင်းထိန်းချုပ်မှု - ထို့ကြောင့် သင်ကိုယ်တိုင် သို့မဟုတ် လုပ်ဖော်ကိုင်ဖက်များက ပြုလုပ်သော အပြောင်းအလဲများကို ခြေရာခံနိုင်သည်။
 
-Any code written after the \# will not be run. Therefore, placing a \# before code is also a useful way to temporarily block a line of code ("comment out") if you do not want to delete it). You can comment out/in multiple lines at once by highlighting them and pressing Ctrl+Shift+c (Cmd+Shift+c in Mac).
+-   မှတ်ချက်ပေးခြင်း - သင်လုပ်ဆောင်ခဲ့သည့်အရာများကို သင့်လုပ်ဖော်ကိုင်ဖက်များအား ရှင်းပြရန်
+
+### မှတ်ချက်ပေးခြင်း {.unnumbered}
+
+scriptတစ်ခုတွင် သင်သည် သင်၏ R ကုဒ်တစ်ဝိုက်တွင် ("မှတ်ချက်") ကို ရေးသားနိုင်သည်။ မှတ်ချက်ပေးခြင်းသည် သင်ကိုယ်တိုင်နှင့် အခြားစာဖတ်သူများကို ရှင်းပြရန် အထောက်အကူဖြစ်စေသည်။ hash သင်္ကေတ (#) ကို ရိုက်ထည့်ပြီး မှတ်ချက်ရေးထည့်နိုင်သည်။ မှတ်ချက်ပေးထားသော စာသားသည် R ကုဒ်ထက် ကွဲပြားသောအရောင်ဖြင့် ပေါ်လာမည်ဖြစ်သည်။
+
+\# သင်္ကေတပြီးနောက်ရေးထားသော မည်သည့်ကုဒ်ကိုမဆို run မည်မဟုတ်ပါ။ ထို့ကြောင့်၊ ကုဒ်ရှေ့တွင် \# ထားခြင်းသည်လည်း ကုဒ်လိုင်းတစ်ခုကို ယာယီပိတ်ဆို့ရန် အသုံးဝင်သောနည်းလမ်း ("မှတ်ချက်ထုတ်ခြင်း") ကိုမဖျက်လိုပါက)။ ၎င်းတို့ကို highlightတားပြီး Ctrl+Shift+c (Mac တွင် Cmd+Shift+c) ကိုနှိပ်ခြင်းဖြင့် တစ်ကြိမ်တည်းတွင် စာကြောင်းများစွာကို မှတ်ချက်ပေးနိုင်ပါသည်။
 
 ```{r, eval = F}
 # A comment can be on a line by itself
@@ -716,21 +724,25 @@ linelist <- import("linelist_raw.xlsx") %>%   # a comment can also come after co
 
 ```
 
--   Comment on *what* you are doing *and on **why** you are doing it*.\
--   Break your code into logical sections\
--   Accompany your code with a text step-by-step description of what you are doing (e.g. numbered steps)
+-   သင် *ဘာ* လုပ်နေသလဲ ၊ *ဘာကြောင့်* လုပ်တာလဲ ဆိုတာ မှတ်ချက်ပေး ပါ ။
 
-### Style {.unnumbered}
+-   သင့်ကုဒ်ကို ကျိုးကြောင်းဆီလျော်သော ကဏ္ဍများအဖြစ် ခွဲလိုက်ပါ။
 
-It is important to be conscious of your coding style - especially if working on a team. We advocate for the **tidyverse** [style guide](https://style.tidyverse.org/). There are also packages such as **styler** and **lintr** which help you conform to this style.
+-   သင်လုပ်ဆောင်နေသည့်အရာ၏ စာသားအဆင့်ဆင့်ဖော်ပြချက်နှင့်အတူ သင့်ကုဒ်ကို တွဲပါ (ဥပမာ- နံပါတ်တပ်ထားသော အဆင့်များ)
 
-A few very basic points to make your code readable to others:\
-\* When naming objects, use only lowercase letters, numbers, and underscores `_`, e.g. `my_data`\
-\* Use frequent spaces, including around operators, e.g. `n = 1` and `age_new <- age_old + 3`
+### စတိုင် {.unnumbered}
 
-### Example Script {.unnumbered}
+အထူးသဖြင့် အဖွဲ့လိုက်လုပ်ဆောင်ရသောအခါတွင် သင်၏ coding ပုံစံကို သတိရှိရန် အရေးကြီးသည်။ ကျွန်ုပ်တို့သည် tidyverse [စတိုင်လ်လမ်းညွှန်မှု](https://style.tidyverse.org/) ဖတ်ရန်ထောက်ခံအား ပေးပါသည် ။ ဤစတိုင်လ်နှင့်လိုက်လျောညီထွေဖြစ်အောင်ကူညီပေးသော **styler** နှင့် **lintr** ကဲ့သို့သော packages များလည်းရှိပါသည် ။
 
-Below is an example of a short R script. Remember, the better you succinctly explain your code in comments, the more your colleagues will like you!
+သင့်ကုဒ်ကို အခြားသူများဖတ်နိုင်စေရန်အတွက် အခြေခံအချက်အချို့-
+
+\* Objectများကို အမည်ပေးသောအခါတွင် စာလုံးသေးများ၊ နံပါတ်များနှင့် အမှတ်အသားများကိုသာ အသုံးပြုပါ \_၊ ဥပမာ  `my_data`
+
+\* အော်ပရေတာများအနီး မကြာခဏနေရာလွတ်(space)များကို အသုံးပြုပါ ဥပမာ၊ ဥပမာ  `n = 1` နှင့် `age_new <- age_old + 3`
+
+### နမူနာ Script {.unnumbered}
+
+အောက်တွင် R scriptတိုတစ်ခု၏ ဥပမာတစ်ခုဖြစ်သည်။ မှတ်ချက်များတွင် သင့်ကုဒ်ကို တိုတိုတုတ်တုတ်ရှင်းပြလေ၊ သင့်လုပ်ဖော်ကိုင်ဖက်များက သင့်ကို ပိုသဘောကျလေလေဖြစ်ကြောင်း သတိရပါ။
 
 ```{r out.width = "100%", fig.align = "center", echo=F}
 knitr::include_graphics(here::here("images", "example_script.png"))
@@ -740,29 +752,31 @@ knitr::include_graphics(here::here("images", "example_script.png"))
 
 ### R markdown {.unnumbered}
 
-An R markdown script is a type of R script in which the script itself *becomes* an output document (PDF, Word, HTML, Powerpoint, etc.). These are incredibly useful and versatile tools often used to create dynamic and automated reports. Even this website and handbook is produced with R markdown scripts!
+R markdown script သည် R script အမျိုးအစားဖြစ်ပြီး script ကိုယ်တိုင်က output document (PDF၊ Word၊ HTML၊ Powerpoint စသည်ဖြင့်) လာသည်။ ၎င်းတို့သည် ဒိုင်းနမစ်နှင့် အလိုအလျောက် အစီရင်ခံစာများဖန်တီးရန် မကြာခဏဆိုသလို မယုံနိုင်လောက်အောင် အသုံးဝင်ပြီး စွယ်စုံသုံးကိရိယာများဖြစ်သည်။ ဤဝဘ်ဆိုက်နှင့် လက်စွဲစာအုပ်ကိုပင် R markdown script များဖြင့် ထုတ်လုပ်ထားသည်။
 
-It is worth noting that beginner R users can also use R Markdown - do not be intimidated! To learn more, see the handbook page on \[Reports with R Markdown\] documents.
+R စအသုံးပြုသူများသည် R Markdown ကိုလည်းအသုံးပြုနိုင်သည် - မကြောက်ပါနှင့်။ ပိုမိုလေ့လာရန်၊ [R Markdown](https://epirhandbook.com/en/reports-with-r-markdown.html#reports-with-r-markdown) စာရွက်စာတမ်းများပါရှိသော အစီရင်ခံစာများပါ လက်စွဲစာအုပ်ကို ကြည့်ပါ။
 
 <!-- ======================================================= -->
 
 ### R notebooks {.unnumbered}
 
-There is no difference between writing in a Rmarkdown vs an R notebook. However the execution of the document differs slightly. See this [site](http://uc-r.github.io/r_notebook) for more details.
+Rmarkdown နှင့် R notebook တွင်ရေးခြင်းအကြားခြားနားချက်မရှိပါ။ သို့သော် စာရွက်စာတမ်းကို အကောင်အထည်ဖော်မှု အနည်းငယ် ကွဲပြားသည်။ အသေးစိတ်အချက်အလက်များအတွက် ဤ [ဆိုက်ကို ကြည့်ပါ။](http://uc-r.github.io/r_notebook)
 
 <!-- ======================================================= -->
 
 ### Shiny {.unnumbered}
 
-Shiny apps/websites are contained within one script, which must be named `app.R`. This file has three components:
+Shiny အက်ပ်များ/ဝဘ်ဆိုက်များကို `app.R` အမည်ပေးရမည်ဖြစ်သည့် scriptတစ်ခုအတွင်းတွင် ပါဝင်သည်။ ဤဖိုင်တွင် အစိတ်အပိုင်း သုံးခု ပါရှိသည်။
 
-1)  A user interface (ui)\
-2)  A server function\
-3)  A call to the `shinyApp` function
+1.  အသုံးပြုသူ အင်တာဖေ့စ် (ui)
 
-See the handbook page on \[Dashboards with Shiny\], or this online tutorial: [Shiny tutorial](https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/)
+2.  ဆာဗာFunction တစ်ခု
 
-*In older times, the above file was split into two files (`ui.R` and `server.R`)*
+3.  `shinyApp` function ကိုအခေါ်
+
+[Shiny ဖြင့် Dashboards](https://epirhandbook.com/en/dashboards-with-shiny.html#dashboards-with-shiny) ရှိ လက်စွဲစာအုပ် စာမျက်နှာ သို့မဟုတ် ဤအွန်လိုင်းသင်ခန်းစာ- [Shiny သင်ခန်းစာကို ကြည့်ပါ။](https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/)
+
+အရင်က၊ အထက်ပါဖိုင်ကို ဖိုင်နှစ်ဖိုင် ( `ui.R` နှင့် `server.R` ) ခွဲထားသည်။
 
 ### Code folding {.unnumbered}
 

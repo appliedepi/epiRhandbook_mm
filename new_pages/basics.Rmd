@@ -307,7 +307,7 @@ R ရပ်သွားပါက Session menu သို့သွားကာ "Re
 | Shift + Alt + l                  | Cmd + Shift + Option+l | ရွေးချယ်ထားသောကုဒ်ကို ဖြည်ပါ။                                                                                                                  |
 +----------------------------------+------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
-\[***အကြံပြုချက်:*** RStudio ၏ အလိုအလျောက် ဖြည့်စွက်လုပ်ဆောင်နိုင်စွမ်းကို သုံးရန် စာရိုက်သောအခါတွင် တက်ဘ်ကီးကို အသုံးပြုပါ။၎င်းသည် စာလုံးပေါင်းအမှားများကို တားဆီးနိုင်သည်။ စာရိုက်နေစဉ်တွင် တက်ဘ်ကို နှိပ်ပကယခုအချိန်အထိ ရိုက်ထည့်ထားသည့်အရာအပေါ် အခြေခံ၍ ဖြစ်နိုင်ခြေရှိသော functions နှင့် objectsများ၏ drop-down menu အရေါ်လာလိမ့််\] {style="color: darkgreen;"}
+[***အကြံပြုချက်*** RStudio ၏ အလိုအလျောက် ဖြည့်စွက်လုပ်ဆောင်နိုင်စွမ်းကို သုံးရန် စာရိုက်သောအခါတွင် တက်ဘ်ကီးကို အသုံးပြုပါ။၎င်းသည် စာလုံးပေါင်းအမှားများကို တားဆီးနိုင်သည်။ စာရိုက်နေစဉ်တွင် တက်ဘ်ကို နှိပ်ပါကယခုအချိန်အထိ ရိုက်ထည့်ထားသည့်အရာအပေါ် အခြေခံ၍ ဖြစ်နိုင်ခြေရှိသော functions နှင့် objectsများ၏ drop-down menu အရပေါ်လာလိမ့်မည်ဖြစ်သည်။]{style="color:darkgreen;"}
 
 <!-- ======================================================= -->
 
@@ -920,8 +920,7 @@ Objectတစ်ခုကိုတန်ဖိုးတစ်ခု သတ်မ�
 
 ### Objectများကို သတ်မှတ်ခြင်း ( [`<-`](https://rdrr.io/r/base/assignOps.html)) {.unnumbered}
 
-**Create objects *by assigning them a value* with the \<- operator.**\
-You can think of the assignment operator `<-` as the words "is defined as". Assignment commands generally follow a standard order: `<-` **အော်ပရေတာဖြင့် *၎င်းတို့ကို တန်ဖိုးတစ်ခုသတ်မှတ်*ပေးခြင်းဖြင့်** **Objectများကို ဖန်တီး** ပါ။ `<-`assignment operator ကို "သတ်မှတ်ထားသည်" ဟူသော စကားလုံးများအဖြစ်သင်စဉ်းစားနိုင်သည် ။ Assignment commands များသည် ယေဘူယျအားဖြင့် စံနှုန်းအစဉ် ကိုလိုက်နာသည်-\
+`<-` **အော်ပရေတာဖြင့် *၎င်းတို့ကို တန်ဖိုးတစ်ခုသတ်မှတ်*ပေးခြင်းဖြင့်** **Objectများကို ဖန်တီး** ပါ။ `<-`assignment operator ကို "သတ်မှတ်ထားသည်" ဟူသော စကားလုံးများအဖြစ်သင်စဉ်းစားနိုင်သည် ။ Assignment commands များသည် ယေဘူယျအားဖြင့် စံနှုန်းအစဉ် ကိုလိုက်နာသည်-\
 
 **object_name** \<- **တန်ဖိုး** (သို့မဟုတ် တန်ဖိုးတစ်ခုထုတ်လုပ်သည့် လုပ်ငန်းစဉ်/တွက်ချက်မှု)
 
@@ -1133,7 +1132,7 @@ length(linelist$age) # (age is a column in the linelist data frame)
 knitr::include_graphics(here::here("images", "Calling_Names.gif"))
 ```
 
-[***အဆင့်မြင့် အကြံပြုချက်:***အချို့သော ပိုမိုရှုပ်ထွေးသော Objectများ (ဥပမာ- စာရင်းတစ်ခု သို့မဟုတ် `epicontacts` Objectတစ်ခု)သည်ဒေါ်လာ သင်္ကေတများစွာဖြင့် ဝင်ရောက်နိုင်သည့် အဆင့်များစွာ ရှိသည်။ ဥပမာ `epicontacts`]{style="color: darkgreen;"}`$linelist$date_onset`
+[***အဆင့်မြင့် အကြံပြုချက်:***အချို့သော ပိုမိုရှုပ်ထွေးသော Objectများ (ဥပမာ- စာရင်းတစ်ခု သို့မဟုတ် epicontacts Objectတစ်ခု) သည် ဒေါ်လာ သင်္ကေတများစွာဖြင့် ဝင်ရောက်နိုင်သည့် အဆင့်များစွာ ရှိသည်။ ဥပမာ `epicontacts`]{style="color:darkgreen;"}`$linelist$date_onset`
 
 <!-- ======================================================= -->
 
@@ -1573,7 +1572,7 @@ options(scipen=999)
 
 #### Rounding {.unnumbered}
 
-[***DANGER:*** `round()` အထက်နံပါတ်သည် စုံဂဏန်းဖြစ်မှသာ .5 မှ round up ပေးသော "banker's rounding"ကို အသုံးပြုသည်။ တစ်ဝက်မှ အနီးဆုံးဂဏန်းပြည့်အထိ round up ရန် janitor မှ `round_half_up()`သုံးပါ။ ဤ]{style="color: red;"}[ရှင်းလင်းချက်](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#explore-records-with-duplicated-values-for-specific-combinations-of-variables-with-get_dupes)[ကိုကြည့်ပါ)]{style="color: red;"}
+[***အန္တရာယ်:*** `round()` အထက်နံပါတ်သည် စုံဂဏန်းဖြစ်မှသာ .5 မှ round up ပေးသော "banker's rounding"ကို အသုံးပြုသည်။ တစ်ဝက်မှ အနီးဆုံးဂဏန်းပြည့်အထိ round up ရန် janitor မှ `round_half_up()`သုံးပါ။ ဤ]{style="color: red;"}[ရှင်းလင်းချက်](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#explore-records-with-duplicated-values-for-specific-combinations-of-variables-with-get_dupes)[ကိုကြည့်ပါ ။]{style="color: red;"}
 
 ```{r}
 # use the appropriate rounding function for your work

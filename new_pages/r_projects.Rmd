@@ -1,113 +1,97 @@
+# R ပရောဂျက်များ
 
-# R projects {}  
+R ပရောဂျက်တစ်ခုသည် သင့်အလုပ်ကို သယ်ယူရလွယ်ကူသော၊ ကိုယ်တိုင်ပါရှိသော ဖိုင်တွဲတစ်ခုတွင် ထုပ်ပိုးထားနိုင်စေပါသည်။ ပရောဂျက်အတွင်း၊ သက်ဆိုင်ရာ scriptများ၊ ဒေတာဖိုင်များ၊ figure/outputများနှင့် မှတ်တမ်းအားလုံးကို ဖိုင်တွဲခွဲများထဲတွင် သိမ်းဆည်းထားပြီး အရေးကြီးသည်မှာ - *working directory* သည် ပရောဂျက်၏ အမြစ်ဖိုင်တွဲဖြစ်သည်။
 
+## အသုံးပြုရန် အကြံပြုခြင်း
 
-An R project enables your work to be bundled in a portable, self-contained folder. Within the project, all the relevant scripts, data files, figures/outputs, and history are stored in sub-folders and importantly - the *working directory* is the project's root folder.  
+R ကိုအသုံးပြုရန် အသုံးများ၊ ထိရောက်ပြီး ပြဿနာကင်းသည့်နည်းလမ်းမှာ ဤelement ၃ ခုကို ပေါင်းစပ်ခြင်းဖြစ်သည်။ သီးခြားအလုပ်ပရောဂျက်တစ်ခုအား R ပရောဂျက်တစ်ခုအတွင်း လက်ခံဆောင်ရွက်ပေးပါသည်။ Element တစ်ခုစီကို အောက်ပါကဏ္ဍများတွင် ဖော်ပြထားပါသည်။
 
+1.  R **ပရောဂျက်** တစ်ခု
 
-## Suggested use  
+    -   ဒေတာ၊ scriptများ၊ outputများ စသည်တို့အတွက် ဖိုဒါများပါရှိသော ကိုယ်တိုင်ပါရှိသော working environment။
 
-A common, efficient, and trouble-free way to use R is to combine these 3 elements. One discrete work project is hosted within one R project. Each element is described in the sections below.  
+2.  Relative ဖိုင် လမ်းကြောင်း များအတွက် **here** ပက်ကေ့ဂျ်
 
-1) An **R project**  
-     - A self-contained working environment with folders for data, scripts, outputs, etc.  
-2) The **here** package for relative filepaths  
-     - Filepaths are written relative to the root folder of the R project - see [Import and export] for more information  
-3) The **rio** package for importing/exporting  
-     - `import()` and `export()` handle any file type by by its extension (e.g. .csv, .xlsx, .png)  
-     
-     
+    -   Filepath များကို R ပရောဂျက်၏ အမြစ်ဖိုဒါနှင့် ဆက်စပ်ရေးသားထားသည် - နောက်ထပ်အချက်အလက်များအတွက် [Import နှင့် export](https://epirhandbook.com/en/import-and-export.html#import-and-export) [ကို ကြည့်ပါ။](https://epirhandbook.com/en/import-and-export.html#import-and-export)
 
+3.  တင်သွင်း/တင်ပို့ခြင်းအတွက် **rio** ပက်ကေ့ဂျ်
+
+    -   မည်သည့်ဖိုင်အမျိုးအစားကိုမဆို`import()` နှင့် `export()`၎င်း၏ extension ဖြင့်  ကိုင်တွယ်သည် (ဥပမာ .csv၊ .xlsx၊ .png)
 
 <!-- ======================================================= -->
-## Creating an R project {}
 
-To create an R project, select "New Project" from the File menu.
+## R ပရောဂျက်တစ်ခုကို ဖန်တီးခြင်း။
 
-* If you want to create a new folder for the project, select "New directory" and indicate where you want it to be created.  
-* If you want to create the project within an existing folder, click "Existing directory" and indicate the folder.  
-* If you want to clone a Github repository, select the third option "Version Control" and then "Git". See the page on [Version control and collaboration with Git and Github] for further details.  
+R ပရောဂျက်တစ်ခုဖန်တီးရန် ဖိုင်မီနူးမှ "ပရောဂျက်အသစ်" ကိုရွေးချယ်ပါ။
 
+-   ပရောဂျက်အတွက် ဖိုင်တွဲအသစ်တစ်ခုကို ဖန်တီးလိုပါက "New Project" ကိုရွေးချယ်ပြီး ၎င်းကို ဖန်တီးလိုသည့်နေရာကို ညွှန်ပြပါ။
+
+-   လက်ရှိဖိုင်တွဲတစ်ခုအတွင်း ပရောဂျက်ကို ဖန်တီးလိုပါက "New directory" ကိုနှိပ်ပြီး ဖိုင်တွဲကို ညွှန်ပြပါ။
+
+-   Github repository ကို clone လုပ်လိုပါက တတိယရွေးချယ်မှု "Version Control" နှင့် "Git" ကိုရွေးချယ်ပါ။ နောက်ထပ်အသေးစိတ်အချက်အလက်များအတွက် [ဗားရှင်းထိန်းချုပ်မှုနှင့် Git နှင့် Github နှင့် ပူးပေါင်းဆောင်ရွက်ခြင်း](https://epirhandbook.com/en/version-control-and-collaboration-with-git-and-github.html#version-control-and-collaboration-with-git-and-github) ရှိ စာမျက်နှာကို ကြည့်ပါ ။
 
 ```{r out.width = "75%", fig.align = "center", echo=F}
 knitr::include_graphics(here::here("images", "create_project.png"))
 ```
 
+သင်ဖန်တီးသော R ပရောဂျက်သည် *.Rproj* ဖိုင်ပါရှိသော ဖိုင်တွဲပုံစံဖြင့် လာ မည်ဖြစ်သည်။ ဤဖိုင်သည် ဖြတ်လမ်းတစ်ခုဖြစ်ပြီး သင့်ပရောဂျက်ကိုဖွင့်မည့် အဓိကနည်းလမ်းဖြစ်ဖွယ်ရှိသည်။ ဖိုင်မီနူးမှ "Open Project" ကိုရွေးချယ်ခြင်းဖြင့် ပရောဂျက်တစ်ခုကိုလည်း သင်ဖွင့်နိုင်သည်။ တနည်းအားဖြင့် RStudio ၏ညာဘက်အပေါ်ဘက်အခြမ်းတွင် R ပရောဂျက်သင်္ကေတနှင့် ရနိုင်သော R ပရောဂျက်များ၏ drop-down menu ကိုတွေ့ရပါမည်။
 
-The R project you create will come in the form of a folder containing a *.Rproj* file. This file is a shortcut and likely the primary way you will open your project. You can also open a project by selecting "Open Project" from the File menu. Alternatively on the far upper right side of RStudio you will see an R project icon and a drop-down menu of available R projects. 
+R ပရောဂျက်တစ်ခုမှ ထွက်ရန်၊ ပရောဂျက်အသစ်တစ်ခုဖွင့်ပါ သို့မဟုတ် ပရောဂျက်ကိုပိတ်ပါ (File - Close Project)။
 
-To exit from an R project, either open a new project, or close the project (File - Close Project).  
+### ပရောဂျက်များကြား ပြောင်းခြင်း {.unnumbered}
 
-
-### Switch projects {.unnumbered}
-
-To switch between projects, click the R project icon and drop-down menu at the very top-right of RStudio. You will see options to Close Project, Open Project, and a list of recent projects.  
+ပရောဂျက်များကြားပြောင်းရန်၊ R ပရောဂျက်အိုင်ကွန်နှင့် RStudio ၏ညာဘက်အပေါ်ထောင့်ရှိ drop-down menu ကိုနှိပ်ပါ။ ပရောဂျက်ပိတ်ရန်၊ ပရောဂျက်ဖွင့်ရန်နှင့် လတ်တလောပရောဂျက်များစာရင်းကို သင်တွေ့ရပါမည်။
 
 ```{r out.width = "100%", fig.align = "center", echo=F}
 knitr::include_graphics(here::here("images", "Rproject_dropdown.png"))
 ```
 
+### ဆက်တင်များ {.unnumbered}
 
-### Settings {.unnumbered}  
+"clean slate" ဖြင့်အကြိမ်တိုင်း RStudio ကိုစတင်ရန် ယေဘူယျအားဖြင့် အကြံပြုထားသည် - ဆိုလိုသည်မှာ၊ သင်၏ယခင်စက်ရှင်မှ **မ** ထိန်းသိမ်းထားသော သင်၏အလုပ်ခွင်နှင့်။ ၎င်းသည် သင်၏အရာဝတ္ထုများနှင့် ရလဒ်များသည် ဆက်ရှင်မှ ဆက်ရှင်ဆက်ရှိနေမည်မဟုတ်ကြောင်း ဆိုလိုသည်မှာ (သင်၏ scripts များကို run ခြင်းဖြင့် ၎င်းတို့ကို ပြန်လည်ဖန်တီးရမည်)။ ၎င်းသည် သင့်အား ပိုမိုကောင်းမွန်သော Script များရေးသားရန်နှင့် ရေရှည်တွင် အမှားအယွင်းများကို ရှောင်ရှားနိုင်သောကြောင့် ၎င်းသည် ကောင်းမွန်ပါသည်။
 
-It is generally advised that you start RStudio each time with a "clean slate" - that is, with your workspace **not** preserved from your previous session. This will mean that your objects and results will not persist session-to-session (you must re-create them by running your scripts). This is good, because it will force you to write better scripts and avoid errors in the long run.  
+စတင်ချိန်တွင် RStudio အား "clean slate" ရှိစေရန် သတ်မှတ်ရန်-
 
-To set RStudio to have a "clean slate" each time at start-up:  
+-   Tools မီနူးမှ "Project Options" ကိုရွေးချယ်ပါ။
 
-* Select "Project Options" from the Tools menu.  
-* In the "General" tab, set RStudio to **not** restore .RData into workspace at startup, and to **not** save workspace to .RData on exit.  
+-   "General" တက်ဘ်တွင်၊ စတင်ချိန်တွင် .RData ကို အလုပ်ခွင်သို့ ပြန်လည် **မ** သိမ်းဆည်းရန်နှင့် ထွက်ရာတွင် .RData သို့ အလုပ်ခွင်နေရာ မ သိမ်းရန် သတ်မှတ်ပါ။
 
+### Organization {.unnumbered}
 
+သင့်ပရောဂျက်တွင် ဖိုင်တွဲခွဲများရှိနေခြင်းသည် သာမာန်ဖြစ်သည်။ "ဒေတာ"၊ "စခရစ်များ"၊ "figureများ"၊ "presentationများ" ကဲ့သို့သော ဖိုင်တွဲများထားရှိရန် စဉ်းစားပါ။ သင့်ကွန်ပြူတာအတွက် ဖိုဒါအသစ်တစ်ခုထည့်မည့် ပုံမှန်နည်းလမ်းဖြင့် ဖိုင်တွဲများကို သင်ထည့်နိုင်သည်။ တနည်းအား ဖြင့် R command များဖြင့် ဖိုင်တွဲအသစ်များ ဖန်တီးနည်းကို လေ့လာရန် [Directory interactions](https://epirhandbook.com/en/directory-interactions.html#directory-interactions) တွင် စာမျက်နှာကို ကြည့်ပါ ။
 
-### Organization {.unnumbered}  
+### ဗားရှင်းထိန်းချုပ်မှု {.unnumbered}
 
-It is common to have subfolders in your project. Consider having folders such as "data", "scripts", "figures", "presentations". You can add folders in the typical way you would add a new folder for your computer. Alternatively, see the page on [Directory interactions] to learn how to create new folders with R commands.  
+ဗားရှင်းထိန်းချုပ်မှုစနစ်ကို စဉ်းစားပါ။ scripts အမည်များ (ဥပမာ "transmission_analysis_2020-10-03.R") နှင့် "archive" ဖိုင်တွဲများပေါ်တွင် ရက်စွဲများထားရှိခြင်းကဲ့သို့ ရိုးရှင်းပါသည်။ ဖော်ပြချက်၊ tagများ၊ စာရေးဆရာများနှင့် အပြောင်းအလဲမှတ်တမ်းများပါရှိသော ဇာတ်ညွှန်းတစ်ခုစီ၏ထိပ်တွင် ခေါင်းစီးစာသားကို မှတ်ချက်ပေးထားဖို့ ထည့်သွင်းစဉ်းစားပါ။
 
+ပိုမိုရှုပ်ထွေးသောနည်းလမ်းတစ်ခုတွင် Github သို့မဟုတ် ဗားရှင်းထိန်းချုပ်မှုအတွက် အလားတူပလပ်ဖောင်းကို အသုံးပြုခြင်း ပါဝင်သည်။ [ဗားရှင်းထိန်းချုပ်မှုနှင့် Git နှင့် Github တို့နှင့်အတူ ပူးပေါင်းဆောင်ရွက်](https://epirhandbook.com/en/version-control-and-collaboration-with-git-and-github.html#version-control-and-collaboration-with-git-and-github) သည့် စာမျက်နှာကို ကြည့်ပါ ။
 
-### Version control {.unnumbered}  
+အကြံပြုချက်တစ်ခုကတော့ "Find in Files" tool (Edit Menu) ကိုသုံးပြီး ပရောဂျက်တစ်ခုလုံး ဒါမှမဟုတ် ဖိုင်တွဲတစ်ခုလုံးကို ရှာဖွေနိုင်ပါတယ်။ ၎င်းသည် ဖိုင်အများအပြားတွင် ရှာဖွေနိုင်ပြီး စာကြောင်းများကိုပင် အစားထိုးနိုင်သည်။
 
-Consider a version control system. It could be something as simple as having dates on the names of scripts (e.g. "transmission_analysis_2020-10-03.R") and an "archive" folder. Consider also having commented header text at the top of each script with a description, tags, authors, and change log.  
+## ဥပမာများ
 
-A more complicated method would involve using Github or a similar platform for version control. See the page on [Version control and collaboration with Git and Github].  
+အောက်တွင် [`here()`](https://here.r-lib.org//reference/here.html) R ပရောဂျက်တစ်ခုအတွင်းမှ အသုံးပြု၍ import၊ export၊ save ခြင်း၏ နမူနာအချို့ဖြစ်သည်။ [Import နှင့် export](https://epirhandbook.com/en/import-and-export.html#import-and-export) စာမျက်နှာ ရှိ **here** ပက်ကေ့ဂျ်ကို အသုံးပြုခြင်းအကြောင်း ပိုမိုဖတ်ရှုပါ ။
 
-One tip is that you can search across an entire project or folder using the "Find in Files" tool (Edit menu). It can search and even replace strings across multiple files.  
-
-
-
-
-
-
-## Examples  
-
-Below are some examples of import/export/saving using `here()` from within an R projct. Read more about using the **here** package in the [Import and export] page.  
-
-
-*Importing `linelist_raw.xlsx` from the "data" folder in your R project*  
+*သင်၏ R ပရောဂျက်ရှိ "ဒေတာ" ဖို ဒါမှ `linelist_raw.xlsx` ကို တင်သွင်းခြင်း ။*
 
 ```{r eval=F}
 linelist <- import(here("data", "linelist_raw.xlsx"))
 ```
 
-*Exporting the R object `linelist` as "my_linelist.rds" to the "clean" folder within the "data" folder in your R project.*   
+*သင်၏ R ပရောဂျက်  `linelist` ကို "`my_linelist.rds`" အဖြစ် "ဒေတာ" ဖိုင်တွဲအတွင်းရှိ  "clean" ဖိုဒါသို့ R အရာဝတ္တု ကို ထုတ်ယူခြင်း။*
 
 ```{r, eval=F}
 export(linelist, here("data","clean", "my_linelist.rds"))
 ```
 
-*Saving the most recently printed plot as "epicurve_2021-02-15.png" within the "epicurves" folder in "outputs" folder in your R project.*  
+*သင်၏ R ပရောဂျက်ရှိ "outputs" ဖိုင်တွဲရှိ "epicurves" ဖိုင်တွဲအတွင်း "epicurve_2021-02-15.png" အဖြစ် လတ်တလော ရိုက်နှိပ်ထားသော ဇာတ်ကွက်ကို သိမ်းဆည်းပါ။*
 
 ```{r, eval=F}
 ggsave(here("outputs", "epicurves", "epicurve_2021-02-15.png"))
 ```
 
-
-
-
 <!-- ======================================================= -->
-## Resources {}
 
-RStudio webpage on [using R projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+## အရင်းအမြစ်များ
 
-
-
-
+[R ပရောဂျက်များကို အသုံးပြုခြင်း](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) ရှိ RStudio ဝဘ်စာမျက်နှာ

@@ -1,145 +1,152 @@
-# Import and export {}
-
+# Import နှင့် export
 
 ```{r, out.width=c('100%'), echo=F, message=F}
 knitr::include_graphics(here::here("images", "Import_Export_1500x500.png"))
 ```
 
+ဤစာမျက်နှာတွင် ဖိုင်များကို ရှာဖွေခြင်း၊ importခြင်းနှင့်  exportခြင်းနည်းလမ်းများကို ဖော်ပြထားပါသည်။
 
+-   ဖိုင်အမျိုးအစားများစွာကို လိုက်လျောညီထွေ`import()` နှင့် [`export()`](https://rdrr.io/pkg/rio/man/export.html)ရန် **rio** ပက်ကေ့ခ်ျ ကို အသုံးပြုခြင်း။
 
-In this page we describe ways to locate, import, and export files:  
+-   R ပရောဂျက် root နှင့် ပတ်သက်သော ဖိုင်များကို ရှာဖွေရန် **here** ပက်ကေ့ဂျ်ကို အသုံးပြုခြင်း - ကွန်ပျူတာတစ်လုံးအတွက် သီးခြားဖိုင်လမ်းကြောင်းများမှ ရှုပ်ထွေးမှုများကို ကာကွယ်ရန်
 
-* Use of the **rio** package to flexibly `import()` and `export()` many types of files  
-* Use of the **here** package to locate files relative to an R project root - to prevent complications from file paths that are specific to one computer  
-* Specific import scenarios, such as:  
-  * Specific Excel sheets  
-  * Messy headers and skipping rows  
-  * From Google sheets  
-  * From data posted to websites  
-  * With APIs  
-  * Importing the *most recent* file  
-* Manual data entry  
-* R-specific file types such as RDS and RData  
-* Exporting/saving files and plots  
+-   ဤကဲ့သို့သော သီးခြားimportမှုအခြေအနေများ၊
 
+    -   သီးခြား Excel sheetများ
 
-<!-- ======================================================= -->
-## Overview
+    -   ရှုတ်ထွေးသော ခေါင်းစီးများနှင့် rowများကို ကျော်ခြင်း။
 
-When you import a "dataset" into R, you are generally creating a new *data frame* object in your R environment and defining it as an imported file (e.g. Excel, CSV, TSV, RDS) that is located in your folder directories at a certain file path/address.  
+    -   Google sheetများမှ
 
-You can import/export many types of files, including those created by other statistical programs (SAS, STATA, SPSS). You can also connect to relational databases.  
+    -   ဝဘ်ဆိုဒ်များသို့ တင်ထားသောdataမှ
 
-R even has its own data formats:  
+    -   API များဖြင့်
 
-* An RDS file (.rds) stores a single R object such as a data frame. These are useful to store cleaned data, as they maintain R column classes. Read more in [this section](#import_rds).    
-* An RData file (.Rdata) can be used to store multiple objects, or even a complete R workspace. Read more in [this section](#import_rdata).  
+    -   *လတ်တလောဆုံး* ဖိုင်ကို importခြင်း
 
+-   ကိုယ်တိုင်Manual ဒေတာထည့်သွင်းခြင်း။
+
+-   RDS နှင့် RData ကဲ့သို့သော R သီးသန့်ဖိုင်အမျိုးအစားများ
+
+-   ဖိုင်များနှင့် plotများကို ထုတ်ယူခြင်း/သိမ်းဆည်းခြင်း။
 
 <!-- ======================================================= -->
-## The **rio** package {}  
 
-The R package we recommend is: **rio**. The name "rio" is an abbreviation of "R I/O" (input/output).  
+## ခြုံငုံသုံးသပ်ခြင်း 
 
-Its functions `import()` and `export()` can handle many different file types (e.g. .xlsx, .csv, .rds, .tsv). When you provide a file path to either of these functions (including the file extension like ".csv"), **rio** will read the extension and use the correct tool to import or export the file.  
+"dataset" ကို R သို့ importသောအခါ၊ သင်သည် ယေဘုယျအားဖြင့် သင်၏ R environment တွင် data frame object အသစ်တစ်ခုကို ဖန်တီး နေတာဖြစ် ပြီး ၎င်းကို ဖိုင်လမ်းကြောင်း/လိပ်စာတစ်ခုရဲ့  ဖိုဒါ director များထဲမှာ တည်ရှိသောဖိုင်တစ်ခု/imported file (ဥပမာ Excel၊ CSV၊ TSV၊ RDS) တစ်ခုအဖြစ် သတ်မှတ်ခြင်းဖြစ်ပါသည်။ 
 
-The alternative to using **rio** is to use functions from many other packages, each of which is specific to a type of file. For example, `read.csv()` (**base** R), `read.xlsx()` (**openxlsx** package), and `write_csv()` (**readr** pacakge), etc. These alternatives can be difficult to remember, whereas using `import()` and `export()` from **rio** is easy.  
+အခြားစာရင်းအင်းပရိုဂရမ်များ (SAS၊ STATA၊ SPSS) မှ ဖန်တီးထားသည့် ဖိုင်အမျိုးအစားများစွာကို သင်import/ထုတ်နိုင်သည်။ ဆက်စပ်ဒေတာဘေ့စ်များနှင့်လည်း ချိတ်ဆက်နိုင်သည်။
 
-**rio**'s functions `import()` and `export()` use the appropriate package and function for a given file, based on its file extension. See the end of this page for a complete table of which packages/functions **rio** uses in the background. It can also be used to import STATA, SAS, and SPSS files, among dozens of other file types.  
+R သည် ၎င်း၏ကိုယ်ပိုင်ဒေတာဖော်မတ်များပင် ရှိသည်-
 
-Import/export of shapefiles requires other packages, as detailed in the page on [GIS basics].    
+-   RDS ဖိုင် (.rds) သည် data frameကဲ့သို့သော R objectတစ်ခုအား သိမ်းဆည်းထားသည်။ ၎င်းတို့သည် R ကော်လံ classများကို ထိန်းသိမ်းထားသောကြောင့် ရှင်းလင်းထားသောဒေတာကို သိမ်းဆည်းရန် ၎င်းတို့သည် အသုံးဝင်ပါသည်။ [ဤကဏ္ဍ](https://epirhandbook.com/en/import-and-export.html#import_rds) တွင် ပိုမို ဖတ်ရှုပါ ။
 
+-   Objectများစွာသာမက ပြီးပြည့်စုံသော R အလုပ်ခွင်တစ်ခုကို သိမ်းဆည်းရန်အတွက် RData ဖိုင် (.Rdata) ကို သုံးနိုင်သည်ဖြစ်သည်။[ဤကဏ္ဍ](https://epirhandbook.com/en/import-and-export.html#import_rdata) တွင် ပိုမို ဖတ်ရှုပါ ။
 
+<!-- ======================================================= -->
 
+## **rio** ပက်ကေ့ဂျ်
 
+ကျွန်ုပ်တို့ အကြံပြုထားသော R ပက်ကေ့ဂျ်မှာ- **rio** ဖြစ်သည်။ "rio" သည် "R I/O" (input/output) ၏ အတိုကောက်ဖြစ်သည်။
 
-## The **here** package {#here}
+၎င်း၏functionများ [`import()`](https://rdrr.io/pkg/rio/man/import.html) နှင့် [`export()`](https://rdrr.io/pkg/rio/man/export.html) သည်မတူညီသောဖိုင်အမျိုးအစားများစွာ (ဥပမာ .xlsx, .csv, .rds, .tsv) ကို ကိုင်တွယ်နိုင်သည်။ သင်သည် ဤfunctionများထဲမှ တစ်ခုဆီကို (".csv" ကဲ့သို့သော ဖိုင် extension အပါအဝင်) ဖိုင်လမ်းကြောင်းတစ်ခုကို ပံ့ပိုးသောအခါ၊ ရီယို သည် ဖိုင်extensionကို ဖတ်ပြီး ဖိုင်ကို importရန် သို့မဟုတ် ထုတ်ယူရန် မှန်ကန်သောတူးလ်ကို အသုံးပြုမည်ဖြစ်သည်။
 
-The package **here** and its function `here()` make it easy to tell R where to find and to save your files - in essence, it builds file paths.  
+**rio** ကိုအသုံးပြုခြင်း၏အခြားရွေးချယ်စရာ မှာ ဖိုင်အမျိုးအစားတစ်ခုစီအတွက် သီးသန့်ဖြစ်သော အခြားပက်ကေ့ခ်ျများစွာမှ functionများကို အသုံးပြုရန်ဖြစ်သည်။ ဥပမာ၊ [`read.csv()`](https://rdrr.io/r/utils/read.table.html) ( **base** R)၊ `read.xlsx()` ( **openxlsx** ပက်ကေ့ခ်ျ) နှင့် `write_csv()` ( **readr** ပက်ကေ့ခ်ျ ) စသည်ဖြင့်၊ **rio** မှ [`import()`](https://rdrr.io/pkg/rio/man/import.html) နှင့် [`export()`](https://rdrr.io/pkg/rio/man/export.html) ကိုအသုံးပြုခြင်း သည် လွယ်ကူသော်လည်း၊ဤရွေးချယ်စရာများသည် မှတ်မိရန်ခက်ခဲနိုင်သည်။ 
 
-Used in conjunction with an R project, **here** allows you to describe the location of files in your R project in relation to the R project's *root directory* (the top-level folder). This is useful when the R project may be shared or accessed by multiple people/computers. It prevents complications due to the unique file paths on different computers (e.g. `"C:/Users/Laura/Documents..."` by "starting" the file path in a place common to all users (the R project root).  
+**rio** ၏functionများ [`import()`](https://rdrr.io/pkg/rio/man/import.html) နှင့် [`export()`](https://rdrr.io/pkg/rio/man/export.html) သည်၎င်း၏ဖိုင်extensionအပေါ်အခြေခံ၍ ပေးထားသည့်ဖိုင်အတွက် သင့်လျော်သောပက်ကေ့ဂျ်နှင့် functionကို အသုံးပြုသည်။ နောက်ခံတွင် rioအသုံးပြု သည့် ပက်ကေ့ဂျ်များ/functionများ အပြည့်အစုံအတွက် ဤစာမျက်နှာ၏အဆုံးကို ကြည့်ပါ ။ အခြားဖိုင်အမျိုးအစားများစွာထဲမှ STATA၊ SAS နှင့် SPSS ဖိုင်များကို importရန်လည်း အသုံးပြုနိုင်သည်။
 
-This is how `here()` works within an R project:  
+[GIS အခြေခံများ](https://epirhandbook.com/en/gis-basics.html#gis-basics) စာမျက်နှာတွင် အသေးစိတ်ဖော်ပြထားသည့်အတိုင်း shapefiles များကို import/ထုတ်ရန် အခြားသော ပက်ကေ့ဂျ်များကိုလိုအပ်ပါသည်။
 
-* When the **here** package is first loaded within the R project, it places a small file called ".here" in the root folder of your R project as a "benchmark" or "anchor"  
-* In your scripts, to reference a file in the R project's sub-folders, you use the function `here()` to build the file path *in relation to that anchor*
-* To build the file path, write the names of folders beyond the root, within quotes, separated by commas, finally ending with the file name and file extension as shown below  
-* `here()` file paths can be used for both importing and exporting  
+## **here** ပက်ကေ့ဂျ် {#here}
 
-For example, below, the function `import()` is being provided a file path constructed with `here()`.  
+**here** package နှင့် ၎င်း၏function [`here()`](https://here.r-lib.org//reference/here.html) သည် R ဖိုင်များကို ရှာဖွေရန် နှင့် သင့်ဖိုင်များကို သိမ်းဆည်းရန် လွယ်ကူစေသည် - အနှစ်သာရအားဖြင့် ၎င်းသည် ဖိုင်လမ်းကြောင်းများကို ဖန်တီးပေးသည်။
+
+R ပရောဂျက်တစ်ခုနှင့် တွဲဖက်အသုံးပြလျှင်၊ **here** သည် R ပရောဂျက်၏ root directory နှင့်ဆက်စပ်၍ သင်၏ R ပရောဂျက်ရှိ ဖိုင်များ၏တည်နေရာကို ဖော်ပြခွင့်ပြုသည်(အထပ်ပိုင်းလယ်ဗယ်ရှိဖိုဒါ) ။ R ပရောဂျက်ကို လူများသုံး/ကွန်ပြူတာများစွာမှ မျှဝေခြင်း သို့မဟုတ် ဝင်ရောက်ကြည့်ရှုနိုင်သည့်အခါ ၎င်းသည် အသုံးဝင်သည်။ ၎င်းသည် မတူညီသောကွန်ပျူတာများရှိ ထူးခြားသောဖိုင်လမ်းကြောင်းများကြောင့် ရှုပ်ထွေးမှုများကို ကာကွယ်ပေးသည် (ဥပမာ-  `"C:/Users/Laura/Documents…"`သုံးစွဲသူအားလုံးအတွက် အသုံးများသည့်နေရာတွင် ဖိုင်လမ်းကြောင်းကို "စတင်" ခြင်းဖြင့် (R ပရောဂျက် root))။
+
+ဤသည်မှာ [`here()`](https://here.r-lib.org//reference/here.html) R ပရောဂျက်တစ်ခုအတွင်း အလုပ်လုပ်ပုံဖြစ်သည်-
+
+-   **here** ပက်ကေ့ဂျ်ကို R ပရောဂျက်အတွင်း ပထမဆုံး load တင်သောအခါ ၊ ၎င်းသည် သင်၏ R ပရောဂျက်၏ အမြစ်ဖိုင်တွဲတွင် ".here" ဟုခေါ်သော ဖိုင်ငယ်တစ်ခုကို "စံညွှန်း" သို့မဟုတ် "ကျောက်ချခြင်း" အဖြစ် ထားလိုက်သည်။
+
+-   သင်၏ scripts များတွင်၊ R ပရောဂျက်၏ ဖိုင်တွဲခွဲများတွင် ဖိုင်တစ်ခုကို ကိုးကားရန်၊ သင်သည် *ထိုကျောက်ဆူးနှင့် ဆက်စပ်နေသေ*ာဖိုင်လမ်းကြောင်းကို တည်ဆောက်ရန် function [`here()`](https://here.r-lib.org//reference/here.html) ကို အသုံးပြုသည်။
+
+-   ဖိုင်လမ်းကြောင်းကို တည်ဆောက်ရန်၊ ကော်မာများဖြင့် ခြားထားကာ ကိုးကားချက်များအတွင်း၊ rootကိုကျော်လွန်၍ ဖိုင်တွဲများ၏အမည်များကို ရေးပါ၊ နောက်ဆုံးတွင် အောက်ဖော်ပြပါအတိုင်း ဖိုင်အမည်နှင့် ဖိုင်extensionဖြင့် အဆုံးသတ်ပါ။
+
+-   [`here()`](https://here.r-lib.org//reference/here.html) ဖိုင်လမ်းကြောင်းများကို importခြင်းနှင့် ထုတ်ယူခြင်းနှစ်မျိုးစလုံးအတွက် အသုံးပြုနိုင်သည်။
+
+ဥပမာအားဖြင့်၊ အောက်တွင်၊ [`here()`](https://here.r-lib.org//reference/here.html) နှင့် တည်ဆောက်ထားသောဖိုင်လမ်းကြောင်းက function [`import()`](https://rdrr.io/pkg/rio/man/import.html) ကိုပေးဆောင် ထားခြင်းဖြစ်သည်။ 
 
 ```{r, eval=F}
 linelist <- import(here("data", "linelists", "ebola_linelist.xlsx"))
 ```
 
-The command `here("data", "linelists", "ebola_linelist.xlsx")` is actually providing the full file path that is *unique to the user's computer*:  
+Command [`here ("data", "linelists", "ebola_linelist.xlsx")`](https://here.r-lib.org//reference/here.html) သည် အမှန်တကယ် *အသုံးပြုသူ၏ ကွန်ပျူတာအတွက် သီးသန့်* ဖိုင်လမ်းကြောင်း အပြည့်အစုံကို ပေးဆောင် နေပါသည် ။
 
+```{r, eval=F}
+"c:/users/laura/documents/my_r\_project/data/linelists/ebola_linelist.xlsx"
 ```
-"C:/Users/Laura/Documents/my_R_project/data/linelists/ebola_linelist.xlsx"
-```
 
-The beauty is that the R command using `here()` can be successfully run on any computer accessing the R project.   
+[`here()`](https://here.r-lib.org//reference/here.html) ၏အားသာချက်မှာ R ပရောဂျက်ကို accessရှိသည့် မည်သည့်ကွန်ပျူတာတွင်မဆို အောင်မြင်စွာ လုပ်ဆောင်နိုင်ခြင်းဖြစ်သည် ။
 
+[***TIP:*** ".here" root ကို မည်သည့်နေရာတွင် သတ်မှတ်ထားသည်ကို မသေချာပါက၊[`here()`](https://here.r-lib.org//reference/here.html)ကွင်းစဥ်အလွတ်ဖြင့် functionကို လုပ်ဆောင်ပါ။]{style="color: darkgreen;"}
 
-<span style="color: darkgreen;">**_TIP:_** If you are unsure where the “.here” root is set to, run the function `here()` with empty parentheses.</span>  
-
-Read more about the **here** package [at this link](https://here.r-lib.org/).  
-
-
+[ဤလင့်ခ်တွင်](https://here.r-lib.org/) **here** package အကြောင်း ပိုမိုဖတ်ရှုပါ ။
 
 <!-- ======================================================= -->
-## File paths  
 
-When importing or exporting data, you must provide a file path. You can do this one of three ways:  
+## ဖိုင်လမ်းကြောင်းများ
 
-1) *Recommended:* provide a "relative" file path with the **here** package  
-2) Provide the "full" / "absolute" file path  
-3) Manual file selection  
+ဒေတာimportခြင်း သို့မဟုတ် exportခြင်းလုပ်သည့်အခါ၊ သင်သည် ဖိုင်လမ်းကြောင်းတစ်ခု ပေးရပါမည်။ ဤနည်းလမ်းသုံးမျိုးထဲမှ တစ်ခုကို သင်လုပ်ဆောင်နိုင်သည်-
 
+1.  *အကြံပြုသည်*- **here** ပက်ကေ့ဂျ်ဖြင့် "relative" ဖိုင်လမ်းကြောင်းကို ပေးဆောင်ပါ။
 
+2.  "full" / "absolute" ဖိုင်လမ်းကြောင်းကိုပေးပါ။
 
-### "Relative" file paths {.unnumbered}
+3.  ကိုယ်တိုင်ဖိုင်ရွေးချယ်ပါ။
 
-In R, "relative" file paths consist of the file path *relative to* the root of an R project. They allow for more simple file paths that can work on different computers (e.g. if the R project is on a shared drive or is sent by email). As described [above](#here), relative file paths are facilitated by use of the **here** package.  
+### "Relative" ဖိုင်လမ်းကြောင်းများ
 
-An example of a relative file path constructed with `here()` is below. We assume the work is in an R project that contains a sub-folder "data" and within that a subfolder "linelists", in which there is the .xlsx file of interest.  
+R တွင်၊ "Relative" ဖိုင်လမ်းကြောင်းများသည် R ပရောဂျက်တစ်ခု၏ အမြစ်နှင့် ဆက်စပ်နေသော ဖိုင်လမ်းကြောင်းများ ပါဝင်သည်။ ၎င်းတို့သည် မတူညီသော ကွန်ပျူတာများတွင် အလုပ်လုပ်နိုင်သော ပိုမိုရိုးရှင်းသော ဖိုင်လမ်းကြောင်းများကို ခွင့်ပြုပေးသည် (ဥပမာ R ပရောဂျက်ကို မျှသုံးဒရိုက်တစ်ခုတွင် သို့မဟုတ် အီးမေးလ်ဖြင့် ပေးပို့ပါက)။ [အထက်တွင်](https://epirhandbook.com/en/import-and-export.html#here) ဖော်ပြထား သည့်အတိုင်း၊ Relativeဖိုင်လမ်းကြောင်းများကို  **here** ပက်ကေ့ဂျ်အသုံးပြုခြင်းဖြင့် အဆင်ပြေစေပါသည် ။
+
+ဆက်စပ်ဖိုင်လမ်းကြောင်းတစ်ခု၏ ဥပမာကို [`here()`](https://here.r-lib.org//reference/here.html) အောက်တွင်ဖော်ပြထားသည်။ အလုပ်သည် "ဒေတာ" ဖိုင်တွဲခွဲခွဲတစ်ခုပါရှိသော R ပရောဂျက်တစ်ခုတွင်ရှိပြီး ၎င်းတွင် ကိုယ်လိုအပ်သည့် .xlsx ဖိုင်ပါရှိသည့် ဖိုင်တွဲခွဲ "linelists" အတွင်းတွင် ရှိနေသည်ဟု ကျွန်ုပ်တို့ ယူဆပါသည်။
 
 ```{r, eval=F}
 linelist <- import(here("data", "linelists", "ebola_linelist.xlsx"))
 ```
 
+### "Absolute" ဖိုင်လမ်းကြောင်းများ
 
+အကြွင်းမဲ့ သို့မဟုတ် "အပြည့်" ဖိုင်လမ်းကြောင်းများကို ပေးစွမ်း [`import()`](https://rdrr.io/pkg/rio/man/import.html)နိုင်သော်လည်း ၎င်းတို့သည် အသုံးပြုသူ၏ သီးခြားကွန်ပျူတာနှင့် သီးသန့်ဖြစ်သောကြောင့် ၎င်းတို့သည် "ပျက်စီးလွယ်သည်" ဖြစ်သောကြောင့် ၎င်းတို့ကို အကြံပြုထားခြင်း မရှိပါ ။
 
-### "Absolute" file paths {.unnumbered}  
-
-Absolute or "full" file paths can be provided to functions like `import()` but they are "fragile" as they are unique to the user's specific computer and therefore *not recommended*. 
-
-Below is an example of an absolute file path, where in Laura's computer there is a folder "analysis", a sub-folder "data" and within that a sub-folder "linelists", in which there is the .xlsx file of interest.  
+အောက်တွင် Laura ၏ကွန်ပြူတာတွင် "analysis" ဖိုင်တွဲတစ်ခု၊ ဖိုင်တွဲခွဲ "ဒေတာ" နှင့် ကိုယ်လိုအပ်သည့် .xlsx ဖိုင်ပါရှိသော .xlsx ဖိုင်ပါရှိသော ဖိုင်တွဲခွဲခွဲတစ်ခုဖြစ်သည့် အောက်တွင်ဖော်ပြထားသော ပကတိဖိုင်လမ်းကြောင်း၏ ဥပမာတစ်ခုဖြစ်သည်။ .
 
 ```{r, eval=F}
 linelist <- import("C:/Users/Laura/Documents/analysis/data/linelists/ebola_linelist.xlsx")
 ```
 
-A few things to note about absolute file paths:  
+Absolute ဖိုင်လမ်းကြောင်းများအကြောင်း သတိပြုရမည့်အချက်အချို့။
 
-* **Avoid using absolute file paths** as they will break if the script is run on a different computer
-* Use *forward* slashes (`/`), as in the example above (note: this is *NOT* the default for Windows file paths)  
-* File paths that begin with double slashes (e.g. "//...") will likely **not be recognized by R** and will produce an error. Consider moving your work to a "named" or "lettered" drive that begins with a letter (e.g. "J:" or "C:"). See the page on [Directory interactions] for more details on this issue.  
+-   မတူညီသောကွန်ပျူတာပေါ်တွင် script ကို run လျှင်၎င်းတို့သည် **absolute ဖိုင်လမ်းကြောင်းများကိုအသုံးပြုခြင်းကိုရှောင်ကြဉ် ပါ။**
 
-One scenario where absolute file paths may be appropriate is when you want to import a file from a shared drive that has the same full file path for all users.  
+-   အထက်ဖော်ပြပါ ဥပမာတွင်အတိုင်း ရှေ့သို့ မျဉ်းစောင်းများ ([`/`](https://rdrr.io/r/base/Arithmetic.html)) ကိုသုံး ပါ (မှတ်ချက်- ၎င်းသည် Windows ဖိုင်လမ်းကြောင်းများအတွက် default *မဟုတ်ပါ* )
 
-<span style="color: darkgreen;">**_TIP:_** To quickly convert all `\` to `/`, highlight the code of interest, use Ctrl+f (in Windows), check the option box for "In selection", and then use the replace functionality to convert them.</span>  
+-   မျဉ်းစောင်းနှစ်ချက်ဖြင့်အစပြုသော ဖိုင်လမ်းကြောင်းများ (ဥပမာ "//...") သည် ***R မှ အသိအမှတ်မပြုဘဲ*** errorတစ်ခုဖြစ်ပေါ်လာလိမ့်မည်။ သင့်အလုပ်အား အက္ခရာဖြင့်အစပြုသော(ဥပမာ "J:" သို့မဟုတ် "C:") "အမည်ပေးပြီးသား" သို့မဟုတ် "အက္ခရာပေးပြီးသား" drive သို့ပြောင်းရန် စဉ်းစားပါ။ ဤပြဿနာအတွက် အသေးစိတ်အချက်အလက်များအတွက် [Directory အပြန်အလှန်တုံ့ပြန်မှု](https://epirhandbook.com/en/directory-interactions.html#directory-interactions) များရှိ စာမျက်နှာကို ကြည့်ပါ ။
 
+Absolute file paths များ သင့်လျော်မည့် မြင်ကွင်းတစ်ခုမှာ အသုံးပြုသူအားလုံးအတွက် တူညီသော ဖိုင်လမ်းကြောင်းအပြည့်ရှိသော မျှသုံးဒရိုက်တစ်ခုမှ ဖိုင်တစ်ခုကို သင်importလိုသည့်အခါဖြစ်သည်။
 
+[***အကြံပြုချက်-*** `\`အားလုံးကို `/`၊ အဖြစ်ဖော်ပြရန်၊ Ctrl+f (Windows တွင်)၊ "In selection" အတွက် ရွေးစရာအကွက်ကို အမှန်ခြစ်ပါ၊ ထို့နောက် ၎င်းတို့ကို ပြောင်းလဲရန် replace functionalityကို အသုံးပြပါ။]{style="color: darkgreen;"}
 
 <!-- ======================================================= -->
-### Select file manually {.unnumbered}
 
-You can import data manually via one of these methods:  
+### ဖိုင်ကို ကိုယ်တိုင်ရွေးချယ်ပါ။
 
-1) Environment RStudio Pane, click "Import Dataset", and select the type of data 
-2) Click File / Import Dataset / (select the type of data)  
-3) To hard-code manual selection, use the *base R* command `file.choose()` (leaving the parentheses empty) to trigger appearance of a **pop-up window** that allows the user to manually select the file from their computer. For example:  
+ဤနည်းလမ်းများထဲမှတစ်ခုမှတစ်ဆင့် ဒေတာကို ကိုယ်တိုင်importနိုင်သည်-
+
+1.  Environment RStudio Pane၊ "Import Dataset" ကိုနှိပ်ပြီး ဒေတာအမျိုးအစားကို ရွေးချယ်ပါ။
+
+2.  File / Import Dataset / ကိုနှိပ်ပါ။ (ဒေတာအမျိုးအစားကိုရွေးချယ်ပါ)
+
+3.  ဟာ့ဒ်ကုဒ်လက်စွဲရွေးချယ်ခြင်းအတွက်၊ အသုံးပြုသူ သည် ၎င်းတို့၏ကွန်ပျူတာမှ ဖိုင်ကို ကိုယ်တိုင်ရွေးချယ်နိုင် စေမည့် **pop-up window** တစ်ခု၏ အသွင်အပြင်ကို အစပျိုးရန် *base R* အမိန့်ကို [`file.choose()`](https://rdrr.io/r/base/file.choose.html) (ကွင်းစကွက်များကို ချန်ထားခဲ့သည်) ကို အသုံးပြုပါ။ ဥပမာ:
 
 ```{r import_choose, eval=F}
 # Manual selection of a file. When this command is run, a POP-UP window will appear. 
@@ -148,99 +155,86 @@ You can import data manually via one of these methods:
 my_data <- import(file.choose())
 ```
 
-<span style="color: darkgreen;">**_TIP:_** The **pop-up window** may appear BEHIND your RStudio window.</span>
+[***TIP:*** The **pop-up window** may appear BEHIND your RStudio window.]{style="color: darkgreen;"}
 
+အကြံပြုချက်- သင်၏RStudio ဝင်းဒိုးနောက်တွင် pop-up window ပေါ်လာနိုင်သည်။
 
+## ဒေတာimportခြင်း
 
-## Import data  
+ဒေတာအတွဲတစ်ခုကို importရာတွင် [`import()`](https://rdrr.io/pkg/rio/man/import.html) ကိုအသုံးပြုရန် မှာ အလွန်ရိုးရှင်းပါသည်။ ကိုးကားချက်များတွင် (ဖိုင်အမည်နှင့် ဖိုင်extension အပါအဝင်) ဖိုင်သို့ လမ်းကြောင်းကို ရိုးရှင်းစွာ ပေးပါ။ ဖိုင်လမ်းကြောင်းကိုတည်ဆောက်ရန် [`here()`](https://here.r-lib.org//reference/here.html) ကိုအသုံးပြုပါက ၊ အထက်ဖော်ပြပါညွှန်ကြားချက်များကိုလိုက်နာပါ။ အောက်တွင် ဥပမာ အနည်းငယ် ရှိပါသည်။
 
-To use `import()` to import a dataset is quite simple. Simply provide the path to the file (including the file name and file extension) in quotes. If using `here()` to build the file path, follow the instructions above. Below are a few examples:  
-
-Importing a csv file that is located in your "working directory" or in the R project root folder:  
+သင်၏ "working directory" သို့မဟုတ် R ပရောဂျက်အမြစ်ဖိုဒါတွင်ရှိသော csv ဖိုင်ကို importခြင်း-
 
 ```{r, eval=F}
 linelist <- import("linelist_cleaned.csv")
 ```
 
-
-Importing the first sheet of an Excel workbook that is located in "data" and "linelists" sub-folders of the R project (the file path built using `here()`):  
+R ပရောဂျက်၏ "ဒေတာ" နှင့် "linelists" ဖိုင်တွဲခွဲများတွင်ရှိသော Excel workbook ၏ ပထမဆုံးစာရွက်ကို importခြင်း ( [`here()`](https://here.r-lib.org//reference/here.html) ကိုအသုံးပြု၍ တည်ဆောက်ထားသော ဖိုင်လမ်းကြောင်း)
 
 ```{r, eval=F}
 linelist <- import(here("data", "linelists", "linelist_cleaned.xlsx"))
 ```
 
-
-Importing a data frame (a .rds file) using an absolute file path:  
+Absolute ဖိုင်လမ်းကြောင်းကို အသုံးပြု၍ data frame (.rds ဖိုင်) ကို importခြင်း-
 
 ```{r, eval=F}
 linelist <- import("C:/Users/Laura/Documents/tuberculosis/data/linelists/linelist_cleaned.rds")
 ```
 
+### Excel sheet များ {.unnumbered}
 
-
-
-
-### Specific Excel sheets {.unnumbered}
-
-By default, if you provide an Excel workbook (.xlsx) to `import()`, the workbook's first sheet will be imported. If you want to import a specific **sheet**, include the sheet name to the `which = ` argument. For example:  
+ပုံမှန်အားဖြင့်၊ သင်သည် Excel workbook (.xlsx) ကို [`import()`](https://rdrr.io/pkg/rio/man/import.html)ပေးမည်ဆိုပါက၊ workbook ၏ ပထမဆုံးစာရွက်ကို importမည်ဖြစ်ပါသည်။ သီးခြား စာရွက် တစ်ခုကို importလိုပါက ၊ argument တွင် `which =`ဖြင့်စာရွက်အမည်ကို ထည့်သွင်းပါ။ ဥပမာ:
 
 ```{r eval=F}
 my_data <- import("my_excel_file.xlsx", which = "Sheetname")
 ```
 
-If using the `here()` method to provide a relative pathway to `import()`, you can still indicate a specific sheet by adding the `which = ` argument after the closing parentheses of the `here()` function.  
+`Import()` ရာတွင် relative လမ်းကြောင်းကို ပံ့ပိုးပေးသည့်နည်းလမ်း [`here()`](https://here.r-lib.org//reference/here.html) ကို အသုံးပြုပါက ၊ [`here()`](https://here.r-lib.org//reference/here.html) function ၏ အပိတ်ကွင်းစဥ်ပြီးနောက် argument  `which =` ကို ထည့်ခြင်းဖြင့် သီးခြားစာရွက်တစ်ခုကို သင်ညွှန်ပြနိုင်သေးသည်။
 
 ```{r import_sheet_here, eval=F}
 # Demonstration: importing a specific Excel sheet when using relative pathways with the 'here' package
 linelist_raw <- import(here("data", "linelist.xlsx"), which = "Sheet1")`  
 ```
 
-To *export* a data frame from R to a specific Excel sheet and have the rest of the Excel workbook remain unchanged, you will have to import, edit, and export with an alternative package catered to this purpose such as **openxlsx**. See more information in the page on [Directory interactions] or [at this github page](https://ycphs.github.io/openxlsx/).
+R မှ သီးခြား Excel စာရွက်တစ်ခုသို့ data frame တစ်ခုကို *export*  ပြီး ကျန် Excel အလုပ်စာအုပ်ကို မပြောင်းလဲဘဲ ဆက်လက်ထားရှိရန်၊ သင်သည် **openxlsx** ကဲ့သို့သော ဤရည်ရွယ်ချက်အတွက် ဖြည့်ဆည်းပေးသည့် အခြားပက်ကေ့ခ်ျတစ်ခုဖြင့် import၊ တည်းဖြတ်ရန်နှင့် export ရန် လိုအပ်မည်ဖြစ်သည် ။ [Directory interactions](https://epirhandbook.com/en/directory-interactions.html#directory-interactions) များရှိ စာမျက်နှာ သို့မဟုတ် [ဤ github စာမျက်နှာတွင်](https://ycphs.github.io/openxlsx/) နောက်ထပ်အချက်အလက်များကို ကြည့် ပါ ။
 
-If your Excel workbook is .xlsb (binary format Excel workbook) you may not be able to import it using **rio**. Consider re-saving it as .xlsx, or using a package like **readxlsb** which is built for [this purpose](https://cran.r-project.org/web/packages/readxlsb/vignettes/read-xlsb-workbook.html).  
-
-
-
-
-
+အကယ်၍ သင်၏ Excel အလုပ်စာအုပ်သည် .xlsb (binary ဖော်မတ် Excel အလုပ်စာအုပ်) ဖြစ်ပါက သင်သည် ၎င်းကို **rio** ကို အသုံးပြု၍ ထည့်သွင်းနိုင်မည် မဟုတ်ပါ ။ ၎င်းကို .xlsx အဖြစ် ပြန်လည်သိမ်းဆည်းရန် စဉ်းစားပါ သို့မဟုတ် [ဤရည်ရွယ်ချက်](https://cran.r-project.org/web/packages/readxlsb/vignettes/read-xlsb-workbook.html) အတွက် တည်ဆောက်ထားသည့် **readxlsb** ကဲ့သို့ ပက်ကေ့ခ်ျကို အသုံးပြုပါ။
 
 <!-- ======================================================= -->
-### Missing values {#import_missing .unnumbered} 
 
-You may want to designate which value(s) in your dataset should be considered as missing. As explained in the page on [Missing data], the value in R for missing data is `NA`, but perhaps the dataset you want to import uses 99, "Missing", or just empty character space "" instead.  
+### Missing values(ပျောက်ဆုံးနေသောတန်ဖိုးများ) {#import_missing .unnumbered}
 
-Use the `na = ` argument for `import()` and provide the value(s) within quotes (even if they are numbers). You can specify multiple values by including them within a vector, using `c()` as shown below.  
+သင့်ဒေတာအတွဲတွင် မည်သည့်တန်ဖိုး(များ)ကို ပျောက်ဆုံးနေသည်ဟု သတ်မှတ်သင့်သည်ကို သင်သတ်မှတ်လိုပေမည်။ [ပျောက်နေသော ဒေတာများ](https://epirhandbook.com/en/missing-data.html) ရှိ စာမျက်နှာတွင် ရှင်းပြထားသည့်အတိုင်း ပျောက်ဆုံးနေသောဒေတာ အတွက် R ၏တန်ဖိုးမှာ `NA` ဖြစ်သည် ၊ သို့သော် သင်importလိုသောဒေတာအတွဲသည် 99၊ "Missing" သို့မဟုတ် စာလုံးနေရာလွတ် "" ကိုသုံးကောင်းသုံးနိုင်သည်။
 
-Here, the value "99" in the imported dataset is considered missing and converted to `NA` in R.  
+ကိုးကားချက်များအတွင်း တန်ဖိုး(များ)ကို ပေးဆောင်ရန် (၎င်းတို့သည် နံပါတ်များဖြစ်နေလျှင်ပင်)  [`import()`](https://rdrr.io/pkg/rio/man/import.html) အတွက် `na =` argument  ကို အသုံးပြု ပါ။ အောက်တွင်ပြထားသည့်အတိုင်း [`c()`](https://rdrr.io/r/base/c.html) အသုံးပြု၍ vector တစ်ခုအတွင်း ၎င်းတို့ကို ထည့်သွင်းခြင်းဖြင့် တန်ဖိုးများစွာကို သင်သတ်မှတ် နိုင်ပါသည်။
+
+ဤတွင်၊ importထားသောဒေတာအတွဲရှိ "99" တန်ဖိုးကို ပျောက်ဆုံးနေသည်ဟု ယူဆကာ `NA` ဖြင့်သို့ Rတ္ငင် ပြောင်းသည်။
 
 ```{r, eval=F}
 linelist <- import(here("data", "my_linelist.xlsx"), na = "99")
 ```
 
-Here, any of the values "Missing", "" (empty cell), or " " (single space) in the imported dataset are converted to `NA` in R.  
+ဤတွင်၊ importထားသောဒေတာအတွဲရှိ "ပျောက်ဆုံးနေသည်"၊ "" (ဆဲလ်ဗလာ) သို့မဟုတ် "" (spaceတစ်ခုတည်း) တစ်ခုခုကို `NA` ဖြင့်သို့ Rတွင်ပြောင်းထားသည်။
 
 ```{r, eval=F}
 linelist <- import(here("data", "my_linelist.csv"), na = c("Missing", "", " "))
 ```
 
-
 <!-- ======================================================= -->
-### Skip rows {.unnumbered} 
 
-Sometimes, you may want to avoid importing a row of data. You can do this with the argument `skip = ` if using `import()` from **rio** on a .xlsx or .csv file. Provide the number of rows you want to skip. 
+### rowလိုက် ကျော်ခြင်း {.unnumbered}
 
+တစ်ခါတစ်ရံတွင် သင်သည် ဒေတာrowတစ်ခုကို importခြင်းမှ ရှောင်ရှားလိုပေမည်။ .xlsx သို့မဟုတ် .csv ဖိုင်တွင် **rio** မှ [`import()`](https://rdrr.io/pkg/rio/man/import.html) ကိုအသုံးပြုပါက  `skip =` argument ဖြင့် ၎င်းကို သင် ပြုလုပ်နိုင်သည်။ သင်ကျော်လိုသော row အရေအတွက်ကို ပေးပါ။
 
 ```{r, eval=F}
 linelist_raw <- import("linelist_raw.xlsx", skip = 1)  # does not import header row
 ```
 
-Unfortunately `skip = ` only accepts one integer value, *not* a range (e.g. "2:10" does not work). To skip import of specific rows that are not consecutive from the top, consider importing multiple times and using `bind_rows()` from **dplyr**. See the example below of skipping only row 2.  
+ကံမကောင်းစွာ ဖြင့် `skip =` သည် range တစ်ခု မဟုတ်ဘဲကိန်းပြည့်တန်ဖိုးတစ်ခုသာ လက်ခံသည် (ဥပမာ "2:10" ဆိုအလုပ်မလုပ်ပါ)။ အပေါ်ဆုံးမှဆက်တိုက်မဟုတ်သော သီးခြားrow များimportခြင်းကို ကျော်ရန်၊ အကြိမ်များစွာimportခြင်းနှင့် **dplyr** မှ `bind_rows()` အသုံးပြုခြင်းတို့ကို စဉ်းစားပါ ။ row  2 ကိုသာ ကျော်သည့် အောက်တွင် နမူနာကို ကြည့်ပါ။
 
+### ဒုတိယ header row ကို စီမံခြင်း {.unnumbered}
 
-
-### Manage a second header row {.unnumbered}  
-
-Sometimes, your data may have a *second* row, for example if it is a "data dictionary" row as shown below. This situation can be problematic because it can result in all columns being imported as class "character".  
+တစ်ခါတစ်ရံတွင်၊ သင့်ဒေတာ သည် အောက်တွင်ပြထားသည့်အတိုင်းဥပမာ  "ဒေတာအဘိဓာန်" row ဖြစ်ပါက၊ ၊ သင့်ဒေတာတွင် ဒုတိယမြှောက် rowရှိနိုင်သည်။ ဤအခြေအနေသည် ကော်လံအားလုံးကို row အစား "character" အဖြစ် ထည့်သွင်းခြင်းပြဿနာဖြစ်နိုင်သည်။
 
 ```{r, echo=F}
 # HIDDEN FROM READER
@@ -273,24 +267,26 @@ linelist_2headers <- rio::import(here::here("data", "case_linelists", "linelist_
                 time_admission = "time of hospital admission HH:MM")
 ```
 
-Below is an example of this kind of dataset (with the first row being the data dictionary).  
+အောက်တွင်ဖော်ပြထားသည်မှာ ဤဒေတာအတွဲ၏ ဥပမာတစ်ခုဖြစ်သည် (ပထမrow သည် ဒေတာအဘိဓာန်ဖြစ်သည်)။
 
 ```{r message=FALSE, echo=F}
 # display the linelist data as a table
 DT::datatable(head(linelist_2headers, 5), rownames = FALSE, filter="top", options = list(pageLength = 4, scrollX=T), class = 'white-space: nowrap' )
 ```
 
-#### Remove the second header row {.unnumbered}  
+#### ဒုတိယ header row ကို ဖယ်ရှားခြင်း {.unnumbered}
 
-To drop the second header row, you will likely need to import the data twice.  
+ဒုတိယခေါင်းစီးrow ကို ဖယ်ရန်၊ ဒေတာကို နှစ်ကြိမ်importရန် လိုအပ်ပါသည်။
 
-1) Import the data in order to store the correct column names  
-2) Import the data again, skipping the first *two* rows (header and second rows)  
-3) Bind the correct names onto the reduced dataframe
+1.  မှန်ကန်သော ကော်လံအမည်များကို သိမ်းဆည်းရန်အတွက် ဒေတာကို importပါ။
 
-The exact argument used to bind the correct column names depends on the type of data file (.csv, .tsv, .xlsx, etc.). This is because **rio** is using a different function for the different file types (see table above).  
+2.  ဒေတာကို ထပ်မံထည့်သွင်းပါ၊ ပထမတန်း နှစ် တန်း (ခေါင်းစီးနှင့် ဒုတိယတန်း) ကို ကျော်သွားပါ
 
-**For Excel files:** (`col_names = `)  
+3.  လျှော့ထားသော data frameတွင် မှန်ကန်သောအမည်များကို ချိတ်ပါ။
+
+မှန်ကန်သော ကော်လံအမည်များကို စုစည်းရန် အသုံးပြုသည့် တိကျသော argument သည် ဒေတာဖိုင်အမျိုးအစား (.csv၊ .tsv၊ .xlsx စသည်) ပေါ်တွင် မူတည်သည်။ အဘယ်ကြောင့်ဆိုသော် **rio** သည် မတူညီသောဖိုင်အမျိုးအစားများအတွက် မတူညီသောfunctionကို အသုံးပြုနေသောကြောင့်ဖြစ်သည် (အထက်ဇယားကိုကြည့်ပါ)။
+
+**Excel ဖိုင်များအတွက်**- (`col_names =`)
 
 ```{r, eval=F}
 # import first time; store the column names
@@ -303,7 +299,7 @@ linelist_raw <- import("linelist_raw.xlsx",
                        ) 
 ```
 
-**For CSV files:** (`col.names = `)  
+**CSV ဖိုင်များအတွက်**- (`col.names =`)
 
 ```{r, eval=F}
 # import first time; sotre column names
@@ -316,18 +312,16 @@ linelist_raw <- import("linelist_raw.csv",
                        ) 
 ```
 
-**Backup option** - changing column names as a separate command
+**အရန်ရွေးချယ်စရာ** - သီးခြား command တစ်ခုဖြင့် ကော်လံအမည်များကို ပြောင်းလဲခြင်း။
 
 ```{r, eval=F}
 # assign/overwrite headers using the base 'colnames()' function
 colnames(linelist_raw) <- linelist_raw_names
 ```
 
+#### ဒေတာအဘိဓာန်တစ်ခု ပြုလုပ်ပါ။
 
-#### Make a data dictionary {.unnumbered}  
-
-Bonus! If you do have a second row that is a data dictionary, you can easily create a proper data dictionary from it. This tip is adapted from this [post](https://alison.rbind.io/post/2018-02-23-read-multiple-header-rows/).  
-
+ဘောနပ်စ်! သင့်တွင် ဒေတာအဘိဓာန်တစ်ခုဖြစ်သည့် ဒုတိယrow တစ်ခုရှိလျှင် ၎င်းမှ သင့်လျော်သောဒေတာအဘိဓာန်တစ်ခုကို အလွယ်တကူဖန်တီးနိုင်သည်။ ဤအကြံပြုချက်ကို ဤ [ပို့စ်](https://alison.rbind.io/post/2018-02-23-read-multiple-header-rows/) မှ ကူးယူဖော်ပြပါသည် ။
 
 ```{r}
 dict <- linelist_2headers %>%             # begin: linelist with dictionary as first row
@@ -337,123 +331,115 @@ dict <- linelist_2headers %>%             # begin: linelist with dictionary as f
                values_to = "Description")
 ```
 
-
 ```{r message=FALSE, echo=F}
 DT::datatable(dict, rownames = FALSE, filter="top", options = list(pageLength = 4, scrollX=T), class = 'white-space: nowrap' )
 ```
 
+#### header row နှစ်ခုကို ပေါင်းစပ်ပါ {.unnumbered}
 
+သင့်ဒေတာတွဲအကြမ်းတွင် ခေါင်းစီးrow  နှစ်ခုရှိသည့်အခါ အချို့အခြေအနေများတွင် (သို့မဟုတ် အထူးသဖြင့်၊ ဒေတာ၏ 2nd row သည် အလယ်တန်းခေါင်းစီးဖြစ်သည်)၊ သင်သည် ၎င်းတို့အား "ပေါင်းစပ်" ရန် သို့မဟုတ် ဒုတိယခေါင်းစီးrow ရှိ တန်ဖိုးများကို ပထမခေါင်းစီးrow သို့ ထည့်လိုပေမည်။
 
-#### Combine the two header rows {.unnumbered}  
-
-In some cases when your raw dataset has *two* header rows (or more specifically, the 2nd row of data is a secondary header), you may want to "combine" them or add the values in the second header row into the first header row.  
-
-The command below will define the data frame's column names as the combination (pasting together) of the first (true) headers with the value immediately underneath (in the first row).  
+အောက်ဖော်ပြပါ command သည် data frame၏ကော်လံအမည်များကို ပထမဆုံး (အမှန်) ခေါင်းစီးများနှင့် (ပထမတန်း) အောက်ရှိ တန်ဖိုး ၏ ပေါင်းစပ်မှု အဖြစ် သတ်မှတ်ပေးပါမည်။
 
 ```{r, eval=F}
 names(my_data) <- paste(names(my_data), my_data[1, ], sep = "_")
 ```
 
-
-
 <!-- ======================================================= -->
+
 ### Google sheets {.unnumbered}
 
-You can import data from an online Google spreadsheet with the **googlesheet4** package and by authenticating your access to the spreadsheet.  
-
+**googlesheet4** ပက် ကေ့ချ် ဖြင့် အွန်လိုင်း Google spreadsheet မှ အချက်အလက်များကို importနိုင်ပြီး spreadsheet သို့ သင်၏ဝင်ရောက်ခွင့်ကို စစ်မှန်ကြောင်းအထောက်အထားပြခြင်းဖြင့် importနိုင်ပါသည်။
 
 ```{r, eval=F}
 pacman::p_load("googlesheets4")
 ```
 
-Below, a demo Google sheet is imported and saved. This command may prompt confirmation of authentification of your Google account. Follow prompts and pop-ups in your internet browser to grant Tidyverse API packages permissions to edit, create, and delete your spreadsheets in Google Drive.  
+အောက်တွင်၊ နမူနာ Google စာရွက်ကို importပြီး သိမ်းဆည်းထားသည်။ ဤcommand သည် သင့် Google အကောင့်၏ စစ်မှန်ကြောင်းအတည်ပြုချက်ကို အတည်ပြုချက်ပေးနိုင်သည်။ Tidyverse API ပက်ကေ့ဂျ်များကို Google Drive တွင် spreadsheets တည်းဖြတ်ရန်၊ ဖန်တီးရန်နှင့် ဖျက်ရန်ခွင့်ပြုချက်အတွက် သင့်အင်တာနက်ဘရောက်ဆာတွင် အချက်ပြမှုများနှင့် ပေါ့ပ်အပ်များကို လိုက်နာပါ။
 
-
-The sheet below is "viewable for anyone with the link" and you can try to import it.  
+အောက်ဖော်ပြပါ sheet သည် "လင့်ခ်ရှိသူတိုင်း ကြည့်ရှုနိုင်သည်" ဖြစ်ကာ ၎င်းကို ထည့်သွင်းရန် ကြိုးစားနိုင်သည်။
 
 ```{r, eval=F}
 Gsheets_demo <- read_sheet("https://docs.google.com/spreadsheets/d/1scgtzkVLLHAe5a6_eFQEwkZcc14yFUx1KgOMZ4AKUfY/edit#gid=0")
 ```
 
-The sheet can also be imported using only the sheet ID, a shorter part of the URL:  
+URL ၏ ပိုတိုသောအပိုင်းဖြစ်သော sheet  ID ကိုသာ အသုံးပြု၍ sheet ကို importနိုင်သည်-
 
 ```{r, eval=F}
 Gsheets_demo <- read_sheet("1scgtzkVLLHAe5a6_eFQEwkZcc14yFUx1KgOMZ4AKUfY")
 ```
 
+အခြားသော ပက်ကေ့ဂျ်၊ **googledrive** သည် Google စာရွက်များကို ရေးသားခြင်း၊ တည်းဖြတ်ခြင်းနှင့် ဖျက်ခြင်းအတွက် အသုံးဝင်သော functionများကို ပေးဆောင်ပါသည်။ ဥပမာအားဖြင့်၊ functionများ `gs4_create()` နှင့် `sheet_write()` ကိုဤပက်ကေ့ဂျ်တွင်တွေ့ရသည်။
 
-Another package, **googledrive** offers useful functions for writing, editing, and deleting Google sheets. For example, using the  `gs4_create()` and `sheet_write()` functions found in this package. 
+ဤသည်မှာ အခြားအထောက်အကူဖြစ်စေမည့် အွန်လိုင်းသင်ခန်းစာအချို့ဖြစ်သည်- 
 
-Here are some other helpful online tutorials:  
-[basic Google sheets importing tutorial](https://arbor-analytics.com/post/getting-your-data-into-r-from-google-sheets/)  
-[more detailed tutorial](https://googlesheets4.tidyverse.org/articles/googlesheets4.html)  
-[interaction between the googlesheets4 and tidyverse](https://googlesheets4.tidyverse.org/articles/articles/drive-and-sheets.html)  
+[ပိုမိုအသေးစိတ်သော ကျူ တိုရီရယ်](https://arbor-analytics.com/post/getting-your-data-into-r-from-google-sheets/)
 
+[အခြေခံ Google sheet များ import ခြင်းကျူတိုရီရယ်](https://googlesheets4.tidyverse.org/articles/googlesheets4.html)
 
+[googlesheets4 နှင့် tidyverse အကြားဆက်သွယ်မှုများ](https://googlesheets4.tidyverse.org/articles/articles/drive-and-sheets.html)
 
+## ဖိုင်အများအပြား - importခြင်း၊ exportခြင်း၊ ခွဲခြမ်းခြင်း၊ ပေါင်းစပ်ခြင်း 
 
-## Multiple files - import, export, split, combine  
-
-See the page on [Iteration, loops, and lists] for examples of how to import and combine multiple files, or multiple Excel workbook files. That page also has examples on how to split a data frame into parts and export each one separately, or as named sheets in an Excel workbook.  
-
-
-
+ဖိုင်များစွာကို importခြင်းနှင့် ပေါင်းစပ်နည်း ဥပမာများအတွက် [ထပ်နှုန်း၊  loops များနှင့် စာရင်းများ](https://epirhandbook.com/en/iteration-loops-and-lists.html) ပေါ်ရှိ စာမျက်နှာကို ကြည့်ပါ ။ ထိုစာမျက်နှာတွင် data frameတစ်ခုကို အပိုင်းများခွဲ၍ တစ်ခုစီကို သီးခြားစီထုတ်ပုံ သို့မဟုတ် Excel အလုပ်စာအုပ်တွင် စာရွက်များဟု အမည်ပေးထားသည့် စာရွက်များကို အပိုင်းပိုင်းခွဲနည်းလည်း ပါရှိသည်။
 
 <!-- ======================================================= -->
-## Import from Github {#import_github}
 
-Importing data directly from Github into R can be very easy or can require a few steps - depending on the file type. Below are some approaches:  
+## Github မှ importခြင်း {#import_github}
 
-### CSV files {.unnumbered}  
+Github မှ R သို့ တိုက်ရိုက်ဒေတာimportခြင်းသည် အလွန်လွယ်ကူသည် သို့မဟုတ် ဖိုင်အမျိုးအစားပေါ်မူတည်၍ အဆင့်အနည်းငယ် လိုအပ်နိုင်သည်။ အောက်ဖော်ပြပါ နည်းလမ်းအချို့မှာ-
 
-It can be easy to import a .csv file directly from Github into R with an R command.  
+### CSV ဖိုင်များ {.unnumbered}
 
-1) Go to the Github repo, locate the file of interest, and click on it  
-3) Click on the "Raw" button (you will then see the "raw" csv data, as shown below)  
-4) Copy the URL (web address)  
-5) Place the URL in quotes within the `import()` R command  
+Github မှ R command ဖြင့် .csv ဖိုင်ကို R သို့ တိုက်ရိုက်importရန် လွယ်ကူနိုင်သည်။
+
+1.  Github repo သို့သွားပါ၊ စိတ်ဝင်စားသောဖိုင်ကိုရှာပါ၊ ၎င်းကိုနှိပ်ပါ။
+
+2.  "Raw" ခလုတ်ကိုနှိပ်ပါ (အောက်ပါပုံတွင်ပြထားသည့်အတိုင်း "raw" csv data ကိုတွေ့လိမ့်မည်)
+
+3.  URL (ဝဘ်လိပ်စာ) ကို ကူးယူပါ
+
+4.  R command [`import()`](https://rdrr.io/pkg/rio/man/import.html) တွင် URL ကို quotes တွင်းထည့်ပါ။
 
 ```{r, out.width=c('100%', '100%'), fig.align = "left", echo=F}
 knitr::include_graphics(here::here("images", "download_csv_raw.png"))
 ```
 
-### XLSX files {.unnumbered}  
+### XLSX ဖိုင်များ {.unnumbered}
 
-You may not be able to view the "Raw" data for some files (e.g. .xlsx, .rds, .nwk, .shp)  
+အချို့ဖိုင်များအတွက် "Raw" ဒေတာကို သင်ကြည့်ရှုနိုင်မည်မဟုတ်ပါ (ဥပမာ .xlsx, .rds, .nwk, .shp)
 
-1) Go to the Github repo, locate the file of interest, and click on it  
-2) Click the "Download" button, as shown below  
-3) Save the file on your computer, and import it into R  
+1.  Github repo သို့သွားပါ၊ စိတ်ဝင်စားသောဖိုင်ကိုရှာပါ၊ ၎င်းကိုနှိပ်ပါ။
 
+2.  အောက်တွင်ပြထားသည့်အတိုင်း "ဒေါင်းလုဒ်" ခလုတ်ကိုနှိပ်ပါ။
+
+3.  ဖိုင်ကို သင့်ကွန်ပြူတာတွင် သိမ်းဆည်းပြီး R သို့ ထည့်သွင်းပါ။
 
 ```{r , out.width=c('100%', '100%'), fig.align = "left", echo=F}
 knitr::include_graphics(here::here("images", "download_xlsx.png"))
 ```
 
-### Shapefiles {.unnumbered} 
+### Shapefiles {.unnumbered}
 
-Shapefiles have many sub-component files, each with a different file extention. One file will have the ".shp" extension, but others may have ".dbf", ".prj", etc.  To download a shapefile from Github, you will need to download each of the sub-component files individually, and save them in the *same* folder on your computer. In Github, click on each file individually and download them by clicking on the "Download" button.  
+Shapefile များတွင် အစိတ်အပိုင်းခွဲဖိုင်များစွာရှိပြီး တစ်ခုစီတွင် မတူညီသောဖိုင်အဆက်များရှိသည်။ ဖိုင်တစ်ခုတွင် ".shp" extensionပါရှိမည်ဖြစ်ပြီး အခြားဖိုင်များတွင် ".dbf"၊ ".prj" စသည်ဖြင့် ရှိနေနိုင်သည်။ Github မှ shapefile တစ်ခုကို ဒေါင်းလုဒ်လုပ်ရန်၊ အစိတ်အပိုင်းခွဲဖိုင်တစ်ခုစီကို တစ်ဦးချင်းဒေါင်းလုဒ်လုပ်ပြီး သိမ်းဆည်းရန် လိုအပ်မည်ဖြစ်ပါသည်။ ၎င်းတို့ကို သင့်ကွန်ပြူတာ ရှိ တူညီသော ဖိုဒါတွင် ထားရှိပါ။ Github တွင်၊ ဖိုင်တစ်ခုစီကို နှိပ်ပြီး "ဒေါင်းလုဒ်" ခလုတ်ကို နှိပ်ခြင်းဖြင့် ၎င်းတို့ကို ဒေါင်းလုဒ်လုပ်ပါ။
 
-Once saved to your computer you can import the shapefile as shown in the [GIS basics] page using `st_read()` from the **sf** package. You only need to provide the filepath and name of the ".shp" file - as long as the other related files are within the same folder on your computer.  
+သင့်ကွန်ပြူတာတွင် သိမ်းဆည်းပြီးသည်နှင့် သင်သည် **sf** ပက်ကေ့ခ်ျမှ `st_read()` ကို အသုံးပြု၍ [GIS အခြေခံ](https://epirhandbook.com/en/gis-basics.html#gis-basics) စာမျက်နှာ တွင် ပြထားသည့်အတိုင်း shapefile ကို import နိုင်သည် ။ အခြားဆက်စပ်ဖိုင်များသည် သင့်ကွန်ပျူတာရှိ တူညီသောဖိုင်တွဲအတွင်း၌ ရှိနေသရွေ့ သင်သည် ".shp" ဖိုင်၏ ဖိုင်လမ်းကြောင်းနှင့် ".shp" ဖိုင်၏ အမည်ကို ပေးဆောင်ရန်သာ လိုအပ်သည်။
 
-Below, you can see how the shapefile "sle_adm3" consists of many files - each of which must be downloaded from Github.  
+အောက်တွင်၊ ပုံသဏ္ဍာန်ဖိုင် "sle_adm3" တွင် ဖိုင်များစွာပါဝင်သည် - တစ်ခုချင်းစီကို Github မှဒေါင်းလုဒ်လုပ်ရမည်ဟု သင်မြင်နိုင်သည်။
 
 ```{r , out.width=c('100%', '100%'), fig.align = "left", echo=F}
 knitr::include_graphics(here::here("images", "download_shp.png"))
 ```
 
-
-
-
-
 <!-- ======================================================= -->
-## Manual data entry {}
 
-### Entry by rows {.unnumbered}  
+## ကိုယ်တိုင် ဒေတာထည့်သွင်းခြင်း
 
-Use the `tribble` function from the **tibble** package from the tidyverse ([online tibble reference](https://tibble.tidyverse.org/reference/tribble.html)).  
-  
-Note how column headers start with a *tilde* (`~`).  Also note that each column must contain only one class of data (character, numeric, etc.). You can use tabs, spacing, and new rows to make the data entry more intuitive and readable. Spaces do not matter between values, but each row is represented by a new line of code. For example:  
+### row လိုက်ထည့်သွင်းခြင်း
+
+**tidyverse** ( [အွန်လိုင်း tibble အကိုးအကား ) မှ](https://tibble.tidyverse.org/reference/tribble.html) **tibble** ပက်ကေ့ဂျ်မှ  `tribble` functionကို အသုံးပြု ပါ ။
+
+ကော်လံခေါင်းစီးများသည် **tilde** ([`~`](https://rdrr.io/r/base/tilde.html)) ဖြင့် စတင်ပုံကို မှတ်သားပါ။ ကော်လံတစ်ခုစီတွင် ဒေတာrow အစား (character၊ numeric၊ စသည်ဖြင့်) တစ်ခုတည်းသာ ပါဝင်ရမည်ကို သတိပြုပါ။ ဒေတာထည့်သွင်းမှုကို ပိုမိုနားလည်သဘောပေါက်ပြီး ဖတ်နိုင်စေရန်အတွက် တက်ဘ်များ၊ spacingနှင့် row အသစ်များကို သင်အသုံးပြုနိုင်ပါသည်။ နေရာလွတ်များသည် တန်ဖိုးများကြားတွင် အရေးမကြီးသော်လည်း row တစ်ခုစီကို ကုဒ်မျဉ်းအသစ်ဖြင့် ကိုယ်စားပြုသည်။ ဥပမာ:
 
 ```{r import_manual_row}
 # create the dataset manually by row
@@ -465,17 +451,16 @@ manual_entry_rows <- tibble::tribble(
   )
 ```
 
-And now we display the new dataset:  
+ယခု ကျွန်ုပ်တို့သည် ဒေတာအတွဲအသစ်ကို ပြသသည်-
 
 ```{r, echo=F}
 # display the new dataset
 DT::datatable(manual_entry_rows)
 ```
 
+### ကော်လံအလိုက် သွင်းခြင်း {.unnumbered}
 
-### Entry by columns {.unnumbered}  
-
-Since a data frame consists of vectors (vertical columns), the **base** approach to manual dataframe creation in R expects you to define each column and then bind them together. This can be counter-intuitive in epidemiology, as we usually think about our data in rows (as above). 
+Data frameတစ်ခုတွင် vector များ (ဒေါင်လိုက်ကော်လံများပါ၀င်သည်) ဖြစ်သောကြောင့် R တွင် manual dataframe ဖန်တီးခြင်းအတွက် **base** ချဉ်းကပ်မှုသည် ကော်လံတစ်ခုစီကို သတ်မှတ်ပြီး ၎င်းတို့ကို ပေါင်းစည်းရန် သင့်အား မျှော်လင့်ပါသည်။ ကျွန်ုပ်တို့သည် အများအားဖြင့် ကျွန်ုပ်တို့၏ဒေတာများကို row လိုက် (အထက်တွင်ကဲ့သို့) တွေးတောထားသောကြောင့် ၎င်းသည် ကူးစက်ရောဂါဗေဒတွင် တန်ပြန်အလိုလိုသိနိုင်သည်။
 
 ```{r import_manual_col}
 # define each vector (vertical column) separately, each with its own name
@@ -484,39 +469,38 @@ Treatment <- c("Yes", "No", "Yes", "Yes")
 Death     <- c(1, 0, 1, 0)
 ```
 
-<span style="color: orange;">**_CAUTION:_** All vectors must be the same length (same number of values).</span>
+[***CAUTION:*** All vectors must be the same length (same number of values).]{style="color: orange;"}
 
-The vectors can then be bound together using the function `data.frame()`:  
+သတိပြုရန်- vector များအားလုံးသည် တူညီသောအရှည်ဖြစ်ရမည် (တူညီသောတန်ဖိုးများ)။
+
+ထို့နောက် [`data.frame()`](https://rdrr.io/r/base/data.frame.html) functionကို အသုံးပြု၍ vector များကို အတူတကွ ပေါင်းစည်းနိုင်သည်-
 
 ```{r}
 # combine the columns into a data frame, by referencing the vector names
 manual_entry_cols <- data.frame(PatientID, Treatment, Death)
 ```
 
-And now we display the new dataset:  
+ယခု ကျွန်ုပ်တို့သည် ဒေတာအတွဲအသစ်ကို ပြသထားသည်-
 
 ```{r, echo=F}
 # display the new dataset
 DT::datatable(manual_entry_cols)
 ```
 
+### ကလစ်ဘုတ်မှ ကူးထည့်ခြင်း {.unnumbered}
 
+အကယ်၍ သင်သည် အခြားနေရာမှ ဒေတာကို ကူးယူပြီး သင့်ကလစ်ဘုတ်တွင် ထားရှိပါက၊ အောက်ပါ နည်းလမ်းနှစ်ခုထဲမှ တစ်ခုကို စမ်းကြည့်နိုင်သည်-
 
-
-### Pasting from clipboard {.unnumbered}  
-
-If you copy data from elsewhere and have it on your clipboard, you can try one of the two ways below:  
-
-From the **clipr** package, you can use `read_clip_tbl()` to import as a data frame, or just just `read_clip()` to import as a character vector. In both cases, leave the parentheses empty.    
+**clipr** ပက် ကေ့ချ်မှ၊ သင်သည် `read_clip_tbl()` ကိုdata frameအဖြစ် importရန် သို့မဟုတ် `read_clip()` နှင့် character vectorတစ်ခု အဖြစ် importရန်သာ အသုံးပြုနိုင်သည်။ နှစ်ခုစလုံးတွင်၊ ကွင်းစဥ်များကို ဗလာကျင်းထားပါ။
 
 ```{r, eval=F}
 linelist <- clipr::read_clip_tbl()  # imports current clipboard as data frame
 linelist <- clipr::read_clip()      # imports as character vector
 ```
-You can also easily export to your system's clipboard with **clipr**. See the section below on Export.  
 
+**clipr** ဖြင့် သင့်စနစ်၏ ကလစ်ဘုတ်သို့ အလွယ်တကူ export နိုင်သည် ။ Export တွင် အောက်ပါ ကဏ္ဍကို ကြည့်ပါ။
 
-Alternatively, you can use the the `read.table()` function from **base** R with `file = "clipboard")` to import as a data frame:  
+တနည်းအားဖြင့် သင်သည် data frameအဖြစ် ထည့်သွင်းရန် **base** R မှ [`read.table()`](https://rdrr.io/r/utils/read.table.html) functionကို `file = "clipboard"`)နှင့် အသုံးပြုနိုင်သည်။
 
 ```{r, eval=F}
 df_from_clipboard <- read.table(
@@ -525,59 +509,55 @@ df_from_clipboard <- read.table(
   header=TRUE)         # if there is a header row
 ```
 
+## နောက်ဆုံးထွက်ဖိုင်ကို importခြင်း
 
+သင့်ဒေတာအတွဲများအတွက် နေ့စဉ် အပ်ဒိတ်များကို မကြာခဏ လက်ခံရရှိနိုင်ပါသည်။ ဤကိစ္စတွင် သင်သည် နောက်ဆုံးထွက်ဖိုင်ကို importသည့် ကုဒ်ကို ရေးလိုပါလိမ့်မည်။ အောက်တွင်ကျွန်ုပ်တို့သည်ဤချဉ်းကပ်ရန်နည်းလမ်းနှစ်ခုကိုတင်ပြသည်:
 
+-   ဖိုင်အမည်ရှိ ရက်စွဲကို အခြေခံ၍ ဖိုင်ကို ရွေးချယ်ခြင်း။
 
+-   ဖိုင်မက်တာဒေတာပေါ်အခြေခံ၍ ဖိုင်ကိုရွေးချယ်ခြင်း (နောက်ဆုံးမွမ်းမံမှု)
 
+### Dates in file name
 
-## Import most recent file  
+ဤနည်းလမ်းသည် နယ်ပယ်သုံးခုပေါ်တွင် မူတည်သည်-
 
-Often you may receive daily updates to your datasets. In this case you will want to write code that imports the most recent file. Below we present two ways to approach this:  
+1.  သင်သည် ဖိုင်အမည်များတွင် ရက်စွဲများကို ယုံကြည်သည်။
 
-* Selecting the file based on the date in the file name  
-* Selecting the file based on file metadata (last modification)  
+2.  ရက်စွဲများသည် ကိန်းဂဏာန်းများဖြစ်ပြီး ယေဘုယျအားဖြင့် တူညီသောပုံစံဖြင့် ပေါ်နေပါသည် (ဥပမာ-နှစ်မှ လနှင့်နေ့)
 
+3.  ဖိုင်အမည်တွင် အခြားနံပါတ်များ မရှိပါ။
 
-### Dates in file name {.unnumbered}  
+အဆင့်တစ်ဆင့်ချင်းစီ ရှင်းပြပြီး အဆုံးတွင် ၎င်းတို့ကို ပေါင်းစပ်ပြပါမည်။
 
-This approach depends on three premises:  
-
-1) You trust the dates in the file names  
-2) The dates are numeric and appear in *generally* the same format (e.g. year then month then day)  
-3) There are no other numbers in the file name  
-
-We will explain each step, and then show you them combined at the end.  
-
-First, use `dir()` from **base** R to extract just the file names for each file in the folder of interest. See the page on [Directory interactions] for more details about `dir()`. In this example, the folder of interest is the folder "linelists" within the folder "example" within "data" within the R project. 
+ပထမဦးစွာ၊ စိတ်ဝင်စားသော folder ရှိဖိုင်တစ်ခုစီအတွက် ဖိုင်အမည်များကိုသာ ထုတ်ယူရန် **base** R မှ [`dir()`](https://rdrr.io/r/base/list.files.html) ကိုအသုံးပြုပါ။ [`dir()`](https://rdrr.io/r/base/list.files.html) အသေးစိတ်အချက်အလက်များအတွက် [Directory interactions](https://epirhandbook.com/en/directory-interactions.html#directory-interactions) တွင် စာမျက်နှာကို ကြည့်ရှုပါ ။ ဤဥပမာတွင်၊ သင်လိုအပ်သောဖိုဒါသည် R ပရောဂျက်အတွင်းရှိ "ဒေတာ" အတွင်းရှိ "ဥပမာ" ဖိုဒါအတွင်းရှိ အတွင်းရှိ "linelists" ဖိုဒါဖြစ်သည်။
 
 ```{r}
 linelist_filenames <- dir(here("data", "example", "linelists")) # get file names from folder
 linelist_filenames                                              # print
 ```
 
-Once you have this vector of names, you can extract the dates from them by applying `str_extract()` from **stringr** using this regular expression. It extracts any numbers in the file name (including any other characters in the middle such as dashes or slashes). You can read more about **stringr** in the [Strings and characters] page.  
+သင့်တွင် ဤအမည်များ၏ vector များရှိပါက၊ ဤပုံမှန်အသုံးအနှုန်း **stringr** မှ `str_extract()` လျှောက်ထားခြင်းဖြင့် ၎င်းတို့ထံမှ ရက်စွဲများကို ထုတ်ယူနိုင်သည် ။ ၎င်းသည် ဖိုင်အမည်ရှိ မည်သည့်နံပါတ်ကိုမဆို (အလယ်ရှိ အခြားစာလုံးများဖြစ်သည့် dashes သို့မဟုတ် slashes များအပါအဝင်) ကို ထုတ်ယူသည်။ [Characters များနှင့် strings များ](https://epirhandbook.com/en/characters-and-strings.html) စာမျက်နှာတွင် **stringr** အကြောင်း ပိုမိုဖတ်ရှုနိုင်ပါသည် ။
 
 ```{r}
 linelist_dates_raw <- stringr::str_extract(linelist_filenames, "[0-9].*[0-9]") # extract numbers and any characters in between
 linelist_dates_raw  # print
 ```
 
-Assuming the dates are written in generally the same date format (e.g. Year then Month then Day) and the years are 4-digits, you can use **lubridate**'s flexible conversion functions (`ymd()`, `dmy()`, or `mdy()`) to convert them to dates. For these functions, the dashes, spaces, or slashes do not matter, only the order of the numbers. Read more in the [Working with dates] page.  
+ရက်စွဲများကို ယေဘူယျအားဖြင့် တူညီသောရက်စွဲဖော်မတ်ဖြင့်ရေးထားသည် (ဥပမာ နှစ်ထို့နောက် လမှနေ့) နှင့် နှစ်များသည် ဂဏန်း 4 လုံးဖြစ်သည်ဟု ယူဆပါက၊ သင်သည် ၎င်းတို့အား ရက်စွဲများအဖြစ်သို့ ပြောင်းလဲရန် **lubridate** ၏ ပြောင်းလွယ်ပြင်လွယ်ပြောင်းလဲနိုင်သောfunctionများ ( `ymd()`, `dmy()`, သို့မဟုတ် `mdy()`) ကို အသုံးပြုနိုင်သည်။ ဤfunctionများအတွက်၊ ဒက်ရှ်များ၊ နေရာလွတ်များ သို့မဟုတ် မျဥ်းစောင်းများသည် ဂဏန်းများ၏ အစဉ်လိုက်သာ အရေးမကြီးပါ။ [ရက်စွဲများနှင့် အလုပ်လုပ်ခြင်း](https://epirhandbook.com/en/working-with-dates.html) စာမျက်နှာတွင် ပိုမိုဖတ်ရှုပါ။
 
 ```{r}
 linelist_dates_clean <- lubridate::ymd(linelist_dates_raw)
 linelist_dates_clean
 ```
 
-
-The **base** R function `which.max()` can then be used to return the index position (e.g. 1st, 2nd, 3rd, ...) of the maximum date value. The latest file is correctly identified as the 6th file - "case_linelist_2020-10-08.xlsx".  
+ထို့နောက် **base** R function [`which.max()`](https://rdrr.io/r/base/which.min.html) ကို အများဆုံးရက်စွဲတန်ဖိုး၏ အညွှန်းအနေအထား (ဥပမာ 1st၊ 2nd၊ 3rd၊ ...) ကို ပြန်ပေးရန်အတွက် အသုံးပြုနိုင်သည်။ နောက်ဆုံးဖိုင်ကို ခြောက်ခုမြှောက် ဖိုင် - "case_linelist_2020-10-08.xlsx" အဖြစ် မှန်ကန်စွာ ခွဲခြားသတ်မှတ်ထားပါသည်။
 
 ```{r}
 index_latest_file <- which.max(linelist_dates_clean)
 index_latest_file
 ```
 
-If we condense all these commands, the complete code could look like below. Note that the `.` in the last line is a placeholder for the piped object at that point in the pipe sequence. At that point the value is simply the number 6. This is placed in double brackets to extract the 6th element of the vector of file names produced by `dir()`.    
+ကျွန်ုပ်တို့သည် ဤ commandများကို ပေါင်းစည်းပါက၊ ပြည့်စုံသောကုဒ်သည် အောက်ဖော်ပြပါပုံသဏ္ဌာန်တူနိုင်သည်။ နောက်ဆုံးစာကြောင်းတွင် `.`သည် pipe sequence ရှိ ထိုအမှတ်တွင်  piped object အတွက် နေရာတစ်ခုဖြစ်ကြောင်း သတိပြုပါ ။ ထိုအချိန်တွင် တန်ဖိုးသည် ရိုးရိုးနံပါတ် 6 ဖြစ်သည်။ ၎င်းကို ထုတ်လုပ်သော ဖိုင်အမည်များ၏ vector ၏ 6th ဒြပ်စင်ကို  [`dir()`](https://rdrr.io/r/base/list.files.html) ဖြင့်ထုတ်ယူရန် ၎င်းကို ကွင်းပိတ်နှစ်ထပ်တွင် ထည့်ထားသည်။
 
 ```{r}
 # load packages
@@ -599,30 +579,26 @@ latest_file <- dir(here("data", "example", "linelists")) %>%  # file names from 
 latest_file  # print name of latest file
 ```
 
-You can now use this name to finish the relative file path, with `here()`:  
+Relative ဖိုင်လမ်းကြောင်းကို [`here()`](https://here.r-lib.org//reference/here.html) နှင့်အပြီးသတ်ရန် ယခု ဤအမည်ကို သင်အသုံးပြုနိုင်သည် -
 
 ```{r, eval=F}
 here("data", "example", "linelists", latest_file) 
 ```
 
-And you can now import the latest file:  
+ယခုနောက်ဆုံးထွက်ဖိုင်ကို သင်importနိုင်ပါပြီ-
 
 ```{r, eval=F}
 # import
 import(here("data", "example", "linelists", latest_file)) # import 
 ```
 
- 
+### ဖိုင်အချက်အလက်ကိုသုံးခြင်း {.unnumbered}
 
+သင့်ဖိုင်များတွင် ၎င်းတို့၏အမည်များတွင် ရက်စွဲများမပါပါက (သို့မဟုတ် အဆိုပါရက်စွဲများကို သင်မယုံပါက) ဖိုင်မက်တာဒေတာမှ နောက်ဆုံးမွမ်းမံပြင်ဆင်သည့်ရက်စွဲကို ထုတ်ယူရန် ကြိုးစားနိုင်ပါသည်။ နောက်ဆုံးမွမ်းမံချိန်နှင့် ဖိုင်လမ်းကြောင်းပါ၀င်သည့် ဖိုင်တစ်ခုစီအတွက် မက်တာဒေတာအချက်အလက်ကို စစ်ဆေးရန် package **fs** မှ functionများကို အသုံးပြုပါ။
 
+အောက်တွင်၊ ကျွန်ုပ်တို့သည် **fs** များအတွက် လိုအပ်သောဖိုဒါကို `dir_info()` သို့ပေးထားသည်။ ဤကိစ္စတွင်၊ လိုအပ်သောဖိုဒါသည် ဖိုဒါ "ဒေတာ"၊ ဖိုဒါခွဲ "ဥပမာ" နှင့် ၎င်း၏ဖိုင်တွဲခွဲ "linelists" ရှိ R ပရောဂျက်တွင်ဖြစ်သည်။ ရလဒ်သည် ဖိုင်တစ်ခုလျှင် စာကြောင်းတစ်ကြောင်းနှင့် `modification_time`၊ `path` စသည်တို့အတွက်ကော်လံများနှင့် data frame [တစ်ခု](https://epirhandbook.com/en/directory-interactions.html#directory-interactions) ဖြစ်သည်။  [Directory interactions](https://epirhandbook.com/en/directory-interactions.html#directory-interactions).ရှိ စာမျက်နှာတွင် မြင်သာသော ဥပမာကို သင်တွေ့မြင်နိုင်ပါသည်။
 
-### Use the file info {.unnumbered}  
-
-If your files do not have dates in their names (or you do not trust those dates), you can try to extract the last modification date from the file metadata. Use functions from the package **fs** to examine the metadata information for each file, which includes the last modification time and the file path.  
-
-Below, we provide the folder of interest to **fs**'s `dir_info()`. In this case, the folder of interest is in the R project in the folder "data", the sub-folder "example", and its sub-folder "linelists".  The result is a data frame with one line per file and columns for `modification_time`, `path`, etc. You can see a visual example of this in the page on [Directory interactions].    
-
-We can sort this data frame of files by the column `modification_time`, and then keep only the top/latest row (file) with **base** R's `head()`. Then we can extract the file path of this latest file only with the **dplyr** function `pull()` on the column `path`. Finally we can pass this file path to `import()`. The imported file is saved as `latest_file`.  
+ကျွန်ုပ်တို့သည် ဤဖိုင်များ၏ data frameကို ကော်လံ `modification_time` ဖြင့် စီစစ်နိုင်ပြီး ၊ ထို့နောက် base R ၏  [`head()`](https://rdrr.io/r/utils/head.html) နှင့် ထိပ်တန်း/နောက်ဆုံးrow  (ဖိုင်) ကိုသာ ထားရှိပါ ။ ထို့နောက် ကော်လံ path ပေါ်ရှိ **dplyr** function `pull()` ဖြင့်သာ ဤနောက်ဆုံးဖိုင်၏ ဖိုင်လမ်းကြောင်းကို ထုတ်ယူ နိုင်ပါသည်။ နောက်ဆုံးတော့ ဒီဖိုင်လမ်းကြောင်းကို [`import()`](https://rdrr.io/pkg/rio/man/import.html) သို့ကျော်သွား နိုင်ပါတယ်။ Importထားသောဖိုင်ကို `latest_file` အဖြစ်သိမ်းထားသည်။ 
 
 ```{r, eval=F}
 latest_file <- dir_info(here("data", "example", "linelists")) %>%  # collect file info on all files in directory
@@ -633,62 +609,66 @@ latest_file <- dir_info(here("data", "example", "linelists")) %>%  # collect fil
 
 ```
 
-
-
 <!-- ======================================================= -->
-## APIs {#import_api}
 
-An "Automated Programming Interface" (API) can be used to directly request data from a website. APIs are a set of rules that allow one software application to interact with another. The client (you) sends a "request" and receives a "response" containing content. The R packages **httr** and **jsonlite** can facilitate this process. 
+## APIs(APIများ) {#import_api}
 
-Each API-enabled website will have its own documentation and specifics to become familiar with. Some sites are publicly available and can be accessed by anyone. Others, such as platforms with user IDs and credentials, require authentication to access their data. 
+ဝဘ်ဆိုက်တစ်ခုမှ ဒေတာကို တိုက်ရိုက်တောင်းဆိုရန်အတွက် "Automated Programming Interface" (API) ကို အသုံးပြုနိုင်သည်။ APIs များသည် ဆော့ဖ်ဝဲလ်အပလီကေးရှင်းတစ်ခုမှ အခြားတစ်ခုနှင့် အပြန်အလှန်ဆက်သွယ်နိုင်စေမည့် စည်းမျဉ်းများဖြစ်သည်။ ဖောက်သည် (သင်) သည် "တောင်းဆိုချက်" ပေးပို့ပြီး အကြောင်းအရာပါဝင်သော "တုံ့ပြန်မှု" ကို လက်ခံရရှိသည် ။ R packages များသည် **httr** နှင့် **jsonlite** သည် ဤလုပ်ငန်းစဉ်ကို အဆင်ပြေချောမွေ့စေနိုင်သည်။
 
-Needless to say, it is necessary to have an internet connection to import data via API. We will briefly give examples of use of APIs to import data, and link you to further resources.  
+API-ဖွင့်ထားသော ဝဘ်ဆိုက်တစ်ခုစီတိုင်းတွင် ၎င်း၏ကိုယ်ပိုင်စာရွက်စာတမ်းနှင့် တိကျသည့်အချက်များ ပါရှိမည်ဖြစ်သည်။ အချို့ဆိုဒ်များကို အများသူငှာရရှိနိုင်ပြီး မည်သူမဆို ဝင်ရောက်ကြည့်ရှုနိုင်ပါသည်။ အသုံးပြုသူ ID များနှင့် အထောက်အထားများပါရှိသော ပလပ်ဖောင်းများကဲ့သို့သော အခြားအရာများသည် ၎င်းတို့၏ဒေတာများကို ဝင်ရောက်ကြည့်ရှုရန် စစ်မှန်ကြောင်းအထောက်အထား လိုအပ်သည်။
 
-*Note: recall that data may be *posted* on a website without an API, which may be easier to retrieve. For example a posted CSV file may be accessible simply by providing the site URL to `import()` as described in the section on [importing from Github](#import_github).*  
+API မှတဆင့်ဒေတာimportရန်အင်တာနက်ချိတ်ဆက်မှုတစ်ခုရှိရန်လိုအပ်သည်ဟူ၍ပြောရန်မလိုအပ်ပါ။ ဒေတာimportရန် API များအသုံးပြုမှုနမူနာများကို အတိုချုံးပြီး သင့်အား နောက်ထပ်အရင်းအမြစ်များနှင့် ချိတ်ဆက်ပေးပါမည်။
 
+*မှတ်ချက်*- ဒေတာ ကို ရယူရန် ပိုမိုလွယ်ကူစေသည့် API မပါဘဲ ဝဘ်ဆိုက်ပေါ်တွင် *တင်ထား နိုင်သည်ကို သတိရပါ*။ ဥပမာအားဖြင့် တင်ထားသော CSV ဖိုင်သည် [Github မှ importခြင်း](https://epirhandbook.com/en/import-and-export.html#import_github) ဆိုင်ရာ ကဏ္ဍတွင် [`import()`](https://rdrr.io/pkg/rio/man/import.html) ရန် ဖော်ပြထားသည့်အတိုင်း ဆိုက် URL ကို ပေးခြင်းဖြင့် ရိုးရှင်းစွာ ဝင်ရောက်ကြည့်ရှုနိုင်မည် ဖြစ်သည်။\*
 
-### HTTP request {.unnumbered}  
+### HTTP တောင်းဆိုချက် {.unnumbered}
 
-The API exchange is most commonly done through an HTTP request. HTTP is Hypertext Transfer Protocol, and is the underlying format of a request/response between a client and a server. The exact input and output may vary depending on the type of API but the process is the same - a "Request" (often HTTP Request) from the user, often containing a query, followed by a "Response", containing status information about the request and possibly the requested content.  
+API လဲလှယ်မှုကို HTTP တောင်းဆိုမှုမှတစ်ဆင့် အများဆုံးလုပ်ဆောင်သည်။ HTTP သည် Hypertext Transfer Protocol ဖြစ်ပြီး client နှင့် server တစ်ခုကြား တောင်းဆိုမှု/တုံ့ပြန်မှု၏ အရင်းခံပုံစံဖြစ်သည်။ တိကျသောinput နှင့်outputသည် API အမျိုးအစားပေါ် မူတည်၍ ကွဲပြားနိုင်သော်လည်း လုပ်ငန်းစဉ်သည် တူညီသည် - သုံးစွဲသူထံမှ "တောင်းဆိုချက်" (မကြာခဏ HTTP တောင်းဆိုမှု)၊ မကြာခဏ မေးမြန်းမှုတစ်ခုပါရှိသော၊ နောက်တွင် "တုံ့ပြန်မှု" နှင့် ပတ်သက်သည့် အခြေအနေအချက်အလက်ပါရှိသော၊ တောင်းဆိုချက်နှင့် တောင်းဆိုထားသော အကြောင်းအရာ ဖြစ်နိုင်သည်။
 
-Here are a few components of an *HTTP request*:  
+ဤသည်မှာ HTTP တောင်းဆိုမှု တစ်ခု၏ အစိတ်အပိုင်းအချို့ဖြစ်သည် ။
 
-* The URL of the API endpoint  
-* The "Method" (or "Verb")  
-* Headers  
-* Body  
+-   API အဆုံးမှတ်၏ URL
 
-The HTTP request "method" is the action your want to perform. The two most common HTTP methods are `GET` and `POST` but others could include `PUT`, `DELETE`, `PATCH`, etc. When importing data into R it is most likely that you will use `GET`.  
+-   "နည်းလမ်း" (သို့မဟုတ် "ကြိယာ")
 
-After your request, your computer will receive a "response" in a format similar to what you sent, including URL, HTTP status (Status 200 is what you want!), file type, size, and the desired content. You will then need to parse this response and turn it into a workable data frame within your R environment.
+-   ခေါင်းစီးများ
 
+-   ခန္ဓာ
 
-### Packages {.unnumbered}  
+HTTP တောင်းဆိုမှု "နည်းလမ်း" သည် သင်လုပ်ဆောင်လိုသည့် လုပ်ဆောင်မှုဖြစ်သည်။ အသုံးအများဆုံး HTTP နည်းလမ်းနှစ်ခုမှာ `GET`,`POST` သာမက, `PUT`, `DELETE`, `PATCH`,အစရှိသည် တို့ ပါဝင်နိုင်ပါသည် ။ R သို့ ဒေတာimportသည့်အခါ `GET`အသုံးပြုရန် ဖြစ်နိုင်ချေများပါသည် ။
 
-The **httr** package works well for handling HTTP requests in R. It requires little prior knowledge of Web APIs and can be used by people less familiar with software development terminology. In addition, if the HTTP response is .json, you can use **jsonlite** to parse the response.  
+သင့်တောင်းဆိုမှုပြီးနောက်၊ သင့်ကွန်ပြူတာသည် URL၊ HTTP အခြေအနေ (အခြေအနေ 200 သည် သင်လိုချင်သည့်အရာဖြစ်သည်) အပါအဝင် သင်ပေးပို့သည့်ပုံစံနှင့် ဆင်တူသည့် "တုံ့ပြန်မှု" ကို လက်ခံရရှိမည်ဖြစ်သည်။ ထို့နောက် သင်သည် ဤတုံ့ပြန်ချက်ကို ခွဲခြမ်းစိပ်ဖြာပြီး ၎င်းကို သင်၏ R environment အတွင်း လုပ်ဆောင်နိုင်သော data frameတစ်ခုအဖြစ် ပြောင်းလဲရန် လိုအပ်မည်ဖြစ်သည်။
+
+### ပက်ကေ့ဂျ်များ
+
+**httr** ပက်ကေ့ဂျ်သည် R တွင် HTTP တောင်းဆိုမှုများကို ကိုင်တွယ်ရာတွင် ကောင်းစွာအလုပ်လုပ်သည်။ ၎င်းသည် ဝဘ် API များအကြောင်း အနည်းငယ်မျှ ကြိုတင်သိရှိထားရန် လိုအပ်ပြီး ဆော့ဖ်ဝဲလ်ဖွံ့ဖြိုးတိုးတက်မှုဆိုင်ရာ အသုံးအနှုန်းများနှင့် မရင်းနှီးသောသူများ အသုံးပြုနိုင်သည်။ ထို့အပြင်၊ HTTP တုံ့ပြန်မှုသည် .json ဖြစ်ပါက၊ တုံ့ပြန်မှုကို ပိုင်းခြားရန် **jsonlite** ကို အသုံးပြုနိုင်သည်။
 
 ```{r, eval=F}
 # load packages
 pacman::p_load(httr, jsonlite, tidyverse)
 ```
 
+### အများသူငှာ ရရှိနိုင်သောဒေတာ
 
-### Publicly-available data {.unnumbered}  
+[အောက်တွင် Trafford Data Lab](https://www.trafforddatalab.io/open_data_companion/#A_quick_introduction_to_APIs) မှ ကျူတိုရီရယ်တစ်ခုမှ ချေးယူထားသော HTTP တောင်းဆိုချက်၏ ဥပမာတစ်ခုဖြစ်သည် ။ ဤ site တွင်လေ့လာရန်အခြားအရင်းအမြစ်များနှင့် API လေ့ကျင့်ခန်းများစွာရှိသည်။
 
-Below is an example of an HTTP request, borrowed from a tutorial from [the Trafford Data Lab](https://www.trafforddatalab.io/open_data_companion/#A_quick_introduction_to_APIs). This site has several other resources to learn and API exercises.
+Scenario- ကျွန်ုပ်တို့သည် ယူကေ၊ Trafford မြို့ရှိ အမြန်စားဆိုင်များစာရင်းကို importလိုပါသည်။ United Kingdom အတွက် အစားအစာ တစ်ကိုယ်ရေသန့်ရှင်းမှု အဆင့်သတ်မှတ်ချက် ဒေတာကို ပံ့ပိုးပေးသော Food Standards Agency ၏ API မှ ဒေတာကို ဝင်ရောက်ကြည့်ရှုနိုင်ပါသည်။
 
-Scenario: We want to import a list of fast food outlets in the city of Trafford, UK. The data can be accessed from the API of the Food Standards Agency, which provides food hygiene rating data for the United Kingdom.  
+ဤသည်မှာ ကျွန်ုပ်တို့၏တောင်းဆိုချက်အတွက် ကန့်သတ်ချက်များဖြစ်သည်။
 
-Here are the parameters for our request:  
+-   HTTP ကြိယာ- GET
 
-* HTTP verb: GET  
-* API endpoint URL: http://api.ratings.food.gov.uk/Establishments  
-* Selected parameters: name, address, longitude, latitude, businessTypeId, ratingKey, localAuthorityId  
-* Headers: “x-api-version”, 2  
-* Data format(s): JSON, XML  
-* Documentation: http://api.ratings.food.gov.uk/help  
+-   API အဆုံးမှတ် URL- <http://api.ratings.food.gov.uk/Establishments>
 
-The R code would be as follows:  
+-   ရွေးချယ်ထားသော ကန့်သတ်ဘောင်များ- အမည်၊ လိပ်စာ၊ လောင်ဂျီတွဒ်၊ လတ္တီတွဒ်၊ BusinessTypeId၊ အဆင့်သတ်မှတ်ခြင်းKey၊ localAuthorityId
+
+-   ခေါင်းစီးများ- "x-api-version"၊ ၂
+
+-   ဒေတာဖော်မတ်(များ)- JSON၊ XML
+
+-   စာရွက်စာတမ်း- <http://api.ratings.food.gov.uk/help>
+
+R ကုဒ်သည် အောက်ပါအတိုင်းဖြစ်လိမ့်မည်။
 
 ```{r, eval=F, warning=F, message=F}
 # prepare the request
@@ -711,17 +691,15 @@ response <- content(request, as = "text", encoding = "UTF-8") %>%
   as_tibble()
 ```
 
-You can now clean and use the `response` data frame, which contains one row per fast food facility.  
+အမြန်စားနပ်ရိက္ခာစက်ရုံတစ်ခုလျှင် row တစ်တန်းပါရှိသော `response` data frameကို ယခုအခါ သန့်ရှင်းပြီး အသုံးပြုနိုင်ပါသည်။
 
+### စစ်မှန်ကြောင်းအထောက်အထားလိုအပ်သည်
 
-### Authentication required {.unnumbered}  
+အချို့သော API များသည် စစ်မှန်ကြောင်းသက်သေပြရန် လိုအပ်သည် - သင်မည်သူဖြစ်ကြောင်း သက်သေပြရန်အတွက် ကန့်သတ်ထားသောဒေတာများကို သင်ဝင်ရောက်ကြည့်ရှုနိုင်ပါသည်။ ဤဒေတာကို importရန်၊ အသုံးပြုသူအမည်၊ စကားဝှက် သို့မဟုတ် ကုဒ်တစ်ခုပေးရန် POST နည်းလမ်းကို ဦးစွာအသုံးပြုရန် လိုအပ်နိုင်သည်။ ၎င်းသည် လိုချင်သောဒေတာကို ပြန်လည်ရယူရန် နောက်ဆက်တွဲ GET နည်းလမ်းတောင်းဆိုမှုများအတွက် အသုံးပြုနိုင်သည့် ဝင်ရောက်ခွင့်တိုကင်တစ်ခုကို ပြန်ပေးပါမည်။
 
-Some APIs require authentication - for you to prove who you are, so you can access restricted data. To import these data, you may need to first use a POST method to provide a username, password, or code. This will return an access token, that can be used for subsequent GET method requests to retrieve the desired data.  
+အောက်တွင်ဖော်ပြထားသည်မှာ ရောဂါဖြစ်ပွားမှုစုံစမ်းစစ်ဆေးရေးကိရိယာတစ်ခုဖြစ်သည့် *Go.Data* မှဒေတာကိုမေးမြန်းခြင်း၏ဥပမာတစ်ခုဖြစ်သည်။ *Go.Data* သည် ဒေတာစုဆောင်းမှုအတွက် အသုံးပြုသည့် ဝဘ်၏ ရှေ့ဆုံးနှင့် စမတ်ဖုန်းအက်ပ်များကြား အပြန်အလှန်တုံ့ပြန်မှုအားလုံးအတွက် API ကို အသုံးပြုသည်။ *Go.Data* ကို ကမ္ဘာတစ်ဝှမ်းလုံးတွင် အသုံးပြုသည်။ ရောဂါဖြစ်ပွားမှုဒေတာသည် ထိလွယ်ရှလွယ်ဖြစ်ပြီး သင်၏ ရောဂါဖြစ်ပွားမှု အတွက် ဒေတာများကိုသာ ဝင်ရောက်ကြည့်ရှုနိုင်သော ကြောင့် အထောက်အထားစိစစ်ရန် လိုအပ်ပါသည်။
 
-Below is an example of querying data from *Go.Data*, which is an outbreak investigation tool. *Go.Data* uses an API for all interactions between the web front-end and smartphone applications used for data collection. *Go.Data* is used throughout the world. Because outbreak data are sensitive and you should only be able to access data for *your* outbreak, authentication is required.  
-
-Below is some sample R code using **httr** and **jsonlite** for connecting to the *Go.Data* API to import data on contact follow-up from your outbreak.  
-
+အောက်တွင်ဖော်ပြထားသည်မှာ သင့်ရောဂါဖြစ်ပွားမှုမှ အဆက်အသွယ်နောက်ဆက်တွဲတွင် ဒေတာimportရန် *Go.Data* API သို့ ချိတ်ဆက်ရန်အတွက် **httr** နှင့် **jsonlite** ကိုအသုံးပြုထားသော နမူနာ R ကုဒ်အချို့ ဖြစ်သည်။
 
 ```{r, eval=F}
 # set credentials for authorization
@@ -762,145 +740,149 @@ json_contacts <- content(response_contacts, as = "text")         # convert to te
 contacts <- as_tibble(fromJSON(json_contacts, flatten = TRUE))   # flatten JSON to tibble
 ```
 
-<span style="color: orange;">**_CAUTION:_** If you are importing large amounts of data from an API requiring authentication, it may time-out. To avoid this, retrieve access_token again before each API GET request and try using filters or limits in the query. </span> 
+[***CAUTION:*** If you are importing large amounts of data from an API requiring authentication, it may time-out. To avoid this, retrieve access_token again before each API GET request and try using filters or limits in the query.]{style="color: orange;"}
 
-<span style="color: darkgreen;">**_TIP:_** The `fromJSON()` function in the **jsonlite** package does not fully un-nest the first time it's executed, so you will likely still have list items in your resulting tibble. You will need to further un-nest for certain variables; depending on how nested your .json is. To view more info on this, view the documentation for the **jsonlite** package, such as the [`flatten()` function](https://rdrr.io/cran/jsonlite/man/flatten.html). </span>
+[***TIP:*** The `fromJSON()` function in the **jsonlite** package does not fully un-nest the first time it's executed, so you will likely still have list items in your resulting tibble. You will need to further un-nest for certain variables; depending on how nested your .json is. To view more info on this, view the documentation for the **jsonlite** package, such as the [`flatten()` function](https://rdrr.io/cran/jsonlite/man/flatten.html).]{style="color: darkgreen;"}
 
+သတိပြုရန်- စစ်မှန်ကြောင်းအထောက်အထားလိုအပ်သော API တစ်ခုမှ ဒေတာအများအပြားကို importပါက အချိန်ကုန်သွားနိုင်သည်။ ၎င်းကိုရှောင်ရှားရန်၊ API GET တောင်းဆိုမှုတစ်ခုစီမတိုင်မီ access_token ကို ထပ်မံရယူပြီး query ရှိ filters သို့မဟုတ် limits ကိုသုံးကြည့်ပါ။
 
-For more details, View documentation on [LoopBack Explorer](https://loopback.io/doc/en/lb4/index.html), the [Contact Tracing] page or API tips on [Go.Data Github repository](https://worldhealthorganization.github.io/godata/api-docs)
+အကြံပြုချက်- jsonlite ပက်ကေ့ဂျ် ရှိfromJSON()functionသည်၎င်းကို သုံးပြီး ပထမအကြိမ်တွင် nestကို အပြည့်အဝ မလုပ်ဆောင်နိုင်သောကြောင့် သင့်တွင် ထွက်ပေါ်လာသည့် tibble တွင် စာရင်းအရာများ ရှိနေနိုင်ဖွယ်ရှိသည်။ အချို့သော ကိန်းရှင်များအတွက် နောက်ထပ် un-nest ထားရန် လိုအပ်ပါမည်။ သင်၏ .json မည်မျှ nested ပေါ် မူတည်သည် ၎င်းနှင့်ပတ်သက်သည့် အချက်အလက်ပိုမိုကြည့်ရှုရန်[၊ flatten()function](https://rdrr.io/cran/jsonlite/man/flatten.html) ကဲ့သို့သော jsonlite ပက် ကေ့ဂျ်အတွက် စာရွက်စာတမ်းများကို ကြည့်ရှုပါ ။
 
-You can read more about the *httr* package [here](https://httr.r-lib.org/articles/quickstart.html)  
+အသေးစိတ်အချက်အလက်များအတွက်၊ [LoopBack Explorer](https://loopback.io/doc/en/lb4/index.html) ၊ [ရောဂါပိုးရှိသူနှင့် ထိတွေ့သူများကို လိုက်လံရှာဖွေခြင်း](https://epirhandbook.com/en/contact-tracing-1.html) စာမျက်နှာ သို့မဟုတ် [Go.Data Github သိုလှောင်ရာ ရှိ API အကြံပြုချက်များကို ကြည့်ပါ](https://worldhealthorganization.github.io/godata/api-docs)
 
-This section was also informed by [this tutorial](https://www.dataquest.io/blog/r-api-tutorial/) and [this tutorial](https://medium.com/@traffordDataLab/querying-apis-in-r-39029b73d5f1). 
+httr ပက် ကေ့ ဂျ် အကြောင်း အသေးစိတ်ကို [ဤနေရာတွင် ဖတ်နိုင်ပါသည်။](https://httr.r-lib.org/articles/quickstart.html)
 
-
-
+[ဤအပိုင်းကို ဤသင်ခန်းစာ](https://www.dataquest.io/blog/r-api-tutorial/) နှင့် [ဤ](https://medium.com/@traffordDataLab/querying-apis-in-r-39029b73d5f1) သင်ခန်းစာ မှလည်း အသိပေးထားသည်။
 
 <!-- ======================================================= -->
-## Export {}  
 
-### With **rio** package {.unnumbered}
-With **rio**, you can use the `export()` function in a very similar way to `import()`. First give the name of the R object you want to save (e.g. `linelist`) and then in quotes put the file path where you want to save the file, including the desired file name and file extension. For example:  
+## Exportခြင်း
 
-This saves the data frame `linelist` as an Excel workbook to the working directory/R project root folder:  
+### rio ပက်ကေ့ဂျ် နှင့်အတူ
+
+With **rio**, you can use the `export()` function in a very similar way to `import()`. First give the name of the R object you want to save (e.g. `linelist`) and then in quotes put the file path where you want to save the file, including the desired file name and file extension. For example:
+
+This saves the data frame `linelist` as an Excel workbook to the working directory/R project root folder:
+
+**rio** ဖြင့် သင်သည် [export()](https://rdrr.io/pkg/rio/man/export.html) functionကို  [import()](https://rdrr.io/pkg/rio/man/import.html) နှင့်အလွန်ဆင်တူသောနည်းဖြင့် အသုံးပြုနိုင်သည်။ ဦးစွာ သင်သိမ်းဆည်းလိုသော R အရာဝတ္တု၏ အမည်ကို ပေးဆောင်ပါ (ဥပမာ  linelist) ပြီးနောက် ကိုးကားချက်များတွင် လိုချင်သော ဖိုင်အမည်နှင့် ဖိုင်extension အပါအဝင် ဖိုင်ကို သိမ်းဆည်းလိုသည့် ဖိုင်လမ်းကြောင်းကို ထည့်ပါ။ ဥပမာ:
+
+၎င်းသည် data frame linelistကို Excel workbook အဖြစ် working directory/R project root ဖိုဒါတွင် သိမ်းဆည်းသည်-
 
 ```{r, eval=F}
 export(linelist, "my_linelist.xlsx") # will save to working directory
 ```
 
-You could save the same data frame as a csv file by changing the extension. For example, we also save it to a file path constructed with `here()`:  
+You could save the same data frame as a csv file by changing the extension. For example, we also save it to a file path constructed with `here()`:
+
+Extensionကို ပြောင်းလဲခြင်းဖြင့် သင်သည် တူညီသောdata frameကို csv ဖိုင်တစ်ခုအဖြစ် သိမ်းဆည်းနိုင်သည်။ ဥပမာအားဖြင့်၊ ကျွန်ုပ်တို့သည် ၎င်းကို [here()](https://here.r-lib.org//reference/here.html) ဖြင့်တည်ဆောက်ထားသော ဖိုင်လမ်းကြောင်းတစ်ခုတွင်လည်း သိမ်းဆည်းထားသည်-
 
 ```{r, eval=F}
 export(linelist, here("data", "clean", "my_linelist.csv"))
 ```
 
+### ကလစ်ဘုတ်သို့ {.unnumbered}
 
-### To clipboard {.unnumbered}
+To export a data frame to your computer's "clipboard" (to then paste into another software like Excel, Google Spreadsheets, etc.) you can use `write_clip()` from the **clipr** package.
 
-To export a data frame to your computer's "clipboard" (to then paste into another software like Excel, Google Spreadsheets, etc.) you can use `write_clip()` from the **clipr** package. 
+သင့်ကွန်ပြူတာ၏ "ကလစ်ဘုတ်" သို့ data frameတစ်ခုကို export ရန် (ထို့နောက် Excel၊ Google Spreadsheets စသည်ဖြင့် အခြားဆော့ဖ်ဝဲလ်ထဲသို့ ကူးထည့်ရန်) clipr ပက်ကေ့ခ်ျ မှ write_clip() ကိုသင်အသုံးပြုနိုင်ပါသည် ။
 
 ```{r, eval=F}
 # export the linelist data frame to your system's clipboard
 clipr::write_clip(linelist)
 ```
 
+## RDS ဖိုင်များ {#import_rds}
 
+.csv၊ .xlsx စသည်တို့နှင့်အတူ၊ သင်သည် R data frameများကို .rds ဖိုင်များအဖြစ် export /သိမ်းဆည်းနိုင်သည်။ ၎င်းသည် R အတွက် သတ်မှတ်ထားသော ဖိုင်ဖော်မတ်တစ်ခုဖြစ်ပြီး R ဖြင့် ထုတ်ယူထားသောဒေတာနှင့် ထပ်မံလုပ်ဆောင်မည်ကို သင်သိပါက အလွန်အသုံးဝင်ပါသည်။
 
+ကော်လံများ၏ classအမျိုးအစားများကို သိမ်းဆည်းထားသောကြောင့် ၎င်းကို ထည့်သွင်းသည့်အခါတွင် ထပ်မံရှင်းလင်းရန် မလိုအပ်တော့ပါ (Excel သို့မဟုတ် CSV ဖိုင်တစ်ခုဖြင့်ပင် ၎င်းသည် ခေါင်းကိုက်နိုင်သည်။) ၎င်းသည် သေးငယ်သောဖိုင်တစ်ခုလည်းဖြစ်ပြီး သင်၏ဒေတာအတွဲသည် ကြီးမားပါက export ခြင်းနှင့် importခြင်းအတွက် အသုံးဝင်သည်။
 
-## RDS files {#import_rds}
-
-Along with .csv, .xlsx, etc, you can also export/save R data frames as .rds files. This is a file format specific to R, and is very useful if you know you will work with the exported data again in R. 
-
-The classes of columns are stored, so you don't have do to cleaning again when it is imported (with an Excel or even a CSV file this can be a headache!). It is also a smaller file, which is useful for export and import if your dataset is large.  
-
-For example, if you work in an Epidemiology team and need to send files to a GIS team for mapping, and they use R as well, just send them the .rds file! Then all the column classes are retained and they have less work to do.  
+ဥပမာအားဖြင့်၊ သင်သည် ကူးစက်ရောဂါဗေဒအဖွဲ့တွင် အလုပ်လုပ်ပြီး မြေပုံဆွဲရန်အတွက် GIS အဖွဲ့ထံသို့ ဖိုင်များပေးပို့ရန် လိုအပ်ပါက ၎င်းတို့သည် R ကိုလည်း အသုံးပြုပါက ၎င်းတို့ကို .rds ဖိုင်ကို ပေးပို့ပါ။ ထို့နောက် ကော်လံအတန်းအမျိုးအစား များအားလုံးကို ထိန်းသိမ်းထားပြီး ၎င်းတို့တွင် လုပ်စရာနည်းပါးသည်။
 
 ```{r, eval=F}
 export(linelist, here("data", "clean", "my_linelist.rds"))
 ```
 
-
-
 <!-- ======================================================= -->
-## Rdata files and lists {#import_rdata}
 
-`.Rdata` files can store multiple R objects - for example multiple data frames, model results, lists, etc. This can be very useful to consolidate or share a lot of your data for a given project.  
+## Rdata ဖိုင်များနှင့် စာရင်းများ {#import_rdata}
 
-In the below example, multiple R objects are stored within the exported file "my_objects.Rdata":  
+`.Rdata` files can store multiple R objects - for example multiple data frames, model results, lists, etc. This can be very useful to consolidate or share a lot of your data for a given project. .Rdataဖိုင်များသည် R objectများစွာကို သိမ်းဆည်းထားနိုင်သည် - ဥပမာ data frameများစွာ၊ မော်ဒယ်ရလဒ်များ၊ စာရင်းများ စသည်တို့သည် ပေးအပ်ထားသော ပရောဂျက်တစ်ခုအတွက် သင့်ဒေတာအများအပြားကို စုစည်းရန် သို့မဟုတ် မျှဝေရန်အတွက် အလွန်အသုံးဝင်ပါသည်။
+
+အောက်ဖော်ပြပါ ဥပမာတွင်၊ export ထားသော ဖိုင် "my_objects.Rdata" တွင် R အရာများစွာကို သိမ်းဆည်းထားသည်-
 
 ```{r, eval=F}
 rio::export(my_list, my_dataframe, my_vector, "my_objects.Rdata")
 ```
 
-Note: if you are trying to *import* a list, use `import_list()` from **rio** to import it with the complete original structure and contents.  
+Note: if you are trying to *import* a list, use `import_list()` from **rio** to import it with the complete original structure and contents.
+
+မှတ်ချက်- စာရင်းတစ်ခုကို importရန် ကြိုးစားနေပါ က မူရင်းဖွဲ့စည်းပုံနှင့် အကြောင်းအရာအပြည့်အစုံဖြင့် ၎င်းကိုimportရန် ရီယိုမှ [import_list()](https://rdrr.io/pkg/rio/man/import_list.html) ကိုအသုံးပြုပါ။
 
 ```{r, eval=F}
 rio::import_list("my_list.Rdata")
 ```
 
+<!-- ======================================================= -->
 
+## Plot များ သိမ်းဆည်းခြင်း
 
+Instructions on how to save plots, such as those created by `ggplot()`, are discussed in depth in the \[ggplot basics\] page.
 
+In brief, run `ggsave("my_plot_filepath_and_name.png")` after printing your plot. You can either provide a saved plot object to the `plot =` argument, or only specify the destination file path (with file extension) to save the most recently-displayed plot. You can also control the `width =`, `height =`, `units =`, and `dpi =`.
 
+ ggplot() ဖြင့်ဖန်တီးသည့် ကွက်များကဲ့သို့သော plotများကို သိမ်းဆည်းနည်းဆိုင်ရာ လမ်းညွှန်ချက်များကို [ggplot အခြေခံများ](https://epirhandbook.com/en/ggplot-basics.html#ggplot-basics) စာမျက်နှာတွင်နက်နက်နဲနဲ ဆွေးနွေးထားသည် ။
 
+သင်၏plot ကို print လုပ်ပြီးနောက် အတိုချုပ်အားဖြင့် ggsave("my_plot_filepath_and_name.png")ကိုrun ပါ။ သင်သည် သိမ်းဆည်းထားသော plot object အား plot = argumentသို့ ပေးဆောင်နိုင်သည် သို့မဟုတ် မကြာသေးမီက ပြသထားသည့် plot ကို သိမ်းဆည်းရန်အတွက် ဦးတည်ရာဖိုင်လမ်းကြောင်း (ဖိုင်extensionဖြင့်) ကိုသာ သတ်မှတ်နိုင်သည်။ width =, height =, units =, နှင့်  dpi = ဖြင့်လည်းထိန်းချုပ်နိုင်သည်။
+
+ကူးစက်မှုဆိုင်ရာသစ်ပင်ကဲ့သို့ ကွန်ရက်ဂရပ် သိမ်းဆည်းနည်းကို  [ကူးစက်မှုဆိုင်ရာ ကွင်းဆက်များ](https://epirhandbook.com/en/transmission-chains.html) ပေါ်ရှိ စာမျက်နှာတွင် ဖော်ပြထားပါသည်။
 
 <!-- ======================================================= -->
-## Saving plots {} 
 
-Instructions on how to save plots, such as those created by `ggplot()`, are discussed in depth in the [ggplot basics] page.  
+## အရင်းအမြစ်များ
 
-In brief, run `ggsave("my_plot_filepath_and_name.png")` after printing your plot. You can either provide a saved plot object to the `plot = ` argument, or only specify the destination file path (with file extension) to save the most recently-displayed plot. You can also control the `width = `, `height = `, `units = `, and `dpi = `.  
+R [ဒေတာ import/export ခြင်းလက်စွဲ](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
 
-How to save a network graph, such as a transmission tree, is addressed in the page on [Transmission chains]. 
+[R 4 ဒေတာသိပ္ပံအခန်းမှ ဒေတာimport](https://r4ds.had.co.nz/data-import.html#data-import)
 
+[ggsave() စာရွက်စာတမ်း](https://ggplot2.tidyverse.org/reference/ggsave.html)
 
-<!-- ======================================================= -->
-## Resources {} 
+Below is a table, taken from the **rio** online [vignette](https://cran.r-project.org/web/packages/rio/vignettes/rio.html). For each type of data it shows: the expected file extension, the package **rio** uses to import or export the data, and whether this functionality is included in the default installed version of **rio**.
 
-The [R Data Import/Export Manual](https://cran.r-project.org/doc/manuals/r-release/R-data.html)  
-[R 4 Data Science chapter on data import](https://r4ds.had.co.nz/data-import.html#data-import)  
-[ggsave() documentation](https://ggplot2.tidyverse.org/reference/ggsave.html)  
+အောက်တွင် rio online [vignette](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) မှ ကူးယူထားသော ဇယားတစ်ခုဖြစ်သည် ။ ဒေတာအမျိုးအစားတစ်ခုစီအတွက် ၎င်းကိုပြသသည်- မျှော်လင့်ထားသောဖိုင်extension၊ ပက်ကေ့ဂျ် rio သည် ဒေတာကိုimportရန် သို့မဟုတ် ထုတ်ယူရန်အသုံးပြုသည်၊ နှင့် ဤလုပ်ဆောင်နိုင်စွမ်းသည် rio၏မူလထည့်သွင်းထားသည့်ဗားရှင်းတွင်ပါoင်သည် ဖြစ်စေ။
 
-
-Below is a table, taken from the **rio** online [vignette](https://cran.r-project.org/web/packages/rio/vignettes/rio.html). For each type of data it shows: the expected file extension, the package **rio** uses to import or export the data, and whether this functionality is included in the default installed version of **rio**.  
-
-
-
-Format                     | Typical Extension | Import Package    | Export Package     | Installed by Default
----------------------------|-------------------|-------------------|--------------------|---------------------
-Comma-separated data | .csv | data.table `fread()` | data.table |	Yes
-Pipe-separated data |	.psv | data.table `fread()` | data.table | Yes
-Tab-separated data| .tsv | data.table `fread()` | data.table | Yes
-SAS | .sas7bdat | haven | haven | Yes
-SPSS | .sav | haven | haven | Yes
-Stata | .dta | haven | haven | Yes
-SAS | XPORT | .xpt | haven | haven | Yes
-SPSS Portable | .por | haven | | Yes
-Excel | .xls | readxl | | Yes
-Excel | .xlsx | readxl | openxlsx | Yes
-R syntax | .R	| base | base | Yes
-Saved R objects | .RData, .rda | base | base | Yes
-Serialized R objects | .rds | base | base | Yes
-Epiinfo | .rec | foreign | | Yes
-Minitab | .mtp | foreign | | Yes
-Systat | .syd |	foreign | | Yes
-“XBASE” | database files | .dbf | foreign | foreign | Yes
-Weka Attribute-Relation File Format | .arff | foreign | foreign | Yes
-Data Interchange Format | .dif | utils | | Yes
-Fortran data | no recognized extension | utils | | Yes
-Fixed-width format data | .fwf | utils | utils | Yes
-gzip comma-separated data | .csv.gz | utils | utils | Yes
-CSVY (CSV + YAML metadata header) | .csvy | csvy | csvy | No
-EViews | .wf1 |hexView | | No
-Feather R/Python interchange format | .feather | feather | feather | No
-Fast Storage | .fst | fst |	fst | No
-JSON | .json | jsonlite | jsonlite | No
-Matlab | .mat | rmatio | rmatio | No
-OpenDocument Spreadsheet | .ods | readODS | readODS | No
-HTML Tables | .html | xml2 | xml2 | No
-Shallow XML documents | .xml | xml2 | xml2 | No
-YAML | .yml | yaml | yaml	| No
-Clipboard	default is tsv | |  clipr | clipr | No
-
-
-
+| Format                              | Typical Extension       | Import Package       | Export Package | Installed by Default |
+|-------------------------------------|-------------------------|----------------------|----------------|----------------------|
+| Comma-separated data                | .csv                    | data.table `fread()` | data.table     | Yes                  |
+| Pipe-separated data                 | .psv                    | data.table `fread()` | data.table     | Yes                  |
+| Tab-separated data                  | .tsv                    | data.table `fread()` | data.table     | Yes                  |
+| SAS                                 | .sas7bdat               | haven                | haven          | Yes                  |
+| SPSS                                | .sav                    | haven                | haven          | Yes                  |
+| Stata                               | .dta                    | haven                | haven          | Yes                  |
+| SAS                                 | XPORT                   | .xpt                 | haven          | haven                |
+| SPSS Portable                       | .por                    | haven                |                | Yes                  |
+| Excel                               | .xls                    | readxl               |                | Yes                  |
+| Excel                               | .xlsx                   | readxl               | openxlsx       | Yes                  |
+| R syntax                            | .R                      | base                 | base           | Yes                  |
+| Saved R objects                     | .RData, .rda            | base                 | base           | Yes                  |
+| Serialized R objects                | .rds                    | base                 | base           | Yes                  |
+| Epiinfo                             | .rec                    | foreign              |                | Yes                  |
+| Minitab                             | .mtp                    | foreign              |                | Yes                  |
+| Systat                              | .syd                    | foreign              |                | Yes                  |
+| "XBASE"                             | database files          | .dbf                 | foreign        | foreign              |
+| Weka Attribute-Relation File Format | .arff                   | foreign              | foreign        | Yes                  |
+| Data Interchange Format             | .dif                    | utils                |                | Yes                  |
+| Fortran data                        | no recognized extension | utils                |                | Yes                  |
+| Fixed-width format data             | .fwf                    | utils                | utils          | Yes                  |
+| gzip comma-separated data           | .csv.gz                 | utils                | utils          | Yes                  |
+| CSVY (CSV + YAML metadata header)   | .csvy                   | csvy                 | csvy           | No                   |
+| EViews                              | .wf1                    | hexView              |                | No                   |
+| Feather R/Python interchange format | .feather                | feather              | feather        | No                   |
+| Fast Storage                        | .fst                    | fst                  | fst            | No                   |
+| JSON                                | .json                   | jsonlite             | jsonlite       | No                   |
+| Matlab                              | .mat                    | rmatio               | rmatio         | No                   |
+| OpenDocument Spreadsheet            | .ods                    | readODS              | readODS        | No                   |
+| HTML Tables                         | .html                   | xml2                 | xml2           | No                   |
+| Shallow XML documents               | .xml                    | xml2                 | xml2           | No                   |
+| YAML                                | .yml                    | yaml                 | yaml           | No                   |
+| Clipboard default is tsv            |                         | clipr                | clipr          | No                   |

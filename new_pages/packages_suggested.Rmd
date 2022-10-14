@@ -1,19 +1,22 @@
-# Suggested packages
+# အကြံပြုထားသော ပက်ကေ့ဂျ်များ
 
-Below is a long list of suggested packages for common epidemiological work in R. You can copy this code, run it, and all of these packages will install from CRAN and load for use in the current R session. If a package is already installed, it will be loaded for use only.  
+အောက်တွင်ဖော်ပြထားသည်မှာ R ရှိ အများသောကူးစက်ရောဂါဆိုင်ရာအလုပ်အတွက် အကြံပြုထားသော ပက်ကေ့ဂျ်များ၏ရှည်လျားလှသောစာရင်းဖြစ်သည်။ သင်သည် ဤကုဒ်ကို ကူးယူကာ run နိုင်ပြီး၊ ဤပက်ကေ့ဂျ်အားလုံးကို CRAN မှ ထည့်သွင်းပြီး လက်ရှိ R စက်ရှင်တွင် အသုံးပြုရန်အတွက် load တင်ရမည်ဖြစ်သည်။ ပက်ကေ့ဂျ်တစ်ခုကို ထည့်သွင်းပြီးဖြစ်ပါက ၎င်းကို အသုံးပြုရန်အတွက်သာ load တင်ဖို့လိုမည်။
 
-You can modify the code with `#` symbols to exclude any packages you do not want.  
+သင် မလိုချင်သောပက်ကေ့ဂျ်များကိုဖယ်ထုတ်ရန် `#` သင်္ကေတများ ဖြင့် ကုဒ်ကို ပြင်ဆင်နိုင်သည် ။
 
-Of note:  
+မှတ်သားစရာ-
 
-* Install the **pacman** package first before running the below code. You can do this with `install.packages("pacman")`. In this handbook we emphasize `p_load()` from **pacman**, which installs the package if necessary *and* loads it for use in the current R session. You can also load packages that are already installed with `library()` from **base** R.  
-* In the code below, packages that are included when installing/loading another package are indicated by an indent and hash. For example how **ggplot2** is listed under **tidyverse**.  
-* If multiple packages have functions with the same name, *masking* can occur when the function from the more recently-loaded package takes precedent. Read more in the [R basics] page. Consider using the package **conflicted** to manage such conflicts.  
-* See the [R basics] section on packages for more information on **pacman** and masking.  
+-   အောက်ဖော်ပြပါကုဒ်ကိုမလုပ်ဆောင်မီ ပထမဆုံး **pacman** package ကို install လုပ်ပါ ။ သင်ဤအရာကို [`install.packages("pacman")`](https://rdrr.io/r/utils/install.packages.html) ဖြင့်လုပ်ဆောင်နိုင်သည်။ ဤလက်စွဲစာအုပ်တွင် လိုအပ်သလို ပက်ကေ့ဂျ်ကို ထည့်သွင်းပြီး လက်ရှိ R စက်ရှင်တွင် အသုံးပြုရန်အတွက် တင်ပေးသော **pacman** မှ [`p_load()`](https://rdrr.io/pkg/pacman/man/p_load.html) ကိုအလေးပေးဖော်ပြပါသည် ။ **base** R မှ [`library()`](https://rdrr.io/r/base/library.html) ဖြင့်ထည့်သွင်းပြီးသော ပက်ကေ့ဂျ်များကိုလည်း သင် load တင်နိုင်သည်။
 
-To see the versions of R, RStudio, and R packages used during the production of this handbook, see the page on [Editorial and technical notes].  
+-   အောက်ဖော်ပြပါကုဒ်တွင်၊ အခြားပက်ကေ့ခ်ျကိုထည့်သွင်းခြင်း/ဖွင့်သည့်အခါတွင်ပါရှိသော ပက်ကေ့ဂျ်များကို အင်တင်း(indent) နှင့် hash ဖြင့်ညွှန်ပြသည်။ ဥပမာအားဖြင့် **ggplot2** ကို **tidyverse** အောက်တွင် ဖော်ပြထားသည် ။
 
-## Packages from CRAN  
+-   ပက်ကေ့ဂျ်အများအပြားတွင် အမည်တူ function များပါရှိလျှင် လတ်တလော loadတင်ထားသော ပက်ကေ့ခ်ျမှ functionသည် ရှေ့တန်းရောက်သောအခါ တွင် ဖုံးကွယ်ခြင်းmasking ဖြစ်နိုင်သည်။ [R အခြေခံ](https://epirhandbook.com/en/r-basics.html#r-basics) စာမျက်နှာတွင် ပိုမိုဖတ်ရှုပါ ။ ထိုပဋိပက္ခများကို စီမံခန့်ခွဲရန် **conflicted** ပက်ကေ့ဂျ်ကို အသုံးပြုရန် စဉ်းစားပါ ။
+
+-   **pacman** နှင့် masking ဆိုင်ရာ နောက်ထပ်အချက်အလက်များအတွက် ပက်ကေ့ဂျ်များရှိ [R အခြေခံများ](https://epirhandbook.com/en/r-basics.html#r-basics) အပိုင်း ကို ကြည့်ပါ ။
+
+ဤလက်စွဲစာအုပ်ကို ထုတ်လုပ်စဉ်အတွင်း အသုံးပြုခဲ့သော R၊ RStudio နှင့် R ပက်ကေ့ဂျ်များ၏ ဗားရှင်းများကို ကြည့်ရှုရန်၊ [အယ်ဒီတာ့အာဘော်နှင့် နည်းပညာမှတ်စုများ](https://epirhandbook.com/en/editorial-and-technical-notes.html#editorial-and-technical-notes) ပေါ်ရှိ စာမျက်နှာကို ကြည့်ပါ။
+
+## Packages from CRAN
 
 ```{r, eval=F}
 
@@ -141,14 +144,13 @@ pacman::p_load(
 
 ```
 
-## Packages from Github  
+## Github မှ ပက်ကေ့ခ်ျများ
 
+အောက်တွင် Github repositories မှ တိုက်ရိုက်ပက်ကေ့ဂျ်နှစ်ခုကို ထည့်သွင်းရန် command များဖြစ်သည်။
 
-Below are commmands to install two packages directly from Github repositories.  
+-   **epicontacts** ၏ ဖွံ့ဖြိုးတိုးတက်မှုဗားရှင်း တွင် အချိန်ဆိုင်ရာ x-ဝင်ရိုးဖြင့် ဂီယာသစ်ပင်များ ပြုလုပ်နိုင်သည့် စွမ်းရည်ပါရှိသည်။
 
-* The development version of **epicontacts** contains the ability to make transmission trees with an temporal x-axis  
-* The **epirhandbook** package contains all the example data for this handbook and can be used to download the offline version of the handbook.  
-
+-   **epirhandbook** ပက်ကေ့ဂျ်တွင် ဤလက်စွဲစာအုပ်အတွက် နမူနာဒေတာအားလုံး ပါဝင်ပြီး လက်စွဲစာအုပ်၏ အော့ဖ်လိုင်းဗားရှင်းကို ဒေါင်းလုဒ်လုပ်ံ၍ အသုံးပြုနိုင်ပါသည်။
 
 ```{r, eval=F}
 # Packages to download from Github (not available on CRAN)
@@ -163,4 +165,3 @@ pacman::p_install_gh("appliedepi/epirhandbook")
 
 
 ```
-

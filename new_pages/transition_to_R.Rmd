@@ -1,55 +1,53 @@
+<!-- ======================================================= -->
 
 <!-- ======================================================= -->
+
 <!-- ======================================================= -->
-<!-- ======================================================= -->
-# Transition to R { }  
 
-Below, we provide some advice and resources if you are transitioning to R.  
+# R သို့ ပြောင်းလဲအသုံးပြုခြင်း
 
-R was introduced in the late 1990s and has since grown dramatically in scope. Its capabilities are so extensive that commercial alternatives have reacted to R developments in order to stay competitive! ([read this article comparing R, SPSS, SAS, STATA, and Python](https://www.inwt-statistics.com/read-blog/comparison-of-r-python-sas-spss-and-stata.html)).  
+သင်သည် R သို့ကူးပြောင်းအသုံးပြုတဲ့အခါ အဆင်ပြေအောင် အောက်တွင် ကျွန်ုပ်တို့သည် အကြံဉာဏ်နှင့် အရင်းအမြစ်အချို့ကို ပေးဆောင်ထားတယ်။
 
-Moreover, R is much easier to learn than it was 10 years ago. Previously, R had a reputation of being difficult for beginners. It is now much easier with friendly user-interfaces like RStudio, intuitive code like the **tidyverse**, and many tutorial resources.  
+R ကို 1990 ခုနှစ်နှောင်းပိုင်းတွင် စတင်မိတ်ဆက်ခဲ့ပြီး ထိုအချိန်မှစ၍ နယ်ပယ် သိသိသာသာ ကြီးထွားလာခဲ့သည်။ ၎င်း၏စွမ်းဆောင်ရည်များသည် အလွန်ကျယ်ပြန့်သောကြောင့် စီးပွားဖြစ်အခြားရွေးချယ်စရာများပြင် R တိုးတက်မှုများကို တုံ့ပြန့် ပြိုင်ဆိုင်နေကြရသည်။ ( [R ၊ SPSS ၊ SAS ၊ STATA နှင့် Python တို့ကို နှိုင်းယှဉ်ထားသည့် ဤဆောင်းပါးကို ဖတ်ပါ](https://www.inwt-statistics.com/read-blog/comparison-of-r-python-sas-spss-and-stata.html) ။
 
-<span style="color: darkgreen;">**Do not be intimidated - come discover the world of R!**</span>  
+ထို့အပြင် R သည် လွန်ခဲ့သော 10 နှစ်ကျော်ကထက် လေ့လာရန် ပိုမိုလွယ်ကူသည်။ ယခင်က R သည် အစပြုသူများအတွက် ခက်ခဲသည်ဟု နာမည်ရခဲ့ဖူးသည်။ RStudio ၊ tidyverse ကဲ့သို့ကုဒ် နှင့် ကျူတိုရီရယ်ရင်းမြစ်များစွာတို့ ကဲ့သို့ အသုံးပြုသူတွေအတွက် အဆင်ပြေတဲ့ user-interfaceများဖြင့် ယခုအခါ ပိုမိုလွယ်ကူလာပါပြီ။
 
-  
+[**ကြောက်ရွံ့မသွားပါနဲ့ - R ၏ကမ္ဘာကိုလာရောက်လေ့လာရှာဖွေကြည့်ပါ။ !**]{style="color: darkgreen;"}
+
 
 ```{r, echo=F, out.width = "75%", out.height="75%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "transition_door.png"))
 ```
 
+## Excel မှ
 
+Excel မှ R သို့ တိုက်ရိုက်ကူးပြောင်းခြင်းသည် အလွန်အောင်မြင်နိုင်သော ပန်းတိုင်တစ်ခုဖြစ်သည်။ ကြောက်စရာလို့ထင်ရပေမယ့် မင်းလုပ်နိုင်ပါတယ်။
 
+Excel ကျွမ်းကျင်မှုအားကောင်းသူတစ်ဦးသည် Excel တစ်ခုတည်းတွင် အလွန်အဆင့်မြင့်သည့်လုပ်ဆောင်မှုများကို VBA ကဲ့သို့ Scriptရေးကိရိယာများကို အသုံးပြု၍ပင် လုပ်ဆောင်နိုင်သည်မှာ မှန်ပါသည်။ Excel ကို ကမ္ဘာအနှံ့အပြားတွင် အသုံးပြုနေပြီး ကူးစက်ရောဂါဗေဒပညာရှင်အတွက် မရှိမဖြစ်လိုအပ်သောကိရိယာတစ်ခုဖြစ်သည်။ သို့သော်လည်း R နှင့် ဖြည့်စွက်ခြင်းဖြင့် သင့်လုပ်ငန်းလည်ပတ်မှုများကို သိသိသာသာ ချဲ့ထွင်တိုးတက်စေနိုင်ပါသည်။
 
-## From Excel  
+### အကျိုးကျေးဇူးများ {.unnumbered}
 
-Transitioning from Excel directly to R is a very achievable goal. It may seem daunting, but you can do it!  
+R ကိုအသုံးပြုခြင်းသည် အချိန်ကုန်သက်သာခြင်း၊ ပိုမိုကိုက်ညီပြီး တိကျသောခွဲခြမ်းစိတ်ဖြာမှု၊ မျိုးပွားနိုင်မှု၊ မျှဝေနိုင်မှု(analysis, reproducibility, shareability)နှင့် ပိုမိုမြန်ဆန်သောအမှားပြင်ဆင်မှုတို့တွင် ကြီးမားသောအကျိုးကျေးဇူးများကို ပေးဆောင်သည်ကို သင်တွေ့ရှိရမည်ဖြစ်ပါသည်။ မည်သည့်ဆော့ဖ်ဝဲလ်အသစ်များကဲ့သို့ပင် ရင်းနှီးကျွမ်းဝင်စေရန် သင်ရင်းနှီးမြှပ်နှံရမည့်အချိန်၏ သင်ယူမှု "မျဉ်းကွေး/curve" တစ်ခုရှိသည်။ အမြတ်ရလဒ်များသည် သိသာထင်ရှားပြီး ကြီးမားသော နယ်ပယ်ကြောင့် R က ဖြစ်နိုင်ခြေအသစ်များသို့ဖွင့်ပေးမည်ဖြစ်သည်။
 
-It is true that someone with strong Excel skills can do very advanced activities in Excel alone - even using scripting tools like VBA. Excel is used across the world and is an essential tool for an epidemiologist. However, complementing it with R can dramatically improve and expand your work flows.  
+Excel သည် "point-and-click" ဖြင့် ရိုးရှင်းသော ခွဲခြမ်းစိတ်ဖြာမှု(analysis)နှင့် ပုံဖော်ပြမှုများ(visualizations)ကို ထုတ်လုပ်ရန် စတင်အသုံးပြုသူများအတွက် လွယ်ကူသော လူသိများသည့်ဆော့ဖ်ဝဲတစ်ခုဖြစ်သည်။ နှိုင်းယှဉ်ကြည့်လျှင် R functionများနှင့် အင်တာဖေ့စ်တို့နှင့် ရင်းနှီးဖို့ ရက်သတ္တပတ်အနည်းငယ်ကြာနိုင်သည်။ သို့သော်လည်း R သည် မကြာသေးမီနှစ်များအတွင်း စတင်အသုံးပြုသူများအတွက် ပိုမိုရင်းနှီးဖို့လွယ်ကူလာခဲ့သည်။
 
-### Benefits {.unnumbered}  
+Excel အလုပ်အသွားအလာအများအပြားသည် မှတ်ဉာဏ်နှင့် ထပ်ခါတလဲလဲလုပ်ဆောင်မှုအပေါ် အားကိုးသည် - ထို့ကြောင့် မှားဖို့ အခွင့်အလမ်းများစွာရှိသည်။ ထို့အပြင် ဒေတာရှင်းလင်းခြင်း၊ ခွဲခြမ်းစိတ်ဖြာမှုနည်းစနစ်(analysis methodology)နှင့် အသုံးပြုထားသော ညီမျှခြင်းများကို မြင်ကွင်းမှ ဖျောက်ထားသည်။ Excel workbook တစ်ခုလုပ်ဆောင်နေပုံနှင့် ပြဿနာဖြေရှင်းနည်းတို့ကို လေ့လာရန် လုပ်ဖော်ကိုင်ဖက်အသစ်အတွက် အချိန်များစွာလိုအပ်ပါသည်။ R ဖြင့်ဆိုပါက၊ အဆင့်အားလုံးကို scriptတွင် အတိအလင်းရေးထားပြီး အလွယ်တကူကြည့်ရှု၊ တည်းဖြတ်၊ ပြုပြင်နိုင်တဲ့အပြင် အခြားdatasetများသို့ပါ apply လုပ်နိုင်သည်။ 
 
-You will find that using R offers immense benefits in time saved, more consistent and accurate analysis, reproducibility, shareability, and faster error-correction. Like any new software there is a learning "curve" of time you must invest to become familiar. The dividends will be significant and immense scope of new possibilities will open to you with R.  
+Excel မှ R သို့ ပြောင်းလဲအသုံးပြုခြင်းကို စတင်ရန် သင်ရဲ့ mindset ကို အောက်ဖော်ပြပါအရေးကြီးသော နည်းလမ်းအချို့မှာ ချိန်ညှိရပါမည်-
 
-Excel is a well-known software that can be easy for a beginner to use to produce simple analysis and visualizations with "point-and-click". In comparison, it can take a couple weeks to become comfortable with R functions and interface. However, R has evolved in recent years to become much more friendly to beginners.  
+### သပ်ရပ်သောဒေတာ
 
-Many Excel workflows rely on memory and on repetition - thus, there is much opportunity for error. Furthermore, generally the data cleaning, analysis methodology, and equations used are hidden from view. It can require substantial time for a new colleague to learn what an Excel workbook is doing and how to troubleshoot it. With R, all the steps are explicitly written in the script and can be easily viewed, edited, corrected, and applied to other datasets.   
+ရှုပ်ထွေးသော "လူသားဖတ်နိုင်သော" ဒေတာအစား စက်ကဖတ်နိုင်တဲ့ "သပ်ရပ်သော" ဒေတာကို အသုံးပြုပါ။ [R တွင် "သပ်ရပ်သော" ဒေတာဆိုင်ရာ](https://r4ds.had.co.nz/tidy-data.html) သင်ခန်းစာတွင် ရှင်းပြထားသည့်အတိုင်း "သပ်ရပ်သော" ဒေတာအတွက် အဓိကလိုအပ်ချက်သုံးခုရှိသည် ။
 
+-   Variable/ကိန်းရှင်တစ်ခုစီတွင် ၎င်း၏ကိုယ်ပိုင် column ရှိရမည်။
 
-**To begin your transition from Excel to R you must adjust your mindset in a few important ways:**  
+-   Observationတစ်ခုစီတွင် ၎င်း၏ကိုယ်ပိုင် row ရှိရမည်။
 
+-   တန်ဖိုးတစ်ခုစီတွင် ၎င်း၏ကိုယ်ပိုင် cell ရှိရမည်။
 
-### Tidy data {.unnumbered}  
+Excel အသုံးပြုသူများအတွက် - [Excel "ဇယားများ](https://exceljet.net/excel-tables)" ရဲ့ ဒေတာစံသတ်မှတ်ရာနှင့် ဖော်မတ်ကို ပိုမိုခန့်မှန်းနိုင်စေရန်အတွက် လုပ်ဆောင်သည့် အခန်းကဏ္ဍကို စဉ်းစားပါ။
 
-Use machine-readable "tidy" data instead of messy "human-readable" data. These are the three main requirements for "tidy" data, as explained in this tutorial on ["tidy" data in R](https://r4ds.had.co.nz/tidy-data.html):  
-
-* Each variable must have its own column  
-* Each observation must have its own row  
-* Each value must have its own cell  
-
-To Excel users - think of the role that [Excel "tables"](https://exceljet.net/excel-tables) play in standardizing data and making the format more predictable.  
-
-An example of "tidy" data would be the case linelist used throughout this handbook - each variable is contained within one column, each observation (one case) has it's own row, and every value is in just one cell. Below you can view the first 50 rows of the linelist:  
+"သပ်ရပ်သော" ဒေတာ၏နမူနာတစ်ခုသည် ဤစာအုပ်တစ်အုပ်လုံးတွင်အသုံးပြုထားသော case linelist ဖြစ်သည် - ကိန်းရှင်တစ်ခုစီသည် column တစ်ခုစီတွင်ပါရှိသည်၊ တစ်ခုစီတွင် observationတစ်ခုစီတွင် ကိုယ်ပိုင်rowရှိပြီး တန်ဖိုးတိုင်းသည် ဆဲလ်တစ်ခုတည်းတွင်သာရှိသည်။ အောက်တွင် လိုင်းစာရင်း၏ ပထမတန်း ၅၀ ကို ကြည့်ရှုနိုင်သည်-
 
 ```{r, echo=F}
 # import the linelist into R
@@ -61,211 +59,240 @@ linelist <- rio::import(here::here("data", "case_linelists", "linelist_cleaned.r
 DT::datatable(head(linelist, 50), rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T), class = 'white-space: nowrap' )
 ```
 
-*The main reason one encounters non-tidy data is because many Excel spreadsheets are designed to prioritize easy reading by humans, not easy reading by machines/software.*  
+*သပ်ရပ်မှုမရှိသောဒေတာများကိုတွေ့ရခြင်း၏အဓိကအကြောင်းရင်းမှာ Excel spreadsheet အများအပြားကို လူသားများဖတ်ရလွယ်ကူစေရန် ဦးစားပေးထုတ်လုပ်ထားသောကြောင့်ဖြစ်ပြီး၊ စက်/ဆော့ဖ်ဝဲလ်ဖြင့်ဖတ်ရှုရလွယ်ကူခြင်းမဟုတ်သောကြောင့်ဖြစ်သည်။*
 
-To help you see the difference, below are some fictional examples of **non-tidy data** that prioritize *human*-readability over *machine*-readability:  
+ခြားနားချက်ကို သိမြင်နိုင်စေရန်အတွက်၊ အောက်တွင် လူသား -readability ကို စက် -readability ထက် ဦးစားပေးသော သပ်ရပ်မှုမရှိသောအချက်အလက် များ၏ စိတ်ကူးယဉ်ဥပမာအချို့ ဖြစ်သည်-
 
 ```{r, echo=F, out.width = "100%", out.height="75%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "Excel_nonTidy_1.png"))
 ```
 
-
-*Problems:* In the spreadsheet above, there are *merged cells* which are not easily digested by R. Which row should be considered the "header" is not clear. A color-based dictionary is to the right side and cell values are represented by colors - which is also not easily interpreted by R (nor by humans with color-blindness!). Furthermore, different pieces of information are combined into one cell (multiple partner organizations working in one area, or the status "TBC" in the same cell as "Partner D").  
-
+*ပြဿနာများ*- အထက်ဖော်ပြပါ spreadsheet တွင်၊ R ဖြင့် အလွယ်တကူ မလုပ်ကိုင်နိုင်သော ပေါင်းစည်းထားသောဆဲလ်များ/merged cells ရှိပါသည်။ မည်သည့်rowကို "ခေါင်းစီး" ဟု သတ်မှတ်သင့်သည်ဆိုသည်မှာ မရှင်းလင်းပါ။ အရောင်base အဘိဓာန်သည် ညာဘက်အခြမ်းတွင်ရှိပြီး ဆဲလ်တန်ဖိုးများကို အရောင်များဖြင့် ကိုယ်စားပြုထားသည်မှာ R မှအလွယ်တကူအဓိပ္ပာယ်မဖွင့်နိုင် ( အရောင်-မခွဲခြားနိုင်သောလူမှလည်းမြင်မည်မဟုတ်)။ ထို့အပြင်၊ မတူညီသောအချက်အလက်အပိုင်းအစများကို ဆဲလ်တစ်ခုသို့ ပေါင်းစပ်ထားပါသည် (ဧရိယာတစ်ခုတည်းတွင် လုပ်ဆောင်နေသော ပါတနာအဖွဲ့အစည်းအများအပြား သို့မဟုတ် "Partner D" ကဲ့သို့ ဆဲလ်တစ်ခုတည်းရှိ status  "TBC" )။
 
 ```{r, echo=F, out.width = "100%", out.height="100%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "Excel_nonTidy_2.png"))
 ```
 
+*ပြဿနာများ*- အထက်ဖော်ပြပါspreadsheetတွင်၊ datasetအတွင်း ဗလာrowများနှင့် columnအများအပြားရှိသည် - ၎င်းသည် R တွင် သန့်ရှင်းရေးလုပ်ရန် ခေါင်းကိုက်စေမည်ဖြစ်သည်။ ထို့အပြင်၊ ပေးထားသောtreatment centerအတွက် GPS သြဒိနိတ်များကို rowနှစ်ခုတွင် ဖြန့်ထားသည်။ ဘေးထွက်မှတ်စုအနေဖြင့် - GPS သြဒိနိတ်များသည် မတူညီသော ဖော်မတ်နှစ်ခုရှိသည်။
 
-*Problems:* In the spreadsheet above, there are numerous extra empty rows and columns within the dataset - this will cause cleaning headaches in R. Furthermore, the GPS coordinates are spread across two rows for a given treatment center. As a side note - the GPS coordinates are in two different formats!  
+"သပ်ရပ်သော" datasetများသည် လူသားမျက်လုံးအတွက် ဖတ်ရလွယ်ကူမည်မဟုတ်သော်လည်း ၎င်းတို့သည် ဒေတာရှင်းလင်းခြင်းနှင့် ခွဲခြမ်းစိတ်ဖြာခြင်းတို့ကို ပိုမိုလွယ်ကူစေသည်။ သပ်ရပ်သောဒေတာကို ဖော်မက်အမျိုးမျိုးဖြင့် သိမ်းဆည်းထားနိုင်သည်၊ ဥပမာ "long" သို့မဟုတ် "wide""( [Pivoting data](https://epirhandbook.com/en/pivoting-data.html#pivoting-data) တွင် စာမျက်နှာကိုကြည့်ပါ )၊ သို့သော် အထက်ဖော်ပြပါမူများကို စောင့်ကြည့်နေဆဲဖြစ်သည်။
 
-"Tidy" datasets may not be as readable to a human eye, but they make data cleaning and analysis much easier! Tidy data can be stored in various formats, for example "long" or "wide""(see page on [Pivoting data]), but the principles above are still observed.
+### Function များ {.unnumbered}
 
+R စကားလုံး "function" သည် အသစ်ဖြစ်ကောင်းဖြစ်မယ် သော်လည်း တူညီသည်မှာ *ဖော်မြူလာ* များအဖြစ် Excel တွင် ရှိနေမည် ။ Excel ရှိ ဖော်မြူလာများသည် တိကျသော syntax (ဥပမာ semicolon နှင့် ကွင်းစကွက်များ နေရာချထားခြင်း) လိုအပ်ပါသည်။ သင် လေ့လာရန်လိုသည်မှာ functionအသစ်အနည်းငယ်နှင့် R မှာ ၎င်းတို့ အတူတကွလုပ်ဆောင်ပုံဖြစ်သည်။
 
-### Functions {.unnumbered}  
+### Script များ {.unnumbered}
 
-The R word "function" might be new, but the concept exists in Excel too as *formulas*. Formulas in Excel also require precise syntax (e.g. placement of semicolons and parentheses). All you need to do is learn a few new functions and how they work together in R.  
+ခလုတ်များကို နှိပ်ပြီး ဆဲလ်များကို ဆွဲယူမည့်အစား သင်သည် အဆင့်တိုင်းနှင့် လုပ်ထုံးလုပ်နည်း တိုင်း ကို "script" တစ်ခုအဖြစ် ရေးသားမည်ဖြစ်သည်။ Excel အသုံးပြုသူများသည် scripting ချဉ်းကပ်နည်းကို အသုံးပြုသည့် "VBA macro" နှင့်လည်း ရင်းနှီးနိုင်ပါသည်။
 
+*R script တွင် အဆင့်ဆင့် ညွှန်ကြားချက်များ ပါဝင်ပါသည်။* ဒါက လုပ်ဖော်ကိုင်ဖက်တိုင်းကို Scriptဖတ်ပြီး သင်လုပ်ဆောင်ခဲ့တဲ့ အဆင့်တွေကို အလွယ်တကူ မြင်နိုင်စေတယ်။ ၎င်းသည် အမှားအယွင်းများကို ဖယ်ရှားရန် သို့မဟုတ် မတိကျသော တွက်ချက်မှုများကိုလည်း ကူညီပေးသည်။ ဥပမာများအတွက် scripts များပေါ်ရှိ [R base များ](https://epirhandbook.com/en/r-basics.html#r-basics) အပိုင်း ကို ကြည့်ပါ။
 
-
-### Scripts {.unnumbered}  
-
-Instead of clicking buttons and dragging cells you will be writing *every* step and procedure into a "script". 
-Excel users may be familiar with "VBA macros" which also employ a scripting approach.  
-
-*The R script consists of step-by-step instructions.* This allows any colleague to read the script and easily see the steps you took. This also helps de-bug errors or inaccurate calculations. See the [R basics] section on scripts for examples.  
-
-Here is an example of an R script:  
+ဤသည်မှာ R script ၏ဥပမာတစ်ခုဖြစ်သည်-
 
 ```{r, echo=F, out.width = "75%", out.height="75%", fig.align = "center"}
 knitr::include_graphics(here::here("images", "example_script.png"))
 ```
 
+### Excel-to-R အရင်းအမြစ်များ {.unnumbered}
 
+ဤသည်မှာ Excel မှ R သို့ပြောင်းရာတွင် အထောက်အကူဖြစ်စေရန် သင်ခန်းစာများရဲ့ လင့်ခ်အချို့ပေးထားသည်။
 
+-   [R နှင့် Excel](https://www.northeastern.edu/graduate/blog/r-vs-excel/)
 
+-   [Excel အသုံးပြုသူများအတွက် R တွင် RStudio သင်တန်း](https://rstudio-conf-2020.github.io/r-for-excel/)
 
+### R-Excel ဆက်သွယ်မှု (interaction) {.unnumbered}
 
+R တွင် Excel အလုပ်စာအုပ်များကို တင်သွင်းရန်၊ ဒေတာဖြင့် လုပ်ဆောင်ရန်၊ Excel ဖိုင်များကို ထုတ်ယူခြင်း/သိမ်းဆည်းရန်နှင့် Excel sheetများ၏ ကွဲပြားမှုများဖြင့် လုပ်ဆောင်ရန် ခိုင်မာသောနည်းလမ်းများ ရှိသည်။
 
-### Excel-to-R resources {.unnumbered}
+ဘာသာပြန်ရာတွင် ပိုမိုလှပသော Excel ဖော်မတ်မှုအချို့ (ဥပမာ - စာလုံးစောင်း၊ ဘေးတိုက်စာသား စသည်ဖြင့်) ပျောက်ဆုံးသွားသည်မှာ မှန်ပါသည်။ သင်၏အလုပ်သည် မူရင်း Excel ဖော်မတ်ကို ထိန်းသိမ်းထားစဉ် R နှင့် Excel အကြားအပြန်အလှန် စာရွက်စာတမ်းများ ကူးသန်းရန် လိုအပ်ပါက၊ **openxlsx** ကဲ့သို့သော ပက်ကေ့ခ်ျများကို စမ်းကြည့်ပါ။
 
-Here are some links to tutorials to help you transition to R from Excel:  
+## Stata မှ
 
-* [R vs. Excel](https://www.northeastern.edu/graduate/blog/r-vs-excel/)  
-* [RStudio course in R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/)  
-
-
-### R-Excel interaction {.unnumbered}  
-
-R has robust ways to import Excel workbooks, work with the data, export/save Excel files, and work with the nuances of Excel sheets.  
-
-It is true that some of the more aesthetic Excel formatting can get lost in translation (e.g. italics, sideways text, etc.). If your work flow requires passing documents back-and-forth between R and Excel while retaining the original Excel formatting, try packages such as **openxlsx**.  
-
-
-
-
-
-
-
-## From Stata  
 <!-- ======================================================= -->
 
-**Coming to R from Stata**  
+**Stata မှ R သို့ ပြောင်းခြင်း**
 
-Many epidemiologists are first taught how to use Stata, and it can seem daunting to move into R. However, if you are a comfortable Stata user then the jump into R is certainly more manageable than you might think. While there are some key differences between Stata and R in how data can be created and modified, as well as how analysis functions are implemented – after learning these key differences you will be able to translate your skills.
+းစက်ရောဂါဗေဒပညာရှင်အတော်များများသည် Stata ကိုအသုံးပြုနည်းကို ဦးစွာသင်ကြားပေးကြပြီး R သို့ပြောင်းရန်မှာ ကြောက်ပုံပေါ်သည်။ သို့သော် သင်သည် Stata အသုံးပြုသူဖြစ်လျှင် R ထဲသို့ ခုန်ဆင်းခြင်းသည် သင်ထင်ထားသည်ထက်ပို၍ စီမံခန့်ခွဲနိုင်သည်။ Stata နှင့် R အကြား ဒေတာကို ဖန်တီးပုံနှင့် ပြုပြင်မွမ်းမံရာနှင့် ခွဲခြမ်းစိတ်ဖြာမှု analysis function များကို သုံးရာတွင် အဓိက ကွာခြားချက်အချို့ရှိသော်လည်း၊- ဤအဓိကကွာခြားချက်များကို လေ့လာပြီးနောက် သင်၏ကျွမ်းကျင်မှုများကို နှစ်ခုကြားပြန်ဆိုနိုင်မည်ဖြစ်သည်။
 
-Below are some key translations between Stata and R, which may be handy as your review this guide.
+အောက်တွင်ဖော်ပြထားသည်မှာ Stata နှင့် R အကြား အဓိကဘာသာပြန်ချက်အချို့ဖြစ်သည်၊ ဤလမ်းညွှန်ချက်ကြောင့် သင် အဆင်ပြေနိုင်ပါသည်။
 
+**အထွေထွေမှတ်စုများ**
 
-**General notes**
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **STATA**                                                                                                                                                                            | **R**                                                                                                                                                                                                                        |
++======================================================================================================================================================================================+==============================================================================================================================================================================================================================+
+| သင်သည် တစ်ကြိမ်လျှင် datasetတစ်ခုကိုသာ ကြည့်ရှုပြီး စီမံခန့်ခွဲနိုင်သည်။                                                                                                             | သင်သည် datasetများစွာကို တစ်ပြိုင်နက်ကြည့်ရှုပြီး စီမံခန့်ခွဲနိုင်သည်၊ ထို့ကြောင့် ကုဒ်အတွင်း သင်၏datasetကို မကြာခဏ သတ်မှတ်ရမည်ဖြစ်ပါသည်။                                                                                    |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| <https://www.statalist.org/> မှတဆင့် ရရှိနိုင်သော အွန်လိုင်းအသိုင်းအဝိုင်း                                                                                                           | [RStudio](https://community.rstudio.com/) ၊ [StackOverFlow](https://stackoverflow.com/questions/tagged/r) နှင့် [R-bloggers](https://www.r-bloggers.com/) များမှတဆင့် ရရှိနိုင်သော အွန်လိုင်းအသိုင်းအဝိုင်း                  |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Point and click လုပ်ဆောင်နိုင်စွမ်းမှာ option တစ်ခု                                                                                                                                  | အနည်းဆုံး Point and click လုပ်နိုင်စွမ်း                                                                                                                                                                                     |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `help [command]` ဖြင့်commandများအတွက် အကူအညီရရှိနိုင်                                                                                                                               | အကူအညီအတွက် `[function]?` သို့မဟုတ် Help pane တွင် ရှာဖွေနိုင်                                                                                                                                                               |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \* သို့မဟုတ် /// သို့မဟုတ် /\* TEXT \*/ ကို အသုံးပြု၍ မှတ်ချက်ကုဒ်ရေးနိုင်                                                                                                           | \# သုံးပြီး မှတ်ချက်ကုဒ်ရေးနိုင်                                                                                                                                                                                             |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Command အားလုံးနီးပါးကို Stata တွင် ထည့်သွင်းထားသည်။ အသစ်/အသုံးပြုသူ-ရေးထားသော functionများကို **ssc install**  \[package\] ကို အသုံးပြု၍ **ado** ဖိုင်များ အဖြစ် ထည့်သွင်းနိုင်သည်။ | R ကို **base** functionများဖြင့် ထည့်သွင်းသော်လည်း ပုံမှန်အသုံးပြုမှုတွင် CRAN မှ အခြားပက်ကေ့ဂျ်များကို ထည့်သွင်းခြင်းပါဝင်သည် ( [R base များကို](https://epirhandbook.com/en/r-basics.html#r-basics) စာမျက်နှာတွင် ကြည့်ပါ) |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ခွဲခြမ်းစိတ်ဖြာခြင်းကို အများအားဖြင့် **do** file တွင်ရေးထားသည်။                                                                                                                     | RStudio source paneတွင် R script ဖြင့်ရေးသားထားသော ခွဲခြမ်းစိတ်ဖြာခြင်း။ R markdown scripts များသည် အခြားရွေးချယ်စရာတစ်ခုဖြစ်သည်။                                                                                            |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**STATA**                    | **R**  
----------------------------- | ---------------------------------------------    
-You can only view and manipulate one dataset at a time | You can view and manipulate multiple datasets at the same time, therefore you will frequently have to specify your dataset within the code
-Online community available through [https://www.statalist.org/](https://www.statalist.org/) | Online community available through [RStudio](https://community.rstudio.com/), [StackOverFlow](https://stackoverflow.com/questions/tagged/r), and [R-bloggers](https://www.r-bloggers.com/)
-Point and click functionality as an option | Minimal point and click functionality
-Help for commands available by `help [command]` | Help available by `[function]?` or search in the Help pane
-Comment code using * or /// or  /* TEXT */ | Comment code using #
-Almost all commands are built-in to Stata. New/user-written functions can be installed as **ado** files using **ssc install** [package] | R installs with **base** functions, but typical use involves installing other packages from CRAN (see page on [R basics])
-Analysis is usually written in a **do** file | Analysis written in an R script in the RStudio source pane. R markdown scripts are an alternative.
+**Working directory**
 
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **STATA**                                                                                                     | **R**                                                                                                                                                                                                                                                                                                         |
++===============================================================================================================+===============================================================================================================================================================================================================================================================================================================+
+| Working directoryများတွင် absolute ဖိုင်လမ်းကြောင်းများ ပါဝင်သည် (ဥပမာ "C:/usename/documents/projects/data/") | ဤနေရာတွင် ပက်ကေ့ဂျ် ကို အသုံးပြုခြင်းဖြင့် working directory များသည် ပရောဂျက်အမြစ်ဖိုင်တွဲ (project root folder) သို့ absolute သို့မဟုတ်  relative ဖိုင်လမ်းကြောင်းနှင့် ဆက်စပ်နိုင်သည် ( [တင်သွင်းခြင်းနှင့် ထုတ်ယူခြင်း](https://epirhandbook.com/en/import-and-export.html#import-and-export) ကို ကြည့်ပါ) |
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **pwd** ဖြင့် လက်ရှိ working directory ကို ကြည့်ပါ။                                                           | [`getwd()`](https://rdrr.io/r/base/getwd.html) သို့မဟုတ် [`here()`](https://here.r-lib.org//reference/here.html) (**here** ပက်ကေ့ဂျ်ကို အသုံးပြုပါက) ကို ကွင်းပိတ်အလွတ်ဖြင့် အသုံးပြုပါ။                                                                                                                      |
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **cd** "ဖိုင်တွဲတည်နေရာ" ဖြင့် working directory ကို သတ်မှတ်ပါ။                                               | `setwd(“folder location”)`သို့မဟုတ် `set_here("folder location)` (**here** ပက်ကေ့ဂျ်ကို အသုံးပြုပါက) ကို သုံးပါ။                                                                                                                                                                                              |
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Working directory**  
+**Importing and viewing data**
 
-**STATA**                        | **R**  
--------------------------------- | ---------------------------------------------
-Working directories involve absolute filepaths (e.g. "C:/usename/documents/projects/data/")| Working directories can be either absolute, or relative to a project root folder by using the **here** package (see [Import and export]) 
-See current working directory with **pwd** | Use `getwd()` or `here()` (if using the **here** package), with empty parentheses 
-Set working directory with **cd** “folder location” | Use `setwd(“folder location”)`, or `set_here("folder location)` (if using **here** package)
++------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **STATA**                                                                                                                                | **R**                                                                                                                                                                                                                                                                                             |
++==========================================================================================================================================+===================================================================================================================================================================================================================================================================================================+
+| ဖိုင်အမျိုးအစားအလိုက် command များ  သတ်မှတ်ထားသည်။                                                                                       | ဖိုင်အမျိုးအစားအားလုံးနီးပါးအတွက် **rio** ပက်ကေ့ဂျ်မှ [`import()`](https://rdrr.io/pkg/rio/man/import.html) ကို အသုံးပြုသည်။ သီးခြားfunctionများသည် အခြားရွေးချယ်စရာများအဖြစ် ရှိနေသည် ([import နှင့် export](https://epirhandbook.com/en/import-and-export.html#import-and-export) ကို ကြည့်ပါ)။ |
++------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **import delimited** "filename.csv" ဖြင့် csv ဖိုင်များတွင် ဖတ်နိုင်သည်။                                                                 | `import("filename.csv")` ကို သုံးသည်။                                                                                                                                                                                                                                                             |
++------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| xslx ဖိုင်များတွင်ဖတ်ရှုခြင်းကို **import excel** "filename.xlsx"ဖြင့်ပြုလုပ်သည်။                                                        | `import("filename.xlsx")` ကို သုံးသည်။                                                                                                                                                                                                                                                            |
++------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| command **browse** ကို အသုံးပြု၍ ဝင်းဒိုးအသစ်တွင် သင့်ဒေတာကို ရှာဖွေပါ။                                                                  | RStudio source အကန့်တွင် [`View(dataset)`](https://rdrr.io/r/utils/View.html) ကိုသုံး၍ dataset ကိုကြည့်ရှုပါ ။ *Dataset များစွာကို တစ်ချိန်တည်းတွင် သိမ်းဆည်းထားနိုင်သောကြောင့် R ရှိ functionတွင် သင်၏datasetအမည်ကို သတ်မှတ်ရန် လိုအပ်ပါသည်။ ဤfunctionတွင် စာလုံး "V" ကို မှတ်သားပါ။*            |
++------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Variable အမည်များနှင့် base အချက်အလက်များကို ပေးဆောင်သည့် **summarize** ကို အသုံးပြု၍ သင့်dataset၏ အဆင့်မြင့်ခြုံငုံသုံးသပ်ချက်ကို ရယူပါ | သင်၏datasetကို အသုံးပြု၍ အဆင့်မြင့်ခြုံငုံသုံးသပ်ချက်ကို [`summary(dataset)`](https://rdrr.io/r/base/summary.html) မှ ရယူပါ။                                                                                                                                                                      |
++------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Importing and viewing data**  
+**ဒေတာ manipulate လုပ်ခြင်း**
 
-**STATA**                    | **R**  
--------------------------------- | ---------------------------------------------
-Specific commands per file type | Use `import()` from **rio** package for almost all filetypes. Specific functions exist as alternatives (see [Import and export])
-Reading in csv files is done by **import delimited** “filename.csv” | Use `import("filename.csv")`
-Reading in xslx files is done by **import excel** “filename.xlsx” | Use `import("filename.xlsx")`
-Browse your data in a new window using the command **browse** | View a dataset in the RStudio source pane using `View(dataset)`. *You need to specify your dataset name to the function in R because multiple datasets can be held at the same time. Note capital "V" in this function*
-Get a high-level overview of your dataset using **summarize**, which provides the variable names and basic information | Get a high-level overview of your dataset using `summary(dataset)`
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **STATA**                                                                                        | **R**                                                                                                                                                                                                                                                                                                                                                                                 |
++==================================================================================================+=======================================================================================================================================================================================================================================================================================================================================================================================+
+| Dataset columnများကို "variables" ဟု မကြာခဏ ရည်ညွှန်းကြသည်။                                      | "columnများ" သို့မဟုတ် တစ်ခါတစ်ရံ "vectors" သို့မဟုတ် "variables" အဖြစ် မကြာခဏ ရည်ညွှန်းသည်။                                                                                                                                                                                                                                                                                          |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| datasetကို သတ်မှတ်ရန် မလိုအပ်ပါ။                                                                 | အောက်ပါ command တစ်ခုစီတွင်၊ သင်သည် dataset ကို သတ်မှတ်ရန်လိုအပ်သည် - ဥပမာများအတွက် ဒေတာရှင်းလင်းခြင်းနှင့်အဓိကfunctionများ စာမျက်နှာကို ကြည့်ပါ။                                                                                                                                                                                                                                     |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Variable အသစ်များကို **generate** *varname* = ဟူသော command ကို အသုံးပြု၍ ဖန်တီးသည်။             | [`mutate(varname = )`](https://dplyr.tidyverse.org/reference/mutate.html) functionကို အသုံးပြု၍ variable အသစ်များကို ဖန်တီးသည်။ အောက်ဖော်ပြပါ **dplyr** functionများ အားလုံးအတွက် အသေးစိတ်အချက်အလက်များအတွက် [ဒေတာရှင်းလင်းခြင်းနှင့် အဓိကfunctionများ](https://epirhandbook.com/en/cleaning-data-and-core-functions.html#cleaning-data-and-core-functions)ကို စာမျက်နှာတွင် ကြည့်ပါ။ |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| variable များကို **rename** *old_name new_name* ဖြင့် အမည်ပြောင်းပါသည်။                          | [`rename(new_name = old_name)`](https://dplyr.tidyverse.org/reference/rename.html) functionကို အသုံးပြု၍ columnများကို အမည်ပြောင်းနိုင်ပါသည်                                                                                                                                                                                                                                          |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **drop** *varname* ကို အသုံးပြု၍ variable များကို ဖြုတ်ချထားသည်။                                 | `select()`ကွင်းအတွင်း၌  အနုတ်လက္ခဏာထည့်ပြီးနောက် column အမည်ထည့်သည့် functionကို အသုံးပြု၍ columnများကို ဖယ်ရှားနိုင်သည်။                                                                                                                                                                                                                                                             |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **label define** ကဲ့သို့သော command များကိုအသုံးပြု၍ Factor variable များကို အညွှန်းတပ်နိုင်သည်။ | column ကို Factor class သို့ပြောင်းပြီး အဆင့်သတ်မှတ်ခြင်းဖြင့် value များကို အညွှန်းတပ်နိုင်သည်။ [Factors](https://epirhandbook.com/en/factors.html#factors) ရှိ စာမျက်နှာကို ကြည့်ပါ ။ columnအမည်များကို Stata တွင်ရှိသောကြောင့် ပုံမှန်အားဖြင့် အညွှန်းမတပ်ပါ။                                                                                                                      |
++--------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Basic data manipulation**  
+**Descriptive analysis**
 
-**STATA**                    | **R**  
--------------------------------- | ---------------------------------------------
-Dataset columns are often referred to as "variables" | More often referred to as "columns" or sometimes as "vectors" or "variables"
-No need to specify the dataset | In each of the below commands, you need to specify the dataset - see the page on [Cleaning data and core functions] for examples
-New variables are created using the command **generate** *varname* =  | Generate new variables using the function `mutate(varname = )`. See page on [Cleaning data and core functions] for details on all the below **dplyr** functions.
-Variables are renamed using **rename** *old_name new_name* | Columns can be renamed using the function `rename(new_name = old_name)`
-Variables are dropped using **drop** *varname* | Columns can be removed using the function `select()` with the column name in the parentheses following a minus sign
-Factor variables can be labeled using a series of commands such as **label define** | Labeling values can done by converting the column to Factor class and specifying levels. See page on [Factors]. Column names are not typically labeled as they are in Stata.
++-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **STATA**                                                                                       | **R**                                                                                                                                                                                                                                                                                                     |
++=================================================================================================+===========================================================================================================================================================================================================================================================================================================+
+| **tab** *varname* ကို အသုံးပြု၍ variable တစ်ခု၏ အရေအတွက်ကို ဇယားကွက်လုပ်ပါ။                     | `table(dataset$colname)`ကဲ့သို့ datasetနှင့် column အမည်တို့ကို [`table()`](https://rdrr.io/r/base/table.html) တွင်ထည့်ပါ ။ တနည်းအားဖြင့် [ဒေတာများစုစည်းခြင်း](https://epirhandbook.com/en/grouping-data.html#grouping-data) တွင်ရှင်းပြထားသည့်အတိုင်း **dplyr** package မှ `count(varname)` ကို သုံးပါ။ |
++-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2x2 ဇယားရှိ variable နှစ်ခု၏ cross-tabulaton ကို **tab** *varname1 varname2* ဖြင့် လုပ်ဆောင်သည် | `table(dataset$varname1, dataset$varname2` or `count(varname1, varname2)`ကို အသုံးပြုပါ။                                                                                                                                                                                                                  |
++-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Descriptive analysis**  
+ဤစာရင်းသည် Stata commands များကို R သို့ ဘာသာပြန်ရာတွင် basic များကို ခြုံငုံသုံးသပ်ပေးသော်လည်း ၎င်းသည် ပြီးပြည့်စုံနေသည်မဟုတ်ပါ။ R သို့ကူးပြောင်းနေသော Stata အသုံးပြုသူများအတွက် စိတ်ဝင်စားဖွယ်ကောင်းသော အခြားအရင်းအမြစ်များစွာရှိပါသည်-
 
-**STATA**                    | **R**  
--------------------------------- | ---------------------------------------------
-Tabulate counts of a variable using **tab** *varname* | Provide the dataset and column name to `table()` such as `table(dataset$colname)`. Alternatively, use `count(varname)` from the **dplyr** package, as explained in [Grouping data]
-Cross-tabulaton of two variables in a 2x2 table is done with **tab** *varname1 varname2* | Use `table(dataset$varname1, dataset$varname2` or `count(varname1, varname2)`
+-   <https://dss.princeton.edu/training/RStata.pdf>\
+-   <https://clanfear.github.io/Stata_R_Equivalency/docs/r_stata_commands.html>\
+-   <http://r4stats.com/books/r4stata/>
 
+## SAS မှ
 
-While this list gives an overview of the basics in translating Stata commands into R, it is not exhaustive. There are many other great resources for Stata users transitioning to R that could be of interest:  
-
-* https://dss.princeton.edu/training/RStata.pdf  
-* https://clanfear.github.io/Stata_R_Equivalency/docs/r_stata_commands.html  
-* http://r4stats.com/books/r4stata/  
-
-
-
-
-## From SAS  
 <!-- ======================================================= -->
 
-**Coming from SAS to R**  
+**SAS မှ R သို့ပြောင်းခြင်း**
 
-SAS is commonly used at public health agencies and academic research fields. Although transitioning to a new language is rarely a simple process, understanding key differences between SAS and R may help you start to navigate the new language using your native language. 
-Below outlines the key translations in data management and descriptive analysis between SAS and R.   
+SAS ကို ပြည်သူ့ကျန်းမာရေးအေဂျင်စီများနှင့် ပညာရေးဆိုင်ရာ သုတေသနနယ်ပယ်များတွင် အသုံးများသည်။ ဘာသာစကားအသစ်သို့ ကူးပြောင်းခြင်းသည် ရိုးရှင်းသော လုပ်ငန်းစဉ်တစ်ခု ဖြစ်ခဲသော်လည်း SAS နှင့် R အကြား အဓိကကွာခြားချက်များကို နားလည်ခြင်းဖြင့် သင့်မိခင်ဘာသာစကားကို အသုံးပြု၍ ဘာသာစကားအသစ်ကို စတင်ရန် ကူညီပေးနိုင်ပါသည်။ အောက်တွင် SAS နှင့် R အကြား ဒေတာစီမံခန့်ခွဲမှုနှင့်  Descriptive analysis တွင် အဓိကဘာသာပြန်ဆိုချက်များကို အကြမ်းဖျဉ်းဖော်ပြထားသည်။
 
-**General notes**  
+**အထွေထွေမှတ်စုများ**\
 
-**SAS**                          | **R**  
--------------------------------- | ---------------------------------------------
-Online community available through [SAS Customer Support](https://support.sas.com/en/support-home.html)|Online community available through RStudio, StackOverFlow, and R-bloggers
-Help for commands available by `help [command]`|Help available by [function]? or search in the Help pane
-Comment code using `* TEXT ;` or `/* TEXT */`|Comment code using #
-Almost all commands are built-in.  Users can write new functions using SAS macro, SAS/IML, SAS Component Language (SCL), and most recently, procedures `Proc Fcmp` and `Proc Proto`|R installs with **base** functions, but typical use involves installing other packages from CRAN (see page on [R basics])
-Analysis is usually conducted by writing a SAS program in the Editor window.|Analysis written in an R script in the RStudio source pane. R markdown scripts are an alternative.
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SAS**                                                                                                                                                                                                                                        | **R**                                                                                                                                                                                                                      |
++================================================================================================================================================================================================================================================+============================================================================================================================================================================================================================+
+| [SAS](https://support.sas.com/en/support-home.html) Customer Support မှတဆင့် အွန်လိုင်းအသိုင်းအဝိုင်းကို ရရှိနိုင်သည်။                                                                                                                         | RStudio၊ StackOverFlow နှင့် R-bloggers များမှတစ်ဆင့်အွန်လိုင်းအသိုင်းအဝိုင်းကို ရရှိနိုင်သည်။                                                                                                                             |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Command များအတွက် အကူအညီကို `help [command]` မှ ရရှိနိုင်သည်။                                                                                                                                                                                  | အကူအညီကို \[function\]? သို့မဟုတ် Help အကန့်တွင် ရှာဖွေခြင်းဖြင့် ရရှိနိုင်သည်။                                                                                                                                            |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `* TEXT ;` သို့မဟုတ် `/* TEXT */` ကို သုံးပြီး ကုဒ်ကို comment လုပ်နိုင်သည်။                                                                                                                                                                   | \# သုံးပြီး ကုဒ်ကို comment လုပ်နိုင်သည်။                                                                                                                                                                                  |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Command အားလုံးနီးပါးသည် built-in ဖြစ်သည်။ အသုံးပြုသူများသည် SAS macro၊ SAS/IML၊ SAS Component Language (SCL) နှင့် မကြာသေးမီက ပေါ်လာသော `Proc Fcmp` နှင့်  `Proc Proto` လုပ်ထုံးလုပ်နည်းများကို အသုံးပြု၍ functionအသစ်များကို ရေးသားနိုင်သည်။ | R ကို **base** functionများဖြင့် ထည့်သွင်းသော်လည်း ပုံမှန်အသုံးပြုမှုတွင် CRAN မှ အခြားပက်ကေ့ဂျ်များကို ထည့်သွင်းခြင်းပါဝင်သည် ([R ](https://epirhandbook.com/en/r-basics.html#r-basics)အခြေခံများ စာမျက်နှာတွင် ကြည့်ပါ)။ |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ခွဲခြမ်းစိတ်ဖြာခြင်း(Analysis)ကို များသောအားဖြင့် အယ်ဒီတာဝင်းဒိုးတွင် SAS ပရိုဂရမ်တစ်ခုရေးခြင်းဖြင့် ပြုလုပ်သည်။                                                                                                                               | ခွဲခြမ်းစိတ်ဖြာခြင်း ကို RStudio source paneတွင် R script ဖြင့်ရေးသားသည်။ R markdown scripts များသည် အခြားရွေးချယ်စရာတစ်ခုဖြစ်သည်။                                                                                         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**Working directory**  
+**Working directory**
 
-**SAS**                          | **R**  
--------------------------------- | ---------------------------------------------
-Working directories can be either absolute, or relative to a project root folder by defining the root folder using `%let rootdir=/root path; %include “&rootdir/subfoldername/filename”`|Working directories can be either absolute, or relative to a project root folder by using the **here** package (see [Import and export])
-See current working directory with `%put %sysfunc(getoption(work));`|Use `getwd()` or `here()` (if using the **here** package), with empty parentheses
-Set working directory with `libname “folder location”`|Use `setwd(“folder location”)`, or `set_here("folder location)` if using **here** package
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SAS**                                                                                                                                                                                                                                                  | **R**                                                                                                                                                                                                                                                                     |
++==========================================================================================================================================================================================================================================================+===========================================================================================================================================================================================================================================================================+
+| Working Directory များသည် `%let rootdir=/root path; %include “&rootdir/subfoldername/filename”`ကိုအသုံးပြု၍ root folder ကို သတ်မှတ်ခြင်းအားဖြင့် ပရောဂျက်အမြစ်ဖိုင်တွဲ (project root folder) နှင့် absolute သို့မဟုတ် relative နည်းဖြင့် ဆက်စပ်နိုင်သည်။ | **here** ပက်ကေ့ဂျ် ကို အသုံးပြုခြင်းဖြင့် အလုပ်လမ်းညွှန်များသည် absolute သို့မဟုတ် ပရောဂျက်အမြစ်ဖိုင်တွဲ (Project root folder) နှင့် ဆက်စပ်နိုင်သည် ([တင်သွင်းခြင်းနှင့် ထုတ်ယူခြင်း](https://epirhandbook.com/en/import-and-export.html#import-and-export) ကို ကြည့်ပါ)။ |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| လက်ရှိ working directory ကို `%put %sysfunc(getoption(work));` ဖြင့် ကြည့်နိုင်သည်။                                                                                                                                                                      | `getwd()` သို့မဟုတ် [`here()`](https://here.r-lib.org//reference/here.html) (**here** ပက်ကေ့ဂျ်ကို အသုံးပြုပါက) ကို ကွင်းပိတ်အလွတ်ဖြင့် အသုံးပြုနိုင်သည်။                                                                                                                 |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Working directory ကို `libname “folder location”` ဖြင့် သတ်မှတ်ပါ။                                                                                                                                                                                       | `setwd(“folder location”)` ကို အသုံးပြုပါ သို့မဟုတ် **here** ပက်ကေ့ဂျ်ကို အသုံးပြုပါက  `set_here("folder location)` ကို အသုံးပြုပါ။                                                                                                                                       |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+**ဒေတာ import လုပ်ခြင်းနှင့်ကြည့်ရှုခြင်း**
 
-**Importing and viewing data**  
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SAS**                                                                                                                                                                                                                                | **R**                                                                                                                                                                                                                                           |
++========================================================================================================================================================================================================================================+=================================================================================================================================================================================================================================================+
+| `Proc Import` procedure ကို သုံးပါ သို့မဟုတ် `Data Step Infile` statement ကို သုံးပါ။                                                                                                                                                  | ဖိုင်အမျိုးအစားအားလုံးနီးပါးအတွက် **rio** ပက်ကေ့ဂျ် မှ [`import()`](https://rdrr.io/pkg/rio/man/import.html) ကို အသုံးပြုပါ။ သီးခြားfunctionများသည် အခြားရွေးချယ်စရာများအဖြစ် ရှိနေသည် (Import နှင့် Export ကို ကြည့်ပါ)။                       |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| csv ဖိုင်များတွင်ဖတ်ရှုခြင်းကို `Proc Import datafile=”filename.csv” out=work.filename dbms=CSV; run;` သို့မဟုတ် [Data Step Infile statement](http://support.sas.com/techsup/technote/ts673.pdf) ကို အသုံးပြု၍ လုပ်ဆောင်သည်။           | `import("filename.csv")` ကို သုံးသည်။                                                                                                                                                                                                           |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| xslx ဖိုင်များတွင် ဖတ်ခြင်းကို `Proc Import datafile=”filename.xlsx” out=work.filename dbms=xlsx; run;` သို့မဟုတ် [Data Step Infile ](http://support.sas.com/techsup/technote/ts673.pdf)statement ကိုအသုံးပြုခြင်း ဖြင့် လုပ်ဆောင်သည်။ | `import("filename.xlsx")` ကို သုံးသည်။                                                                                                                                                                                                          |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Explorer ဝင်းဒိုးကိုဖွင့်ပြီး အလိုရှိသော စာကြည့်တိုက်နှင့် ဒေတာအစုံကို ရွေးချယ်ခြင်းဖြင့် ဝင်းဒိုးအသစ်တွင် သင့်ဒေတာကို ရှာဖွေပါ။                                                                                                       | `View(dataset)` ကို အသုံးပြု၍ RStudio source အကန့်ရှိ datasetကို ကြည့်ပါ။ ဒေတာအစုံများစွာကို တစ်ချိန်တည်းတွင် သိမ်းဆည်းထားနိုင်သောကြောင့် R ရှိ functionတွင် သင်၏datasetအမည်ကို သတ်မှတ်ရန် လိုအပ်ပါသည်။ ဤfunctionတွင် စာလုံး "V" ကို မှတ်သားပါ။ |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**SAS**                          | **R**  
--------------------------------- | ---------------------------------------------
-Use `Proc Import` procedure or using `Data Step Infile` statement.|Use `import()` from **rio** package for almost all filetypes. Specific functions exist as alternatives (see [Import and export])
-Reading in csv files is done by using `Proc Import datafile=”filename.csv” out=work.filename dbms=CSV; run;` OR using [Data Step Infile statement](http://support.sas.com/techsup/technote/ts673.pdf)|Use `import("filename.csv")`
-Reading in xslx files is done by using `Proc Import datafile=”filename.xlsx” out=work.filename dbms=xlsx; run;` OR using [Data Step Infile statement](http://support.sas.com/techsup/technote/ts673.pdf)|Use import("filename.xlsx")
-Browse your data in a new window by opening the Explorer window and select desired library and the dataset|View a dataset in the RStudio source pane using View(dataset). You need to specify your dataset name to the function in R because multiple datasets can be held at the same time. Note capital “V” in this function
+**ဒေတာ manipulate လုပ်ခြင်း**
 
-**Basic data manipulation**  
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SAS**                                                                                                                                                                                                         | **R**                                                                                                                                                                                                                                                                                                                                 |
++=================================================================================================================================================================================================================+=======================================================================================================================================================================================================================================================================================================================================+
+| Dataset columnများကို "variables" ဟု မကြာခဏ ရည်ညွှန်းကြသည်။                                                                                                                                                     | "columnများ" သို့မဟုတ် တစ်ခါတစ်ရံ "vectors" သို့မဟုတ် "variables" အဖြစ် မကြာခဏ ရည်ညွှန်းသည်။                                                                                                                                                                                                                                          |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Variable တစ်ခုဖန်တီးရန် အထူးလုပ်ထုံးလုပ်နည်းများ မလိုအပ်ပါ။ Variable အသစ်များကို variable အမည်အသစ်ကို ရိုက်ထည့်ကာ ညီမျှခြင်းသင်္ကေတတစ်ခု၊ ထို့နောက် value အတွက် expression တစ်ခုဖြင့် ရိုးရှင်းစွာဖန်တီးထားသည်။ | [`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html) functionကို အသုံးပြု၍ variable အသစ်များကို ဖန်တီးပါ။ အောက်ဖော်ပြပါ **dplyr** function များ အားလုံးအတွက် အသေးစိတ်အချက်အလက်များကို [ဒေတာရှင်းလင်းခြင်းနှင့် အဓိကfunctionများ](https://epirhandbook.com/en/cleaning-data-and-core-functions.html) စာမျက်နှာတွင် ကြည့်ပါ။ |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `rename *old_name=new_name*`ကို အသုံးပြု၍ Variable များကို အမည်ပြောင်းသည်။                                                                                                                                      | `rename(new_name = old_name)`functionကို အသုံးပြု၍ columnများကို အမည်ပြောင်းနိုင်ပါသည်။                                                                                                                                                                                                                                               |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `**keep**=varname` ကို အသုံးပြု၍ variable များကို သိမ်းသည်။                                                                                                                                                     | [`select()`](https://dplyr.tidyverse.org/reference/select.html) ကွင်းအတွင်းရှိ columnအမည်ပါ သည့် functionကို အသုံးပြု၍ columnများကို ရွေးချယ်နိုင်သည်။                                                                                                                                                                                |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `**drop**=varnamem`ကို အသုံးပြု၍ variable များကို ဖယ်ရှားနိုင်သည်။                                                                                                                                              | [`select()`](https://dplyr.tidyverse.org/reference/select.html) ကိုကွင်းအတွင်း၌ အနုတ်လက္ခဏာထည့်ပြီး နောက်တွင် column အမည်ထည့်သည့် functionကို အသုံးပြု၍ columnများကို ဖယ်ရှားနိုင်သည်။                                                                                                                                                |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `Label` statement ကို အသုံးပြု၍ factor variable များကို Data Step တွင် အညွှန်းတပ်နိုင်သည်။                                                                                                                      | columnကို Factor class သို့ပြောင်းပြီး အဆင့်သတ်မှတ်ခြင်းဖြင့် value များကို အညွှန်းတပ်နိုင်သည်။ [Factors](https://epirhandbook.com/en/factors.html#factors) ရှိ စာမျက်နှာကို ကြည့်ပါ ။ columnအမည်များကို ပုံမှန်အားဖြင့် အညွှန်းတပ်မထားပါ။                                                                                            |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Data Step တွင် မှတ်တမ်းများကို `Where` သို့မဟုတ် `If` statement ကို အသုံးပြု၍ ရွေးချယ်ထားသည် ။ ရွေးချယ်မှုအခြေအနေအများအပြားကို "and" command ဖြင့် ခွဲခြားထားသည်။                                               | မှတ်တမ်းများကို [`filter()`](https://dplyr.tidyverse.org/reference/filter.html) ကို AND အော်ပရေတာ (&) သို့မဟုတ် ကော်မာဖြင့် ပိုင်းခြားထားသော ရွေးချယ်မှုအခြေအနေများစွာဖြင့် functionကို အသုံးပြု၍ ရွေးချယ်ထားသည်။                                                                                                                     |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Datasets များကို Data Step တွင် `Merge` statement ကို အသုံးပြု၍ ပေါင်းစပ်ထားသည် ။ ပေါင်းစည်းမည့် dataset များကို `Proc Sort` procedure ကို အသုံးပြု၍ ဦးစွာစီရန် လိုအပ်သည်။                                      | **dplyr** ပက်ကေ့ချ်တွင် datasetများကို ပေါင်းစည်းရန်အတွက် functionအနည်းငယ် ရှိသည်။ အသေးစိတ်အတွက် [Data များချိတ်ဆက်ခြင်း](https://epirhandbook.com/en/joining-data.html#joining-data) စာမျက်နှာကို ကြည့်ပါ ။                                                                                                                          |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**SAS**                          | **R**  
--------------------------------- | ---------------------------------------------
-Dataset columns are often referred to as “variables”|More often referred to as “columns” or sometimes as “vectors” or “variables”
-No special procedures are needed to create a variable. New variables are created simply by typing the new variable name, followed by an equal sign, and then an expression for the value|Generate new variables using the function `mutate()`. See page on [Cleaning data and core functions] for details on all the below **dplyr** functions.
-Variables are renamed using `rename *old_name=new_name*`|Columns can be renamed using the function `rename(new_name = old_name)`
-Variables are kept using `**keep**=varname`|Columns can be selected using the function `select()` with the column name in the parentheses
-Variables are dropped using `**drop**=varname`|Columns can be removed using the function `select()` with the column name in the parentheses following a minus sign
-Factor variables can be labeled in the Data Step using `Label` statement|Labeling values can done by converting the column to Factor class and specifying levels. See page on [Factors]. Column names are not typically labeled.
-Records are selected using `Where` or `If` statement in the Data Step. Multiple selection conditions are separated using “and” command.|Records are selected using the function `filter()` with multiple selection conditions separated either by an AND operator (&) or a comma  
-Datasets are combined using `Merge` statement in the Data Step. The datasets to be merged need to be sorted first using `Proc Sort` procedure.|**dplyr** package offers a few functions for merging datasets. See page [Joining Data] for details.
+**Descriptive analysis**
 
-**Descriptive analysis**  
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **SAS**                                                                                                                                                                              | **R**                                                                                                                                                                                                                                                                                                                                                                       |
++======================================================================================================================================================================================+=============================================================================================================================================================================================================================================================================================================================================================================+
+| Variable အမည်များနှင့် သရုပ်ဖော်ကိန်းဂဏန်းများ(descriptive statistics)ကို ပံ့ပိုးပေးသည့် `Proc Summary` procedure  ကို အသုံးပြု၍ သင့်dataset၏ အဆင့်မြင့်ခြုံငုံသုံးသပ်ချက်ကို ရယူပါ။ | [`summary(dataset)`](https://rdrr.io/r/base/summary.html) သို့မဟုတ် **skimr** ပက်ကေ့ချ်မှ `skim(dataset)` ကို အသုံးပြု၍ သင့် dataset၏ အဆင့်မြင့်ခြုံငုံသုံးသပ်ချက်ကို ရယူပါ။                                                                                                                                                                                                |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `proc freq data=Dataset; Tables varname; Run;` ကို အသုံးပြုပြီး variable တစ်ခု၏ counts များကို ဇယားလုပ်ပါ။                                                                           | [Descriptive ဇယားများ](https://epirhandbook.com/en/descriptive-tables.html#descriptive-tables) ရှိ စာမျက်နှာကို ကြည့်ပါ ။ ရွေးချယ်စရာများတွင် base  R မှ [`table()`](https://rdrr.io/r/base/table.html) နှင့် **janitor** package မှ `tabyl()` တို့ အပါအဝင်ဖြစ်သည်။ R သည် datasetများစွာကို ကိုင်ဆောင်ထားသောကြောင့် datasetနှင့် columnအမည်ကို သတ်မှတ်ရန် လိုအပ်မည်ဖြစ်သည်။ |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2x2 ဇယားတစ်ခုရှိ variable နှစ်ခု၏ cross-tabulation ကို `proc freq data=Dataset; Tables rowvar*colvar; Run;` ဖြင့် လုပ်ဆောင်သည်။                                                      | Again, you can use `table()`, `tabyl()` or other options as described in the \[Descriptive tables\] page.                                                                                                                                                                                                                                                                   |
+|                                                                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                             |
+|                                                                                                                                                                                      | တစ်ဖန် [`table()`](https://rdrr.io/r/base/table.html) သို့မဟုတ် `tabyl()` ၊ သို့မဟုတ် [Descriptive ဇယားများ](https://epirhandbook.com/en/descriptive-tables.html#descriptive-tables)စာမျက်နှာတွင် ဖော်ပြထားသည့် အခြားရွေးချယ်စရာများကို သုံး၍ လုပ်နိုင်သည်။                                                                                                                 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-**SAS**                          | **R**  
--------------------------------- | ---------------------------------------------
-Get a high-level overview of your dataset using `Proc Summary` procedure, which provides the variable names and descriptive statistics|Get a high-level overview of your dataset using `summary(dataset)` or `skim(dataset)` from the **skimr** package
-Tabulate counts of a variable using `proc freq data=Dataset; Tables varname; Run;`|See the page on [Descriptive tables]. Options include `table()` from **base** R, and `tabyl()` from **janitor** package, among others. Note you will need to specify the dataset and column name as R holds multiple datasets.
-Cross-tabulation of two variables in a 2x2 table is done with `proc freq data=Dataset; Tables rowvar*colvar; Run;`|Again, you can use `table()`, `tabyl()` or other options as described in the [Descriptive tables] page.  
+**အသုံးဝင်သောအရင်းအမြစ်အချို့-**
 
-**Some useful resources:**  
+[SAS နှင့် SPSS အသုံးပြုသူများအတွက် R (2011)](https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846/ref=sr_1_1?dchild=1&gclid=EAIaIQobChMIoqLOvf6u7wIVAhLnCh1c9w_DEAMYASAAEgJLIfD_BwE&hvadid=241675955927&hvdev=c&hvlocphy=9032185&hvnetw=g&hvqmt=e&hvrand=16854847287059617468&hvtargid=kwd-44746119007&hydadcr=16374_10302157&keywords=r+for+sas+users&qid=1615698213&sr=8-1)
 
-[R for SAS and SPSS Users (2011)](https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846/ref=sr_1_1?dchild=1&gclid=EAIaIQobChMIoqLOvf6u7wIVAhLnCh1c9w_DEAMYASAAEgJLIfD_BwE&hvadid=241675955927&hvdev=c&hvlocphy=9032185&hvnetw=g&hvqmt=e&hvrand=16854847287059617468&hvtargid=kwd-44746119007&hydadcr=16374_10302157&keywords=r+for+sas+users&qid=1615698213&sr=8-1)
+[SAS နှင့် R၊ ဒုတိယထုတ်ဝေမှု (2014)](https://www.amazon.com/SAS-Management-Statistical-Analysis-Graphics-dp-1466584491/dp/1466584491/ref=dp_ob_title_bk)
 
-[SAS and R, Second Edition (2014)](https://www.amazon.com/SAS-Management-Statistical-Analysis-Graphics-dp-1466584491/dp/1466584491/ref=dp_ob_title_bk)
+## ဒေတာ အပြန်အလှန်လုပ်ဆောင်နိုင်မှု
 
-
-
-## Data interoperability  
 <!-- ======================================================= -->
 
-See the [Import and export] page for details on how the R package **rio** can import and export files such as STATA .dta files, SAS .xpt and.sas7bdat files, SPSS .por and.sav files, and many others.  
-
-
-
+R package **rio** သည် STATA .dta ဖိုင်များ၊ SAS .xpt နှင့်.sas7bdat ဖိုင်များ၊ SPSS .por နှင့်.sav ဖိုင်များနှင့် အခြားများစွာသော ဖိုင်များကို import နှင့် export နိုင် ပုံအကြောင်း အသေးစိတ်အတွက် [importနှင့်export](https://epirhandbook.com/en/import-and-export.html#import-and-export) စာမျက်နှာတွင် ကြည့်ပါ။
